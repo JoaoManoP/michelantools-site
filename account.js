@@ -1,5 +1,6 @@
 // Contas do acesso antecipado (Supabase Auth + tabela profiles). Usado por conta.html e dashboard.html.
-const CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm';
+// cópia local do supabase-js 2.45.4 (gerada com esbuild); nada de código de terceiros carregado de CDN
+const LIB = './vendor/supabase.js';
 
 export const cfg = window.MT_CONFIG || {};
 export const configured = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
@@ -8,7 +9,7 @@ let client = null;
 export async function sb() {
   if (!configured) return null;
   if (client) return client;
-  const { createClient } = await import(CDN);
+  const { createClient } = await import(LIB);
   client = createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true } });
   return client;
 }
