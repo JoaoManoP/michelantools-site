@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MichelanTools · vídeo, imagem, áudio e 3D no seu computador</title>
-<meta name="description" content="Suíte criativa gratuita para Windows: edição de vídeo e motion graphics, editor de imagem, editor de áudio e modelagem 3D, ligados por um só fluxo. Sem conta e sem nuvem.">
+<title>MichelanTools · teste fechado</title>
+<meta name="description" content="Conheça o MichelanTools, editor de vídeo e motion graphics para Windows, em fase de teste fechado. Faça o tour pela interface e peça acesso antecipado.">
 <link rel="icon" href="assets/icon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,200 +17,93 @@
     <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">MichelanTools</a>
     <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
     <ul class="doors" id="doors">
-      <li><a href="video.html" style="--c: var(--video)">Vídeo</a></li>
-      <li><a href="imagem.html" style="--c: var(--imagem)">Imagem</a></li>
-      <li><a href="audio.html" style="--c: var(--audio)">Áudio</a></li>
-      <li><a href="3d.html" style="--c: var(--tres)">3D</a></li>
-      <li><a href="plugins.html" style="--c: var(--dot)">Plugins</a></li>
+      <li><a href="#tour" style="--c: var(--video)">Conhecer</a></li>
+      <li><a href="#recursos" style="--c: var(--imagem)">Recursos</a></li>
+      <li><a href="#planos" style="--c: var(--audio)">Planos</a></li>
       <li><a href="guia.html" style="--c: var(--ink-3)">Guia</a></li>
     </ul>
-    <a class="get" href="download.html">Baixar</a>
+    <a class="get" href="conta.html">Pedir acesso</a>
   </div>
 </header>
 
 <main>
-  <div class="hero">
+  <div class="hero hero-test">
     <div class="wrap">
-      <p class="label">Gratuito · versão 0.6 · Windows 10 e 11</p>
-      <h1>Edite, anime, pinte e modele. No seu computador.</h1>
-      <p class="lead">Quatro programas que trabalham juntos. O cartaz feito no editor de imagem, a trilha tratada no editor de áudio e a cena criada no 3D chegam à timeline com um clique. Tudo roda sem internet, e seus arquivos originais nunca são alterados.</p>
-      <div class="facts">
-        <span><svg data-lucide="gift" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1" /><path d="M12 8v13" /><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" /><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" /></svg>Grátis, sem conta</span>
-        <span><svg data-lucide="wifi-off" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h.01" /><path d="M8.5 16.429a5 5 0 0 1 7 0" /><path d="M5 12.859a10 10 0 0 1 5.17-2.69" /><path d="M19 12.859a10 10 0 0 0-2.007-1.523" /><path d="M2 8.82a15 15 0 0 1 4.177-2.643" /><path d="M22 8.82a15 15 0 0 0-11.288-3.764" /><path d="m2 2 20 20" /></svg>Funciona offline</span>
-        <span><svg data-lucide="shield-check" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg>Seus arquivos não saem do PC</span>
-        <span><svg data-lucide="puzzle" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z" /></svg>Aceita plugins</span>
-      </div>
+      <div class="beta-pill"><span class="pulse"></span>Teste fechado · versão 0.6 · Windows</div>
+      <h1>Um editor de vídeo e motion graphics que roda inteiro no seu computador.</h1>
+      <p class="lead">O MichelanTools está em teste. Faça o tour pela interface abaixo e, se quiser experimentar, peça acesso: a primeira rodada recebe a versão Lite.</p>
       <div class="hero-cta">
-        <a class="btn primary" href="download.html"><span class="dot"></span>Baixar para Windows</a>
-        <a class="btn" href="guia.html">Ver como funciona</a>
+        <a class="btn primary" href="conta.html"><svg data-lucide="user-plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><line x1="19" x2="19" y1="8" y2="14" /><line x1="22" x2="16" y1="11" y2="11" /></svg>Pedir acesso antecipado</a>
+        <a class="btn" href="#tour"><svg data-lucide="mouse-pointer-click" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4.1 12 6" /><path d="m5.1 8-2.9-.8" /><path d="m6 12-1.9 2" /><path d="M7.2 2.2 8 5.1" /><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" /></svg>Fazer o tour</a>
       </div>
-
-      <div class="monitor" aria-label="Vídeo de lançamento">
-        <div class="monitor-bar"><span><b>Programa</b> · Lançamento MichelanTools · 1920×1080 · 30 qps</span><span class="tc" data-tc>00:00:00:00</span></div>
-        <video id="reel" src="assets/reel.mp4" poster="assets/reel-poster.jpg" autoplay muted loop playsinline data-auto></video>
-      </div>
-      <div class="tl" data-dur="34" aria-label="Timeline: cada clipe abre a página do programa">
-        <div class="tl-ruler"></div>
-        <div class="tl-tracks">
-          <div class="tl-row" style="--c: var(--video)"><div class="head"><i>V</i><span>Vídeo</span></div><div class="lane"><a class="clip" href="video.html" data-in="4.29" data-out="12.86" style="--c: var(--video)">Edição, composição e cor <span class="arrow">→</span></a><a class="clip" href="video.html" data-in="25.71" data-out="34" style="--c: var(--video)">Entrega <span class="arrow">→</span></a></div></div>
-          <div class="tl-row" style="--c: var(--imagem)"><div class="head"><i>I</i><span>Imagem</span></div><div class="lane"><a class="clip" href="imagem.html" data-in="12.86" data-out="17.14" style="--c: var(--imagem)">Cartaz <span class="arrow">→</span></a></div></div>
-          <div class="tl-row" style="--c: var(--tres)"><div class="head"><i>3D</i><span>3D</span></div><div class="lane"><a class="clip" href="3d.html" data-in="17.14" data-out="21.43" style="--c: var(--tres)">Modelagem <span class="arrow">→</span></a><a class="clip" href="3d.html" data-in="0" data-out="4.29" style="--c: var(--tres)">Render <span class="arrow">→</span></a></div></div>
-          <div class="tl-row" style="--c: var(--audio)"><div class="head"><i>A</i><span>Áudio</span></div><div class="lane"><a class="clip" href="audio.html" data-in="0" data-out="34" style="--c: var(--audio)">Trilha da campanha · −14 LUFS <span class="arrow">→</span></a></div></div>
-          <div class="playhead" aria-hidden="true"></div>
-        </div>
-      </div>
-      <p class="label" style="margin-top:14px">Este vídeo foi montado, animado e exportado no próprio MichelanTools. Clique num clipe da timeline para conhecer cada programa.</p>
     </div>
   </div>
 
-  <section>
+  <section id="tour" class="tour-sec">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="label">O que você pode criar</p>
-        <h2>Feito do começo ao fim aqui dentro</h2>
-        <p class="lead">Nada nesta galeria veio de banco de imagens. Os renders, o cartaz, a trilha e o vídeo foram feitos com os quatro programas do MichelanTools.</p>
-      </div>
-      <div class="showcase reveal">
-        <figure><video src="assets/render-produto.mp4" poster="assets/render-produto.jpg" muted loop playsinline autoplay data-auto></video><figcaption><b>Produto em estúdio</b><span>Render 3D com material de verniz e câmera em órbita</span></figcaption></figure>
-        <figure><img src="assets/cartaz.jpg" alt="Cartaz NOVA COLEÇÃO"><figcaption><b>Cartaz</b><span>Camadas, pinceladas e texto no editor de imagem</span></figcaption></figure>
-        <figure><video src="assets/render-ondas.mp4" poster="assets/render-ondas.jpg" muted loop playsinline autoplay data-auto></video><figcaption><b>Motion graphics</b><span>Campo de colunas animado</span></figcaption></figure>
-        <figure><img src="assets/render-paisagem.jpg" alt="Paisagem low poly com lago"><figcaption><b>Paisagem</b><span>Terreno por ruído e luz de fim de tarde</span></figcaption></figure>
-        <figure><img src="assets/shot-plugins-insp.jpg" alt="Efeito meio-tom de plugin aplicado no monitor"><figcaption><b>Efeitos de plugin</b><span>Meio-tom aplicado e ajustado no inspetor</span></figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="portas" class="soft">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="label">Quatro programas</p>
-        <h2>Cada um na sua janela. O trabalho segue para a timeline.</h2>
-      </div>
-
-      <article class="door reveal" style="--track: var(--video)">
-        <div class="door-media"><video src="assets/rec-video.mp4" poster="assets/shot-video.jpg" muted loop playsinline autoplay data-auto></video></div>
-        <div>
-          <span class="tag">Vídeo</span>
-          <h3>Edição e motion graphics</h3>
-          <p>A janela principal tem uma página para cada etapa: mídia, edição, composição, cor, áudio e entrega. Você navega pelo trilho à esquerda.</p>
-          <ul>
-            <li>Câmera virtual com perspectiva 3D e profundidade por camada</li>
-            <li>39 animações prontas, keyframes com curvas e parentesco</li>
-            <li>Biblioteca de efeitos com prévia de cada um</li>
-            <li>Exporta H.264, HEVC, ProRes, VP9 e GIF</li>
-          </ul>
-          <a class="open" href="video.html">Conhecer o Vídeo →</a>
+      <div class="tour" data-tour>
+        <div class="tour-stage">
+          <img src="assets/guia-midia.jpg" alt="Janela de edição do MichelanTools com a biblioteca, o monitor, o inspetor e a timeline" width="1366" height="768">
+          <div class="spot" aria-hidden="true"></div>
         </div>
-      </article>
-
-      <article class="door reveal" style="--track: var(--imagem)">
-        <div class="door-media"><video src="assets/rec-imagem.mp4" poster="assets/cartaz.jpg" muted loop playsinline autoplay data-auto></video></div>
-        <div>
-          <span class="tag">Imagem</span>
-          <h3>Pintura, camadas e design</h3>
-          <p>Pincéis que respondem à pressão da caneta, máscaras, seleção por varinha e estilos de camada. Os modelos prontos já saem no tamanho certo para cada rede.</p>
-          <ul>
-            <li>10 pincéis, entre eles aquarela, giz, spray e nanquim</li>
-            <li>16 filtros com prévia e 10 looks</li>
-            <li>12 modelos: thumbnail, post, story, terço inferior</li>
-          </ul>
-          <a class="open" href="imagem.html">Conhecer a Imagem →</a>
-        </div>
-      </article>
-
-      <article class="door reveal" style="--track: var(--audio)">
-        <div class="door-media"><video src="assets/rec-audio.mp4" poster="assets/shot-audio.jpg" muted loop playsinline autoplay data-auto></video></div>
-        <div>
-          <span class="tag">Áudio</span>
-          <h3>Corte preciso e tratamento</h3>
-          <p>Onda e espectrograma lado a lado. Os efeitos podem ser ouvidos antes de aplicar, e o arquivo original nunca é alterado.</p>
-          <ul>
-            <li>EQ, compressor, limitador, reverb, eco e gate</li>
-            <li>Redução de ruído por perfil</li>
-            <li>Loudness para internet e TV</li>
-          </ul>
-          <a class="open" href="audio.html">Conhecer o Áudio →</a>
-        </div>
-      </article>
-
-      <article class="door reveal" style="--track: var(--tres)">
-        <div class="door-media"><video src="assets/rec-3d.mp4" poster="assets/render-produto.jpg" muted loop playsinline autoplay data-auto></video></div>
-        <div>
-          <span class="tag">3D</span>
-          <h3>Modelagem, escultura e render</h3>
-          <p>Modele pelo teclado: E para extrudar, S para escalar, com o valor digitado na hora. A cena entra no vídeo como uma camada.</p>
-          <ul>
-            <li>Extrudar, inset, loop cut, booleanas e 9 modificadores</li>
-            <li>Escultura com simetria e materiais PBR</li>
-            <li>Importa e exporta GLB, OBJ e STL</li>
-          </ul>
-          <a class="open" href="3d.html">Conhecer o 3D →</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="label">Como funciona</p>
-        <h2>Do arquivo bruto ao vídeo pronto, em quatro passos</h2>
-        <p class="lead">O caminho é o mesmo em qualquer projeto. O <a href="guia.html">guia de primeiros passos</a> explica cada detalhe com calma.</p>
-      </div>
-      <div class="walk">
-        <div class="walk-step reveal">
-          <div>
-            <span class="walk-num">1</span>
-            <h3>Traga suas mídias</h3>
-            <p>Arraste vídeos, fotos e músicas para a janela, ou use Importar. O programa prepara miniaturas e formas de onda, e converte para edição o que precisar, sem tocar no original.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Arquivos de celular, em HEVC ou com o vídeo girado, já entram certos.</div>
-          </div>
-          <figure class="walk-media"><img src="assets/guia-midia.jpg" alt="Biblioteca de mídia com renders e a trilha importados"></figure>
-        </div>
-        <div class="walk-step reveal">
-          <div>
-            <span class="walk-num">2</span>
-            <h3>Monte na timeline</h3>
-            <p>Solte os clipes nas trilhas e corte com a lâmina (B). Para ajustar, arraste as bordas. O inspetor à direita mostra tudo sobre o clipe selecionado.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>O encaixe magnético alinha cortes, marcadores e a agulha sozinho.</div>
-          </div>
-          <figure class="walk-media"><img src="assets/guia-timeline.jpg" alt="Timeline com várias trilhas e o inspetor de um clipe"></figure>
-        </div>
-        <div class="walk-step reveal">
-          <div>
-            <span class="walk-num">3</span>
-            <h3>Dê vida: efeitos, animação e câmera</h3>
-            <p>Na biblioteca, cada efeito, transição, animação e movimento de câmera tem uma miniatura que mostra o resultado. Passe o mouse para ver em ação e clique para aplicar.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Tudo vira keyframe editável na página Composição.</div>
-          </div>
-          <figure class="walk-media"><img src="assets/guia-animar.jpg" alt="Biblioteca de movimentos de câmera com miniaturas"></figure>
-        </div>
-        <div class="walk-step reveal">
-          <div>
-            <span class="walk-num">4</span>
-            <h3>Exporte para onde for</h3>
-            <p>Escolha o destino (YouTube, redes sociais, arquivo mestre) e o programa sugere formato, qualidade e volume. Ele mostra antes o tamanho e o tempo estimados.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Cada arquivo é conferido depois de pronto. Se algo falhar, o anterior não é apagado.</div>
-          </div>
-          <figure class="walk-media"><img src="assets/guia-exportar.jpg" alt="Janela de exportação com destinos e estimativas"></figure>
+        <div class="tour-side">
+          <p class="label">Tour pela interface</p>
+          <ol class="tour-list">
+            <li data-x="0" data-y="0" data-w="5.6" data-h="100"><button><svg data-lucide="panel-left" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /></svg><span><b>Trilho de navegação</b><em>Páginas para cada etapa (Mídia, Edição, Composição, Cor, Áudio, Entrega) e os programas que abrem em janela própria.</em></span></button></li>
+            <li data-x="6.1" data-y="7.6" data-w="24" data-h="50"><button><svg data-lucide="library-big" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="18" x="3" y="3" rx="1" /><path d="M7 3v18" /><path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z" /></svg><span><b>Biblioteca</b><em>Suas mídias e, nas outras abas, efeitos, transições e animações, cada um com prévia do resultado.</em></span></button></li>
+            <li data-x="31" data-y="7.6" data-w="44.4" data-h="50"><button><svg data-lucide="monitor-play" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z" /><path d="M12 17v4" /><path d="M8 21h8" /><rect x="2" y="3" width="20" height="14" rx="2" /></svg><span><b>Monitor</b><em>Mostra exatamente o quadro que vai para o arquivo final, com alças para mover, girar e escalar.</em></span></button></li>
+            <li data-x="76.2" data-y="7.6" data-w="23.4" data-h="50"><button><svg data-lucide="sliders-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="21" x2="14" y1="4" y2="4" /><line x1="10" x2="3" y1="4" y2="4" /><line x1="21" x2="12" y1="12" y2="12" /><line x1="8" x2="3" y1="12" y2="12" /><line x1="21" x2="16" y1="20" y2="20" /><line x1="12" x2="3" y1="20" y2="20" /><line x1="14" x2="14" y1="2" y2="6" /><line x1="8" x2="8" y1="10" y2="14" /><line x1="16" x2="16" y1="18" y2="22" /></svg><span><b>Inspetor</b><em>Tudo sobre o que está selecionado, em três abas: Propriedades, Efeitos e Animação.</em></span></button></li>
+            <li data-x="6.1" data-y="58.3" data-w="93.5" data-h="38"><button><svg data-lucide="gallery-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3v18" /><rect width="12" height="18" x="6" y="3" rx="2" /><path d="M22 3v18" /></svg><span><b>Timeline</b><em>Trilhas de vídeo e áudio, ferramentas de corte com atalhos e encaixe magnético.</em></span></button></li>
+            <li data-x="5.6" data-y="0" data-w="94.4" data-h="6.8"><button><svg data-lucide="search" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg><span><b>Barra superior</b><em>Desfazer, histórico, busca de qualquer comando (Ctrl+K) e exportação.</em></span></button></li>
+          </ol>
+          <div class="tour-progress" aria-hidden="true"><i></i></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="soft">
+  <section id="recursos" class="soft">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="label">Como ele cuida do seu trabalho</p>
-        <h2>Feito para não perder nada</h2>
+        <p class="label">Recursos</p>
+        <h2>O que dá para fazer hoje</h2>
+        <p class="lead">Escolha um tema para ver a tela correspondente. Todas as imagens são do programa em uso.</p>
       </div>
-      <div class="grid3 reveal">
-        <div><svg data-lucide="hard-drive" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" x2="2" y1="12" y2="12" /><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /><line x1="6" x2="6.01" y1="16" y2="16" /><line x1="10" x2="10.01" y1="16" y2="16" /></svg><h3>Local de verdade</h3><p>Não pede conta nem internet. Seus arquivos não saem da máquina.</p></div>
-        <div><svg data-lucide="layers" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" /><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" /><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" /></svg><h3>Não destrutivo</h3><p>Cortes, efeitos e cor ficam no projeto. O vídeo, a foto e o áudio originais continuam intactos.</p></div>
-        <div><svg data-lucide="monitor-check" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 10 2 2 4-4" /><rect width="20" height="14" x="2" y="3" rx="2" /><path d="M12 17v4" /><path d="M8 21h8" /></svg><h3>O que você vê é o que sai</h3><p>O monitor e a exportação usam o mesmo motor. O quadro da prévia é o quadro do arquivo final.</p></div>
-        <div><svg data-lucide="life-buoy" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m4.93 4.93 4.24 4.24" /><path d="m14.83 9.17 4.24-4.24" /><path d="m14.83 14.83 4.24 4.24" /><path d="m9.17 14.83-4.24 4.24" /><circle cx="12" cy="12" r="4" /></svg><h3>Recupera sozinho</h3><p>Salvamento automático e recuperação depois de uma queda.</p></div>
-        <div><svg data-lucide="cpu" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2" /><rect width="6" height="6" x="9" y="9" rx="1" /><path d="M15 2v2" /><path d="M15 20v2" /><path d="M2 15h2" /><path d="M2 9h2" /><path d="M20 15h2" /><path d="M20 9h2" /><path d="M9 2v2" /><path d="M9 20v2" /></svg><h3>Usa a placa de vídeo</h3><p>Cor, desfoque, câmera e plugins rodam na GPU. Os codificadores de hardware da máquina são aproveitados.</p></div>
-        <div><svg data-lucide="palette" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /><circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /><circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /><circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" /></svg><h3>Do seu jeito</h3><p>Nove temas, entre eles dois Amiga Workbench e um Commodore 64, e seis arranjos de painéis.</p></div>
+      <div class="explorer reveal" data-explorer>
+        <div class="ex-tabs" role="tablist">
+          <button role="tab" aria-selected="true" data-i="0"><svg data-lucide="clapperboard" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z" /><path d="m6.2 5.3 3.1 3.9" /><path d="m12.4 3.4 3.1 4" /><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" /></svg>Edição</button>
+          <button role="tab" aria-selected="false" data-i="1"><svg data-lucide="sparkles" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" /><path d="M20 3v4" /><path d="M22 5h-4" /><path d="M4 17v2" /><path d="M5 18H3" /></svg>Efeitos</button>
+          <button role="tab" aria-selected="false" data-i="2"><svg data-lucide="move-3d" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v16h16" /><path d="m5 19 6-6" /><path d="m2 6 3-3 3 3" /><path d="m18 16 3 3-3 3" /></svg>Animação e câmera</button>
+          <button role="tab" aria-selected="false" data-i="3"><svg data-lucide="palette" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /><circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /><circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /><circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" /></svg>Cor</button>
+          <button role="tab" aria-selected="false" data-i="4"><svg data-lucide="audio-lines" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10v3" /><path d="M6 6v11" /><path d="M10 3v18" /><path d="M14 8v7" /><path d="M18 5v13" /><path d="M22 10v3" /></svg>Áudio</button>
+          <button role="tab" aria-selected="false" data-i="5"><svg data-lucide="puzzle" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z" /></svg>Plugins</button>
+        </div>
+        <div class="ex-panels">
+          <div class="ex-panel on" role="tabpanel">
+            <figure class="ex-media"><video src="assets/rec-video.mp4" poster="assets/shot-video.jpg" muted loop playsinline data-auto></video></figure>
+            <div class="ex-text"><h3>Corte e monte com precisão</h3><ul class="ticks"><li>Lâmina, slip, slide e roll, com atalhos de uma tecla</li><li>Encaixe magnético em cortes, marcadores e agulha</li><li>Velocidade de 5% a 1600% com quadro exato</li><li>Salvamento automático e recuperação</li></ul><a class="open" href="video.html">Ver detalhes →</a></div>
+          </div>
+          <div class="ex-panel" role="tabpanel">
+            <figure class="ex-media"><img src="assets/shot-plugins.jpg" alt="Biblioteca de efeitos com miniaturas de antes e depois"></figure>
+            <div class="ex-text"><h3>Veja o efeito antes de aplicar</h3><ul class="ticks"><li>Cada miniatura mostra o antes e o depois</li><li>Com o mouse em cima, o efeito varia na hora</li><li>Clique para aplicar ou arraste até o clipe</li><li>Desfoque, brilho, vinheta, grão, chroma key e looks de cor</li></ul></div>
+          </div>
+          <div class="ex-panel" role="tabpanel">
+            <figure class="ex-media"><img src="assets/guia-animar.jpg" alt="Movimentos de câmera na biblioteca"></figure>
+            <div class="ex-text"><h3>Movimento sem complicação</h3><ul class="ticks"><li>39 animações prontas de entrada, saída e texto</li><li>Câmera virtual com 13 movimentos, como órbita, grua e câmera na mão</li><li>Keyframes com curvas, ajustáveis um a um</li><li>Profundidade por camada e parentesco</li></ul><a class="open" href="guia.html#camera">Ver no guia →</a></div>
+          </div>
+          <div class="ex-panel" role="tabpanel">
+            <figure class="ex-media"><img src="assets/shot-cor.jpg" alt="Página Cor com scopes e rodas de cor"></figure>
+            <div class="ex-text"><h3>Cor na placa de vídeo</h3><ul class="ticks"><li>Rodas de sombras, meios-tons e luzes</li><li>Curvas, temperatura e LUT .cube</li><li>Forma de onda, parade RGB e histograma</li><li>Camada de ajuste para o vídeo inteiro</li></ul></div>
+          </div>
+          <div class="ex-panel" role="tabpanel">
+            <figure class="ex-media"><video src="assets/rec-audio.mp4" poster="assets/shot-audio.jpg" muted loop playsinline data-auto></video></figure>
+            <div class="ex-text"><h3>Áudio limpo e no volume certo</h3><ul class="ticks"><li>Editor de áudio com onda e espectrograma</li><li>EQ, compressor, reverb e redução de ruído</li><li>Volume certo para internet e TV</li><li>Mixer por trilha na timeline</li></ul><a class="open" href="audio.html">Ver detalhes →</a></div>
+          </div>
+          <div class="ex-panel" role="tabpanel">
+            <figure class="ex-media"><img src="assets/shot-plugins-insp.jpg" alt="Efeito de plugin meio-tom aplicado e ajustado no inspetor"></figure>
+            <div class="ex-text"><h3>Efeitos externos, com segurança</h3><ul class="ticks"><li>Plugins de efeito que rodam isolados na placa de vídeo</li><li>Controles com nome no inspetor</li><li>Se um plugin falhar, o projeto continua abrindo</li></ul><a class="open" href="plugins.html">Ver detalhes →</a></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -218,45 +111,75 @@
   <section>
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="label">Testado antes de chegar a você</p>
-        <h2>Cada versão passa por uma bateria automática</h2>
-        <p class="lead">O próprio app abre projetos, edita, exporta e confere os arquivos quadro a quadro, inclusive dentro do instalador final. Os números abaixo são da versão 0.6.</p>
+        <p class="label">Como funciona o acesso</p>
+        <h2>Da inscrição ao download, em quatro passos</h2>
       </div>
-      <div class="proof reveal">
-        <div><b>139</b><span>verificações de ponta a ponta, com exportação real</span></div>
-        <div><b>67</b><span>testes de unidade do núcleo, do áudio, da câmera, dos plugins e da malha 3D</span></div>
-        <div><b>0</b><span>contas, assinaturas ou envios para a nuvem</span></div>
-        <div><b>4</b><span>programas num instalador só</span></div>
+      <ol class="flow reveal">
+        <li><svg data-lucide="user-plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><line x1="19" x2="19" y1="8" y2="14" /><line x1="22" x2="16" y1="11" y2="11" /></svg><b>Crie sua conta</b><span>Nome, e-mail e senha, com confirmação por e-mail.</span></li>
+        <li><svg data-lucide="message-square-text" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><path d="M13 8H7" /><path d="M17 12H7" /></svg><b>Conte como vai usar</b><span>Isso ajuda a montar cada rodada de teste.</span></li>
+        <li><svg data-lucide="badge-check" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /><path d="m9 12 2 2 4-4" /></svg><b>Receba a aprovação</b><span>O status aparece na sua área do site.</span></li>
+        <li><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg><b>Baixe a versão Lite</b><span>O link é pessoal e expira em minutos.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="planos" class="soft">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="label">Planos</p>
+        <h2>Comece pelo Lite</h2>
+        <p class="lead">Durante o teste, quem é aprovado recebe a versão Lite. A versão Completa chega depois, para quem participar do teste.</p>
+      </div>
+      <div class="plans reveal">
+        <article class="plan">
+          <header><span class="chip-st on">Disponível no teste</span><h3>Lite</h3><p>O essencial para editar e animar.</p></header>
+          <ul class="ticks">
+            <li>Edição na timeline, cortes e velocidade</li>
+            <li>Efeitos nativos, transições e animações</li>
+            <li>Câmera virtual e keyframes</li>
+            <li>Correção de cor e editor de áudio</li>
+            <li>Exporta MP4 até 1080p</li>
+          </ul>
+          <a class="btn primary" href="conta.html">Pedir acesso</a>
+        </article>
+        <article class="plan muted-plan">
+          <header><span class="chip-st">Em breve</span><h3>Completo</h3><p>Tudo do Lite, mais:</p></header>
+          <ul class="ticks">
+            <li>Editor de imagem com pincéis e camadas</li>
+            <li>Programa de modelagem</li>
+            <li>Plugins de efeito externos</li>
+            <li>Exporta 4K, HEVC e ProRes, com LUTs</li>
+          </ul>
+          <span class="fine">Avisaremos os participantes do teste por e-mail.</span>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="soft">
+  <section>
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="label">Perguntas frequentes</p>
         <h2>Dúvidas comuns</h2>
       </div>
       <div class="faq reveal">
-        <details><summary>É grátis mesmo?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Sim. Não há plano, assinatura, marca-d'água nem limite de exportação.</p></div></details>
-        <details><summary>Preciso de internet ou de conta?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Não. Depois de instalado, o programa funciona totalmente offline e não pede cadastro.</p></div></details>
-        <details><summary>Meus vídeos vão para alguma nuvem?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Não. Tudo fica no seu computador. O programa não envia arquivos, nem estatísticas de uso, para lugar nenhum.</p></div></details>
-        <details><summary>Meu computador aguenta?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Ele foi testado num notebook com processador Intel de 8ª geração e gráficos integrados. Para 1080p, 8 GB de memória bastam; para 4K, recomendamos 16 GB. Nos projetos pesados, ative os proxies no monitor.</p></div></details>
-        <details><summary>Funciona no Mac ou no Linux?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Por enquanto, só no Windows 10 e 11 (64 bits).</p></div></details>
-        <details><summary>Quais arquivos ele abre?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Vídeo em MP4, MOV, MKV, AVI e WebM (H.264, HEVC, ProRes, VP9 e outros), imagens comuns, áudio em WAV, MP3, FLAC, AAC e Opus, modelos GLB, glTF, OBJ e STL, e LUTs .cube. Projetos criados em outros editores não são abertos.</p></div></details>
-        <details><summary>Posso criar meus próprios efeitos?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Sim. Os plugins são escritos em GLSL e rodam isolados na placa de vídeo. Veja a <a href="plugins.html">página de plugins</a>.</p></div></details>
-        <details><summary>O Windows mostrou um aviso ao instalar. É normal?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Sim. É uma versão de teste ainda sem assinatura digital. Clique em "Mais informações" e depois em "Executar assim mesmo".</p></div></details>
+        <details><summary>Por que o acesso é por pedido?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>O programa ainda está em teste. Liberar aos poucos ajuda a corrigir problemas antes de abrir para todo mundo.</p></div></details>
+        <details><summary>Tem custo para participar do teste?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Não. Participar do teste com a versão Lite não custa nada.</p></div></details>
+        <details><summary>Funciona no Mac?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Ainda não. Por enquanto o teste é só para Windows 10 e 11. Se você usa Mac, peça acesso mesmo assim e marque "Mac": você entra na lista de espera.</p></div></details>
+        <details><summary>Meus vídeos vão para alguma nuvem?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Não. O programa trabalha no seu computador. A conta serve só para liberar o download do teste.</p></div></details>
+        <details><summary>Meu computador aguenta?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>O programa foi testado num notebook Intel de 8ª geração com gráficos integrados. Para 1080p, 8 GB de memória bastam.</p></div></details>
+        <details><summary>O Windows mostrou um aviso ao instalar. É normal?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg></summary><div class="ans"><p>Sim. A versão de teste ainda não tem assinatura digital, por isso o SmartScreen avisa "Editor desconhecido". Os arquivos são verificados com o Microsoft Defender antes de cada liberação.</p></div></details>
       </div>
     </div>
   </section>
 
-  <section>
+  <section style="padding-top:0">
     <div class="wrap">
       <div class="cta reveal">
-        <h2>Pronto para começar?</h2>
-        <p>Baixe, instale em dois minutos e siga o guia de primeiros passos. Seu primeiro vídeo sai ainda hoje.</p>
-        <a class="btn primary" href="download.html"><span class="dot"></span>Baixar o MichelanTools</a>
-        <span class="small">Windows 10 e 11 · 64 bits · cerca de 130 MB</span>
+        <h2>Quer testar?</h2>
+        <p>Peça acesso em um minuto. Avisamos assim que a sua vaga for liberada.</p>
+        <a class="btn primary" href="conta.html"><svg data-lucide="user-plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><line x1="19" x2="19" y1="8" y2="14" /><line x1="22" x2="16" y1="11" y2="11" /></svg>Pedir acesso antecipado</a>
+        <span class="small">Windows 10 e 11 · versão Lite · sem custo</span>
       </div>
     </div>
   </section>
@@ -264,8 +187,8 @@
 
 <footer>
   <div class="wrap">
-    <span>MichelanTools 0.6 · lançamento de teste</span>
-    <nav><a href="video.html">Vídeo</a><a href="imagem.html">Imagem</a><a href="audio.html">Áudio</a><a href="3d.html">3D</a><a href="plugins.html">Plugins</a><a href="guia.html">Guia</a><a href="download.html">Baixar</a></nav>
+    <span>MichelanTools · teste fechado</span>
+    <nav><a href="#tour">Conhecer</a><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="guia.html">Guia</a><a href="conta.html">Minha conta</a></nav>
   </div>
 </footer>
 <script src="site.js"></script>

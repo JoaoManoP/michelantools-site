@@ -75,3 +75,62 @@
     video.currentTime = Math.max(0, Math.min(dur, ((e.clientX - r.left) / r.width) * dur));
   });
 })();
+
+// ---------- tour guiado: o holofote percorre as regiões da interface ----------
+(() => {
+  const tour = document.querySelector('[data-tour]');
+  if (!tour) return;
+  const spot = tour.querySelector('.spot');
+  const items = [...tour.querySelectorAll('.tour-list li')];
+  const bar = tour.querySelector('.tour-progress i');
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DUR = 5200;
+  let i = 0;
+  let timer = 0;
+  let paused = false;
+  const go = (n) => {
+    i = (n + items.length) % items.length;
+    items.forEach((li, k) => li.classList.toggle('on', k === i));
+    const d = items[i].dataset;
+    Object.assign(spot.style, { left: d.x + '%', top: d.y + '%', width: d.w + '%', height: d.h + '%' });
+    if (bar && !still) {
+      bar.style.transition = 'none';
+      bar.style.width = '0';
+      void bar.offsetWidth;
+      bar.style.transition = 'width ' + DUR + 'ms linear';
+      bar.style.width = paused ? '0' : '100%';
+    }
+    clearTimeout(timer);
+    if (!still && !paused) timer = setTimeout(() => go(i + 1), DUR);
+  };
+  items.forEach((li, k) => li.querySelector('button').addEventListener('click', () => { paused = true; go(k); }));
+  tour.addEventListener('pointerenter', () => { paused = true; clearTimeout(timer); if (bar) { bar.style.transition = 'none'; bar.style.width = '0'; } });
+  tour.addEventListener('pointerleave', () => { paused = false; go(i); });
+  go(0);
+})();
+
+// ---------- explorador de recursos: abas que avançam sozinhas até a primeira interação ----------
+(() => {
+  const ex = document.querySelector('[data-explorer]');
+  if (!ex) return;
+  const tabs = [...ex.querySelectorAll('.ex-tabs button')];
+  const panels = [...ex.querySelectorAll('.ex-panel')];
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i = 0;
+  let auto = !still;
+  let timer = 0;
+  const show = (n) => {
+    i = (n + tabs.length) % tabs.length;
+    tabs.forEach((t, k) => t.setAttribute('aria-selected', String(k === i)));
+    panels.forEach((p, k) => {
+      p.classList.toggle('on', k === i);
+      const v = p.querySelector('video');
+      if (v) { if (k === i && !still) v.play().catch(() => {}); else v.pause(); }
+    });
+    clearTimeout(timer);
+    if (auto) timer = setTimeout(() => show(i + 1), 7000);
+  };
+  tabs.forEach((t, k) => t.addEventListener('click', () => { auto = false; show(k); }));
+  const io = new IntersectionObserver((list) => { for (const e of list) if (e.isIntersecting) { show(i); io.disconnect(); } }, { threshold: 0.3 });
+  io.observe(ex);
+})();
