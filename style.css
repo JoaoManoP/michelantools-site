@@ -731,3 +731,5 @@ footer .ic { width: 16px; height: 16px; }
 .smartscreen .ss-win .ss-text.small { font-size: 13px; }
 .smartscreen .ss-win .ss-more { color: #fff; }
 .scrub b { display: none; }
+.rel-box { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; padding: 14px 16px; margin-bottom: 18px; border-radius: 14px; border: 1px solid var(--line); background: var(--paper-2); }
+.rel-box .btn { margin-left: auto; cursor: pointer; }

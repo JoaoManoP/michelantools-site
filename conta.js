@@ -1,4 +1,5 @@
 import { sb, session, myProfile, configured, explain, esc, cfg } from './account.js';
+import { downloadLite } from './release.js';
 const root = document.getElementById('app');
 let tab = location.hash === '#entrar' ? 'login' : 'signup';
 
@@ -85,19 +86,19 @@ async function renderArea(p) {
       <div><dt>E-mail</dt><dd>${esc(p.email)}</dd></div>
       <div><dt>Pedido em</dt><dd>${new Date(p.created_at).toLocaleDateString('pt-BR')}</dd></div>
     </dl>
-    ${p.status === 'aprovado' ? `<button class="btn primary" id="dl">Baixar a versão Lite</button><p class="fine">O link é pessoal e expira em 5 minutos. Se o Windows avisar "Editor desconhecido", clique em "Mais informações" e em "Executar assim mesmo".</p>` : ''}`;
+    ${p.status === 'aprovado' ? `<button class="btn primary" id="dl">Baixar a versão Lite</button><p class="fine">O download é pessoal, usa links que expiram em 5 minutos e é conferido pela impressão digital (SHA-256) antes de salvar. Se o Windows avisar "Editor desconhecido", clique em "Mais informações" e em "Executar assim mesmo".</p>` : ''}`;
   root.querySelector('#out').addEventListener('click', async () => { (await sb()).auth.signOut(); tab = 'login'; renderForms(); });
   const dl = root.querySelector('#dl');
   if (dl) dl.addEventListener('click', async () => {
     dl.disabled = true;
     try {
       const s = await sb();
-      const { data, error } = await s.storage.from('releases').createSignedUrl(cfg.liteFile, 300, { download: true });
-      if (error) throw error;
-      const { error: logErr } = await s.rpc('log_download', { f: cfg.liteFile });
-      if (logErr) throw logErr;
-      location.href = data.signedUrl;
+      const label = dl.textContent;
+      await downloadLite(s, (p) => (dl.textContent = p === 'verificando' ? 'Conferindo o arquivo…' : 'Baixando… ' + p + '%'));
+      dl.textContent = label;
+      dl.insertAdjacentHTML('afterend', msg('ok', 'Download conferido e salvo. Abra o MichelanTools-Lite-Setup.exe na pasta Downloads.'));
     } catch (err) {
+      dl.textContent = 'Baixar a versão Lite';
       dl.insertAdjacentHTML('afterend', msg('err', /not found|Object not found/i.test(String(err.message)) ? 'A versão Lite ainda está sendo preparada. Tente mais tarde.' : explain(err)));
     } finally {
       dl.disabled = false;

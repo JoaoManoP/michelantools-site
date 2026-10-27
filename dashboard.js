@@ -1,4 +1,5 @@
 import { sb, session, isAdmin, configured, explain, esc } from './account.js';
+import { liteStatus, uploadLite } from './release.js';
 const app = document.getElementById('app');
 const state = { rows: [], logs: [], filter: 'pendente', q: '' };
 
@@ -55,6 +56,37 @@ function tickets() {
     </article>`).join('') + '</div>';
 }
 
+// instalador Lite no bucket: estado atual e envio de uma versão nova (dividida em partes)
+async function releaseBox() {
+  const info = app.querySelector('[data-rel-info]');
+  const input = app.querySelector('[data-rel-file]');
+  if (!info) return;
+  const s = await sb();
+  const show = async () => {
+    try {
+      const st = await liteStatus(s);
+      info.textContent = st.parts.length ? `${st.parts.length} partes · ${(st.size / 1048576).toFixed(1)} MB · ${new Date(st.when).toLocaleString('pt-BR')}${st.hasSha ? ' · SHA-256 ok' : ' · falta o SHA-256'}` : 'Nenhum instalador enviado ainda.';
+    } catch (e) {
+      info.textContent = explain(e);
+    }
+  };
+  input.onchange = async () => {
+    const f = input.files[0];
+    if (!f) return;
+    input.disabled = true;
+    try {
+      await uploadLite(s, f, (m) => (info.textContent = m));
+      await show();
+    } catch (e) {
+      info.textContent = 'Erro: ' + explain(e);
+    } finally {
+      input.disabled = false;
+      input.value = '';
+    }
+  };
+  show();
+}
+
 function render() {
   const r = state.rows;
   const count = (st) => r.filter((x) => x.status === st).length;
@@ -70,6 +102,7 @@ function render() {
       <div class="ok"><span>Aprovados</span><b>${count('aprovado')}</b></div>
       <div><span>Downloads em 7 dias</span><b>${week}</b>${spark(state.logs)}</div>
     </div>
+    <div class="rel-box" id="rel"><b>Instalador Lite</b><span class="muted" data-rel-info>Verificando…</span><label class="btn small">Enviar novo instalador<input type="file" accept=".exe" data-rel-file hidden></label></div>
     ${tickets()}
     <div class="dash-tools">
       <div class="seg-tabs">${['pendente', 'aprovado', 'recusado', 'todos'].map((f) => `<button data-f="${f}" aria-selected="${state.filter === f}">${{ pendente: 'Aguardando', aprovado: 'Aprovados', recusado: 'Recusados', todos: 'Todos' }[f]}</button>`).join('')}</div>
@@ -91,6 +124,7 @@ function render() {
       </article>`).join('') : '<div class="empty-state">Nada por aqui neste filtro.</div>'}
     </div>`;
   app.querySelector('#reload').onclick = () => boot();
+  releaseBox();
   app.querySelectorAll('.ticket').forEach((card) => {
     const id = Number(card.dataset.tid);
     const upd = async (patch) => {
