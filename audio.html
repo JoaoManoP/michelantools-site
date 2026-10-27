@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Áudio · MichelanTools</title>
+<meta name="description" content="Editor de áudio com onda e espectrograma, cortes por amostra, EQ, compressor, reverb, redução de ruído e loudness para internet e TV.">
+<link rel="icon" href="assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="--track: var(--audio)">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">MichelanTools</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
+    <ul class="doors" id="doors">
+      <li><a href="video.html" style="--c: var(--video)">Vídeo</a></li>
+      <li><a href="imagem.html" style="--c: var(--imagem)">Imagem</a></li>
+      <li><a href="audio.html" style="--c: var(--audio)" aria-current="page">Áudio</a></li>
+      <li><a href="3d.html" style="--c: var(--tres)">3D</a></li>
+      <li><a href="plugins.html" style="--c: var(--dot)">Plugins</a></li>
+      <li><a href="guia.html" style="--c: var(--ink-3)">Guia</a></li>
+    </ul>
+    <a class="get" href="download.html">Baixar</a>
+  </div>
+</header>
+
+<main>
+  <div class="p-hero">
+    <div class="wrap">
+      <span class="tag">A · Áudio</span>
+      <h1>Ouça, corte e trate com precisão de amostra.</h1>
+      <p class="lead">A trilha do vídeo de lançamento foi composta para esta demonstração e tratada aqui: reverb longo só na queda, fade de saída e loudness de −14 LUFS para a internet.</p>
+      <figure class="screen">
+        <video src="assets/rec-audio.mp4" poster="assets/shot-audio.jpg" autoplay muted loop playsinline data-auto></video>
+        <figcaption>Gravação real: seleção por arraste, reverb na seleção, fade de saída, espectrograma e loudness.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="feature reveal">
+        <div class="f-text">
+          <p class="label">Ver o som</p>
+          <h2>Onda e espectro na mesma tela</h2>
+          <p>O espectrograma usa escala de frequência logarítmica e intensidade em dBFS, de −96 dB a 0 dB. Ruídos, cliques e zumbidos ficam visíveis antes de serem audíveis.</p>
+          <dl>
+            <dt>Edição exata</dt><dd>Cortar, copiar, colar, silenciar e inserir silêncio na amostra certa, com desfazer.</dd>
+            <dt>Medição</dt><dd>Pico, RMS e loudness integrado da seleção ou do arquivo inteiro.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/shot-audio-espectro.jpg" alt="Espectrograma da trilha de lançamento com o bumbo nos graves e o arpejo nos agudos" loading="lazy"></figure>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="f-text">
+          <p class="label">Tratamento</p>
+          <h2>Efeitos que você ouve antes de aplicar</h2>
+          <p>Pré-ouça até 10 segundos com o efeito e aplique na seleção ou no arquivo todo. O original no disco nunca é alterado: “Enviar para o vídeo” grava uma cópia nova.</p>
+          <dl>
+            <dt>Dinâmica</dt><dd>Compressor, limitador e gate de ruído.</dd>
+            <dt>Espaço e cor</dt><dd>Equalizador de 3 bandas com cortes, reverb e eco.</dd>
+            <dt>Limpeza</dt><dd>Redução de ruído espectral a partir de um trecho só com ruído, e remoção de DC.</dd>
+            <dt>Formatos</dt><dd>Abre e exporta WAV, FLAC, MP3, AAC e Opus. Grava direto do microfone.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/shot-audio.jpg" alt="Editor de áudio com a onda estéreo e o painel de efeitos" loading="lazy"></figure>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-text">
+          <p class="label">Na timeline</p>
+          <h2>Mixer na página Áudio do vídeo</h2>
+          <p>Cada trilha tem EQ, compressor e medidor de loudness. O assistente local remove silêncios e normaliza diálogos sem enviar nada para fora.</p>
+        </div>
+        <figure class="shot"><img src="assets/shot-mixer.jpg" alt="Página Áudio da janela de vídeo com o mixer das trilhas" loading="lazy"></figure>
+      </div>
+
+      <div class="limits reveal">
+        <h3>Ainda não tem</h3>
+        <ul>
+          <li>Gravação longa em streaming (hoje a gravação fica na memória)</li>
+          <li>WAV RF64 acima de 4 GB</li>
+          <li>Correção de tom ao mudar a velocidade</li>
+        </ul>
+      </div>
+
+      <nav class="next"><a href="imagem.html" style="--c: var(--imagem)"><span></span>Imagem</a><a href="3d.html" style="--c: var(--tres)">Próxima porta: 3D <span></span></a></nav>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MichelanTools 0.6 · lançamento de teste</span>
+    <nav><a href="video.html">Vídeo</a><a href="imagem.html">Imagem</a><a href="audio.html">Áudio</a><a href="3d.html">3D</a><a href="plugins.html">Plugins</a><a href="guia.html">Guia</a><a href="download.html">Baixar</a></nav>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plugins · MichelanTools</title>
+<meta name="description" content="Efeitos externos em GLSL que rodam na placa de vídeo, com prévia na biblioteca, parâmetros no inspetor e isolamento total do sistema.">
+<link rel="icon" href="assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="--track: var(--imagem)">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">MichelanTools</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
+    <ul class="doors" id="doors">
+      <li><a href="video.html" style="--c: var(--video)">Vídeo</a></li>
+      <li><a href="imagem.html" style="--c: var(--imagem)">Imagem</a></li>
+      <li><a href="audio.html" style="--c: var(--audio)">Áudio</a></li>
+      <li><a href="3d.html" style="--c: var(--tres)">3D</a></li>
+      <li><a href="plugins.html" style="--c: var(--dot)" aria-current="page">Plugins</a></li>
+      <li><a href="guia.html" style="--c: var(--ink-3)">Guia</a></li>
+    </ul>
+    <a class="get" href="download.html">Baixar</a>
+  </div>
+</header>
+
+<main>
+  <div class="p-hero">
+    <div class="wrap">
+      <span class="tag">Plugins</span>
+      <h1>Traga os seus próprios efeitos.</h1>
+      <p class="lead">Um plugin é uma pasta com um manifesto e shaders GLSL. O efeito entra na biblioteca com prévia animada, ganha controles no inspetor e roda na placa de vídeo, igual no monitor e no arquivo exportado.</p>
+      <figure class="screen">
+        <img src="assets/shot-plugins.jpg" alt="Biblioteca de efeitos com miniaturas de antes e depois e o selo Plugin nos efeitos do pacote Estúdio FX" loading="lazy">
+        <figcaption>A biblioteca de efeitos: cada miniatura mostra o antes e o depois; com o mouse em cima, o efeito varia para mostrar como age.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="feature reveal">
+        <div class="f-text">
+          <p class="label">Para quem usa</p>
+          <h2>Instale uma pasta e pronto</h2>
+          <p>Em Preferências, Plugins, escolha a pasta do plugin. Os efeitos aparecem na hora, na aba Efeitos da biblioteca e no menu de efeitos do inspetor. Dá para ligar e desligar cada pacote.</p>
+          <dl>
+            <dt>Estúdio FX incluído</dt><dd>Dez efeitos: aberração cromática, glitch, meio-tom, duotone, caleidoscópio, monitor CRT, ondulação, brilho anamórfico, tilt-shift e contorno neon.</dd>
+            <dt>Projetos que não quebram</dt><dd>Se um plugin some ou falha, o clipe continua sendo desenhado sem aquele efeito, os valores ficam guardados e o inspetor explica o motivo.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/shot-plugins-insp.jpg" alt="Inspetor com os parâmetros de um efeito de plugin" loading="lazy"></figure>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="f-text">
+          <p class="label">Para quem desenvolve</p>
+          <h2>Um shader e um manifesto</h2>
+          <p>Você escreve só a função <code>main</code>. O app fornece a imagem, o tempo, o quadro e até oito parâmetros com nome, faixa e valor de prévia.</p>
+          <dl>
+            <dt>Seguro por construção</dt><dd>O código do plugin roda isolado na GPU, sem acesso a arquivos, rede ou sistema. O manifesto é validado antes de carregar.</dd>
+            <dt>Testado como o resto</dt><dd>O autoteste compila todos os shaders incluídos e confere um deles pixel a pixel no arquivo exportado.</dd>
+            <dt>Guia completo</dt><dd><code>docs/PLUGINS.md</code> no repositório, com o contrato do shader e um exemplo do zero.</dd>
+          </dl>
+        </div>
+<pre class="code"><code>// shaders/brilho-quente.frag
+void main() {
+  vec4 c = tex(uvAt());
+  float l = luma(c.rgb);
+  vec3 warm = c.rgb + vec3(0.25, 0.12, 0.0)
+            * smoothstep(0.5, 1.0, l) * p0;
+  o = vec4(warm, c.a);
+}</code></pre>
+      </div>
+
+      <nav class="next"><a href="3d.html" style="--c: var(--tres)"><span></span>3D</a><a href="download.html" style="--c: var(--dot)">Baixar o MichelanTools <span></span></a></nav>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MichelanTools · lançamento de teste</span>
+    <nav><a href="video.html">Vídeo</a><a href="imagem.html">Imagem</a><a href="audio.html">Áudio</a><a href="3d.html">3D</a><a href="plugins.html">Plugins</a><a href="guia.html">Guia</a><a href="download.html">Baixar</a></nav>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Primeiros passos · MichelanTools</title>
+<meta name="description" content="Guia passo a passo do MichelanTools: criar um projeto, importar, montar a timeline, aplicar efeitos e animações, usar a câmera e exportar.">
+<link rel="icon" href="assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="--track: var(--video)">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">MichelanTools</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
+    <ul class="doors" id="doors">
+      <li><a href="video.html" style="--c: var(--video)">Vídeo</a></li>
+      <li><a href="imagem.html" style="--c: var(--imagem)">Imagem</a></li>
+      <li><a href="audio.html" style="--c: var(--audio)">Áudio</a></li>
+      <li><a href="3d.html" style="--c: var(--tres)">3D</a></li>
+      <li><a href="plugins.html" style="--c: var(--dot)">Plugins</a></li>
+      <li><a href="guia.html" style="--c: var(--ink-3)" aria-current="page">Guia</a></li>
+    </ul>
+    <a class="get" href="download.html">Baixar</a>
+  </div>
+</header>
+
+<main>
+  <div class="p-hero">
+    <div class="wrap">
+      <span class="tag">Guia</span>
+      <h1>Seu primeiro vídeo, sem pressa.</h1>
+      <p class="lead">Este guia percorre um projeto do começo ao fim: criar, importar, montar, dar vida e exportar. Leva uns quinze minutos, e você pode seguir com seus próprios arquivos.</p>
+      <div class="facts">
+        <span><svg data-lucide="clock" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>15 minutos</span>
+        <span><svg data-lucide="mouse-pointer-2" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z" /></svg>Nenhuma experiência necessária</span>
+        <span><svg data-lucide="undo-2" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5" /><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" /></svg>Ctrl+Z desfaz qualquer passo</span>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding-top:clamp(48px,6vw,80px)">
+    <div class="wrap guide">
+      <nav class="toc" aria-label="Neste guia">
+        <a href="#tela">Conheça a tela</a>
+        <a href="#projeto">1. Crie o projeto</a>
+        <a href="#importar">2. Importe</a>
+        <a href="#montar">3. Monte e corte</a>
+        <a href="#vida">4. Efeitos e animação</a>
+        <a href="#camera">5. Câmera</a>
+        <a href="#exportar">6. Exporte</a>
+        <a href="#atalhos">Atalhos</a>
+      </nav>
+
+      <div class="walk">
+        <div id="tela" class="walk-step reveal" style="grid-template-columns:1fr">
+          <div>
+            <h2 style="font-size:clamp(26px,3vw,36px);margin-bottom:12px">Conheça a tela</h2>
+            <p class="lead" style="margin-bottom:18px">A janela tem cinco regiões. Você não precisa decorar nada: passe o mouse sobre qualquer botão para ler o que ele faz e qual é o atalho.</p>
+          </div>
+          <figure class="walk-media"><img src="assets/guia-timeline.jpg" alt="Janela de edição do MichelanTools"></figure>
+          <div class="grid3" style="margin-top:18px">
+            <div><svg data-lucide="panel-left" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /></svg><h3>Trilho, à esquerda</h3><p>As páginas (Início, Mídia, Edição, Composição, Cor, Áudio, Entrega) e os programas Imagem, 3D e Áudio, que abrem em janela própria.</p></div>
+            <div><svg data-lucide="library-big" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="18" x="3" y="3" rx="1" /><path d="M7 3v18" /><path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z" /></svg><h3>Biblioteca</h3><p>Suas mídias, e também os efeitos, transições, animações e títulos, cada um com prévia.</p></div>
+            <div><svg data-lucide="monitor-play" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z" /><path d="M12 17v4" /><path d="M8 21h8" /><rect x="2" y="3" width="20" height="14" rx="2" /></svg><h3>Monitor, no centro</h3><p>Mostra o quadro onde está a agulha. É exatamente o que vai sair no arquivo.</p></div>
+            <div><svg data-lucide="sliders-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="21" x2="14" y1="4" y2="4" /><line x1="10" x2="3" y1="4" y2="4" /><line x1="21" x2="12" y1="12" y2="12" /><line x1="8" x2="3" y1="12" y2="12" /><line x1="21" x2="16" y1="20" y2="20" /><line x1="12" x2="3" y1="20" y2="20" /><line x1="14" x2="14" y1="2" y2="6" /><line x1="8" x2="8" y1="10" y2="14" /><line x1="16" x2="16" y1="18" y2="22" /></svg><h3>Inspetor, à direita</h3><p>Tudo sobre o que está selecionado, em três abas: Propriedades, Efeitos e Animação.</p></div>
+            <div><svg data-lucide="gallery-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3v18" /><rect width="12" height="18" x="6" y="3" rx="2" /><path d="M22 3v18" /></svg><h3>Timeline, embaixo</h3><p>As trilhas de vídeo ficam em cima e as de áudio embaixo. A agulha laranja marca o tempo.</p></div>
+            <div><svg data-lucide="search" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg><h3>Busca, no topo</h3><p>Ctrl+K encontra qualquer comando, mídia ou efeito pelo nome.</p></div>
+          </div>
+        </div>
+
+        <div id="projeto" class="walk-step reveal">
+          <div>
+            <span class="walk-num">1</span>
+            <h3>Crie o projeto</h3>
+            <p>Na página Início, dê um nome e escolha o formato: 16:9 para YouTube, 9:16 para Reels e Shorts, 1:1 para feed. A taxa de quadros padrão (30) serve para quase tudo.</p>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Não sabe o formato? Comece em 16:9. Dá para mudar depois no inspetor da sequência.</div>
+          </div>
+          <figure class="walk-media"><img src="assets/guia-inicio.jpg" alt="Página Início com os formatos de projeto"></figure>
+        </div>
+
+        <div id="importar" class="walk-step reveal">
+          <div>
+            <span class="walk-num">2</span>
+            <h3>Importe suas mídias</h3>
+            <p>Arraste arquivos do Explorer para a janela, ou clique em Importar (Ctrl+I). As miniaturas e formas de onda aparecem em segundos. Formatos difíceis de editar ganham uma cópia otimizada, e o original continua sendo usado na exportação.</p>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Na página Mídia, marque entrada (I) e saída (O) num vídeo longo para levar só o trecho bom.</div>
+          </div>
+          <figure class="walk-media"><img src="assets/guia-midia.jpg" alt="Biblioteca com mídias importadas"></figure>
+        </div>
+
+        <div id="montar" class="walk-step reveal">
+          <div>
+            <span class="walk-num">3</span>
+            <h3>Monte e corte</h3>
+            <p>Arraste as mídias para a timeline. Para cortar, use a lâmina (B) e clique no ponto do corte, ou pare a agulha e aperte S. Para encurtar, puxe as bordas do clipe com a seleção (V).</p>
+            <p>Clipes em trilhas mais altas ficam por cima: é assim que títulos e logos aparecem sobre o vídeo.</p>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Errou? Ctrl+Z. O histórico, no topo, volta vários passos de uma vez.</div>
+          </div>
+          <figure class="walk-media"><img src="assets/guia-timeline.jpg" alt="Timeline montada com várias trilhas"></figure>
+        </div>
+
+        <div id="vida" class="walk-step reveal">
+          <div>
+            <span class="walk-num">4</span>
+            <h3>Efeitos, transições e animação</h3>
+            <p>Selecione um clipe e abra a aba Efeitos da biblioteca. Cada miniatura mostra o antes e o depois. Passe o mouse para ver o efeito em ação e clique para aplicar. Ajuste a intensidade no inspetor, aba Efeitos.</p>
+            <p>Na aba Animar, escolha uma entrada, saída ou animação contínua. Na aba Transição, arraste uma até o começo de um clipe.</p>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Quer o mesmo look no vídeo todo? Crie uma Camada de ajuste (aba Títulos) e aplique o efeito nela.</div>
+          </div>
+          <figure class="walk-media"><img src="assets/shot-plugins.jpg" alt="Biblioteca de efeitos com miniaturas de antes e depois"></figure>
+        </div>
+
+        <div id="camera" class="walk-step reveal">
+          <div>
+            <span class="walk-num">5</span>
+            <h3>Mova a câmera</h3>
+            <p>Na aba Animar, escolha Câmera e clique num movimento: aproximar, órbita, grua, câmera na mão. O programa cria uma camada de câmera no topo, que enquadra tudo o que está abaixo.</p>
+            <p>Para dar profundidade, mude a Profundidade Z das camadas no inspetor: o que estiver mais perto anda mais que o fundo.</p>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Na página Composição, os keyframes da câmera ficam no painel de baixo e podem ser ajustados um a um.</div>
+          </div>
+          <figure class="walk-media"><img src="assets/guia-animar.jpg" alt="Movimentos de câmera na biblioteca"></figure>
+        </div>
+
+        <div id="exportar" class="walk-step reveal">
+          <div>
+            <span class="walk-num">6</span>
+            <h3>Exporte</h3>
+            <p>Clique em Exportar, no canto superior direito. Escolha um destino e o programa sugere formato, qualidade e volume, mostrando antes o tamanho e o tempo estimados. Exportações vão para uma fila, e você pode continuar editando.</p>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Para internet, o volume já sai em −14 LUFS: nem baixo demais, nem estourado.</div>
+          </div>
+          <figure class="walk-media"><img src="assets/guia-exportar.jpg" alt="Janela de exportação"></figure>
+        </div>
+
+        <div id="atalhos" class="reveal">
+          <h2 style="font-size:clamp(26px,3vw,36px);margin-bottom:18px">Atalhos que valem a pena</h2>
+          <div class="keys">
+            <div>Reproduzir e pausar <kbd>Espaço</kbd></div>
+            <div>Seleção <kbd>V</kbd></div>
+            <div>Lâmina <kbd>B</kbd></div>
+            <div>Dividir na agulha <kbd>S</kbd></div>
+            <div>Excluir e fechar buraco <kbd>Shift+Del</kbd></div>
+            <div>Desfazer e refazer <kbd>Ctrl+Z</kbd> <kbd>Ctrl+Y</kbd></div>
+            <div>Marcar entrada e saída <kbd>I</kbd> <kbd>O</kbd></div>
+            <div>Marcador <kbd>M</kbd></div>
+            <div>Encaixe magnético <kbd>N</kbd></div>
+            <div>Ajustar timeline à janela <kbd>Shift+Z</kbd></div>
+            <div>Buscar qualquer coisa <kbd>Ctrl+K</kbd></div>
+            <div>Trocar de página <kbd>Ctrl+1…7</kbd></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="cta reveal">
+        <h2>Agora é com você</h2>
+        <p>Cada programa tem a sua página, com mais detalhes. E se travar em algum ponto, passe o mouse sobre o botão: a dica explica o que ele faz.</p>
+        <a class="btn primary" href="download.html"><span class="dot"></span>Baixar o MichelanTools</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MichelanTools 0.6 · lançamento de teste</span>
+    <nav><a href="video.html">Vídeo</a><a href="imagem.html">Imagem</a><a href="audio.html">Áudio</a><a href="3d.html">3D</a><a href="plugins.html">Plugins</a><a href="guia.html">Guia</a><a href="download.html">Baixar</a></nav>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

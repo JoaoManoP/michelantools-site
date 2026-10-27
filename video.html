@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vídeo · MichelanTools</title>
+<meta name="description" content="Edição de vídeo em páginas: mídia, edição, composição, cor, áudio e entrega. Keyframes, animações prontas, cor na GPU e exportação com loudness.">
+<link rel="icon" href="assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="--track: var(--video)">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">MichelanTools</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
+    <ul class="doors" id="doors">
+      <li><a href="video.html" style="--c: var(--video)" aria-current="page">Vídeo</a></li>
+      <li><a href="imagem.html" style="--c: var(--imagem)">Imagem</a></li>
+      <li><a href="audio.html" style="--c: var(--audio)">Áudio</a></li>
+      <li><a href="3d.html" style="--c: var(--tres)">3D</a></li>
+      <li><a href="plugins.html" style="--c: var(--dot)">Plugins</a></li>
+      <li><a href="guia.html" style="--c: var(--ink-3)">Guia</a></li>
+    </ul>
+    <a class="get" href="download.html">Baixar</a>
+  </div>
+</header>
+
+<main>
+  <div class="p-hero">
+    <div class="wrap">
+      <span class="tag">V · Vídeo</span>
+      <h1>Corte, anime e componha em camadas.</h1>
+      <p class="lead">Edição e motion graphics no mesmo lugar: camadas com profundidade, câmera virtual, keyframes com curvas e máscaras. Mídia, Edição, Composição, Cor, Áudio e Entrega são páginas da mesma janela.</p>
+      <figure class="screen">
+        <video src="assets/rec-video.mp4" poster="assets/shot-video.jpg" autoplay muted loop playsinline data-auto></video>
+        <figcaption>Gravação real da janela: seleção de clipe, keyframes na Composição, gradação na Cor e a página de Entrega.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="feature reveal">
+        <div class="f-text">
+          <p class="label">Edição</p>
+          <h2>Corte preciso, quadro a quadro</h2>
+          <p>A timeline trabalha em quadros inteiros, então nenhum corte cai entre dois quadros. As ferramentas clássicas de ajuste ficam a uma tecla.</p>
+          <dl>
+            <dt>Lâmina, slip, slide e roll</dt><dd>B, Y, U e R. O encaixe magnético vale para cortes, marcadores e a agulha.</dd>
+            <dt>Monitor de origem</dt><dd>Marque entrada e saída na mídia e insira só o trecho escolhido.</dd>
+            <dt>Velocidade de 5% a 1600%</dt><dd>O quadro de origem exato é preservado na exportação.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/shot-video.jpg" alt="Página Edição com o monitor de programa, a biblioteca, o inspetor e a timeline do vídeo de lançamento" loading="lazy"></figure>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="f-text">
+          <p class="label">Composição e animação</p>
+          <h2>Movimento com curvas, não com sorte</h2>
+          <p>Aplique uma animação pronta e ela vira keyframes que você ajusta. A folha de keyframes e o editor de curvas ficam no painel de baixo.</p>
+          <dl>
+            <dt>39 animações prontas</dt><dd>14 de entrada, 11 de saída, 7 contínuas e 7 de texto, letra por letra.</dd>
+            <dt>8 interpolações</dt><dd>Linear, suave, acelerar, desacelerar, ultrapassar, elástico, quicar e segurar.</dd>
+            <dt>Máscara de trilha</dt><dd>Use o clipe de cima como máscara por alfa ou luminância. No vídeo de lançamento, a animação aparece por dentro das letras.</dd>
+            <dt>Desfoque de movimento</dt><dd>Por ângulo de obturador, igual no monitor e no arquivo.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/shot-composicao.jpg" alt="Página Composição com monitor grande e a folha de keyframes" loading="lazy"></figure>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-text">
+          <p class="label">Câmera e profundidade</p>
+          <h2>Uma câmera de verdade sobre a composição</h2>
+          <p>Arraste a Câmera para a timeline e ela enquadra tudo o que está abaixo. Dê profundidade Z às camadas e cada uma vira um plano no espaço: quando a câmera se move, o que está perto anda mais que o que está longe.</p>
+          <dl>
+            <dt>Controles</dt><dd>Zoom e dolly, pan, rolagem, inclinação X e Y com perspectiva, lente (campo de visão), tremido de câmera na mão e desfoque. Tudo com keyframes.</dd>
+            <dt>13 movimentos prontos</dt><dd>Aproximar, afastar, panorâmica, grua, revelação inclinada, órbita, ângulo holandês, zoom de impacto, vertigem, entrar em foco, câmera na mão e tremor.</dd>
+            <dt>Parentesco e nulos</dt><dd>Escolha um pai no inspetor e a camada passa a segui-lo, sem pular de lugar. O objeto nulo é invisível e move vários elementos juntos.</dd>
+            <dt>Na placa de vídeo</dt><dd>A projeção roda num shader. O tremido é calculado do mesmo jeito no monitor e no arquivo exportado.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><video src="assets/rec-video.mp4#t=6" poster="assets/shot-composicao.jpg" muted loop playsinline autoplay data-auto></video></figure>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="f-text">
+          <p class="label">Cor</p>
+          <h2>Gradação na placa de vídeo</h2>
+          <p>Rodas de lift, gamma e gain, temperatura, curvas e LUT 3D. Os scopes mostram forma de onda, parade RGB e histograma em tempo real.</p>
+          <dl>
+            <dt>Camada de ajuste</dt><dd>Um look para a sequência inteira, com vinheta e grão de filme.</dd>
+            <dt>Chroma key</dt><dd>Com controle de derramamento e máscaras de forma.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/shot-cor.jpg" alt="Página Cor com scopes e rodas de cor" loading="lazy"></figure>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-text">
+          <p class="label">Entrega</p>
+          <h2>Exportar sem adivinhar</h2>
+          <p>Escolha o destino em cartões e veja o tamanho e o tempo estimados. A estimativa aprende com as exportações feitas na sua máquina.</p>
+          <dl>
+            <dt>Formatos</dt><dd>H.264, HEVC, ProRes 422 HQ, VP9/WebM e GIF. Áudio em WAV, FLAC, MP3 e AAC.</dd>
+            <dt>Loudness na saída</dt><dd>−14, −16 ou −23 LUFS, com pico limitado a −1 dBFS.</dd>
+            <dt>Fila e verificação</dt><dd>Vários trabalhos em fila. Cada arquivo é conferido com o FFprobe antes de ser entregue.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/shot-entrega.jpg" alt="Página Entrega com as predefinições de exportação ao lado do monitor" loading="lazy"></figure>
+      </div>
+
+      <div class="limits reveal">
+        <h3>Ainda não tem</h3>
+        <ul>
+          <li>Pré-composições (sequências aninhadas) e expressões</li>
+          <li>Rastreamento de movimento e rotoscopia</li>
+          <li>Máscaras Bézier desenhadas à mão</li>
+          <li>Legendas automáticas</li>
+        </ul>
+      </div>
+
+      <nav class="next"><a href="index.html" style="--c: var(--ink-3)"><span></span>Início</a><a href="imagem.html" style="--c: var(--imagem)">Próxima porta: Imagem <span></span></a></nav>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MichelanTools 0.6 · lançamento de teste</span>
+    <nav><a href="video.html">Vídeo</a><a href="imagem.html">Imagem</a><a href="audio.html">Áudio</a><a href="3d.html">3D</a><a href="plugins.html">Plugins</a><a href="guia.html">Guia</a><a href="download.html">Baixar</a></nav>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

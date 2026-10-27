@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imagem · MichelanTools</title>
+<meta name="description" content="Editor de imagem com pincéis de pressão, camadas, máscaras, seleção por varinha, filtros, looks e modelos prontos para redes sociais.">
+<link rel="icon" href="assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="--track: var(--imagem)">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">MichelanTools</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
+    <ul class="doors" id="doors">
+      <li><a href="video.html" style="--c: var(--video)">Vídeo</a></li>
+      <li><a href="imagem.html" style="--c: var(--imagem)" aria-current="page">Imagem</a></li>
+      <li><a href="audio.html" style="--c: var(--audio)">Áudio</a></li>
+      <li><a href="3d.html" style="--c: var(--tres)">3D</a></li>
+      <li><a href="plugins.html" style="--c: var(--dot)">Plugins</a></li>
+      <li><a href="guia.html" style="--c: var(--ink-3)">Guia</a></li>
+    </ul>
+    <a class="get" href="download.html">Baixar</a>
+  </div>
+</header>
+
+<main>
+  <div class="p-hero">
+    <div class="wrap">
+      <span class="tag">I · Imagem</span>
+      <h1>Do rascunho ao cartaz, na mesma janela.</h1>
+      <p class="lead">Pinte com a pressão da caneta, recorte com a varinha e monte camadas de texto e forma com sombra e contorno. Quando terminar, “Enviar para o vídeo” coloca a imagem na timeline e a mantém ligada ao documento editável.</p>
+      <figure class="screen">
+        <video src="assets/rec-imagem.mp4" poster="assets/cartaz.jpg" autoplay muted loop playsinline data-auto></video>
+        <figcaption>Gravação real: pinceladas com marcador e spray, texto com sombra e looks aplicados à foto do produto.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="feature reveal">
+        <div class="f-text">
+          <p class="label">O resultado</p>
+          <h2>Um cartaz de lançamento em cinco camadas</h2>
+          <p>Fundo, a foto do produto (um render do próprio programa 3D), as pinceladas, o título e a linha de apoio. Cada camada continua editável no arquivo .mtimg.</p>
+          <dl>
+            <dt>Estilos de camada</dt><dd>Sombra projetada, brilho externo e contorno, sem mexer nos pixels.</dd>
+            <dt>Looks não destrutivos</dt><dd>Vívido, quente, frio, vintage, P&amp;B, dramático e outros. Dá para trocar a qualquer momento.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/cartaz.jpg" alt="Cartaz NOVA COLEÇÃO com o nó laranja em 3D, pinceladas laranja e lilás e spray turquesa" loading="lazy"></figure>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="f-text">
+          <p class="label">Pintura</p>
+          <h2>Pincéis que respondem à mão</h2>
+          <p>Dez predefinições com pressão, fluxo, estabilização e simetria. O traço aparece ao vivo e só é gravado no fim, então desfazer volta exatamente o que foi pintado.</p>
+          <dl>
+            <dt>Pincéis</dt><dd>Redondo, aerógrafo, lápis, nanquim, marcador, caligrafia, giz, spray, aquarela e pixel.</dd>
+            <dt>Retoque</dt><dd>Carimbo, borrar, desfocar, clarear e escurecer.</dd>
+            <dt>Preenchimento</dt><dd>Balde e gradiente linear, radial, angular e refletido.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/shot-imagem-pinceis.jpg" alt="Painel de pincéis com as dez predefinições" loading="lazy"></figure>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-text">
+          <p class="label">Seleção e máscaras</p>
+          <h2>Recorte o que importa</h2>
+          <p>Retângulo, elipse, laço, polígono e varinha mágica, com somar, subtrair, interseção, suavizar e expandir. A máscara de camada esconde sem apagar.</p>
+          <dl>
+            <dt>16 filtros com prévia</dt><dd>Desfoque gaussiano e de movimento, nitidez, ruído, pixelizar, posterizar, níveis, vinheta e outros.</dd>
+            <dt>12 modelos</dt><dd>Thumbnail, post, story, convite, capa de canal, título e terço inferior transparentes para o vídeo.</dd>
+          </dl>
+        </div>
+        <figure class="shot"><img src="assets/shot-imagem-looks.jpg" alt="Painel de ajustes com a grade de looks" loading="lazy"></figure>
+      </div>
+
+      <div class="limits reveal">
+        <h3>Ainda não tem</h3>
+        <ul>
+          <li>Camadas de ajuste e transformação em perspectiva</li>
+          <li>Abrir e salvar PSD</li>
+          <li>CMYK e 16 bits por canal (o trabalho é em 8 bits sRGB)</li>
+        </ul>
+      </div>
+
+      <nav class="next"><a href="video.html" style="--c: var(--video)"><span></span>Vídeo</a><a href="audio.html" style="--c: var(--audio)">Próxima porta: Áudio <span></span></a></nav>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MichelanTools 0.6 · lançamento de teste</span>
+    <nav><a href="video.html">Vídeo</a><a href="imagem.html">Imagem</a><a href="audio.html">Áudio</a><a href="3d.html">3D</a><a href="plugins.html">Plugins</a><a href="guia.html">Guia</a><a href="download.html">Baixar</a></nav>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
