@@ -308,3 +308,97 @@
   }, { passive: true });
   upd();
 })();
+
+// ---------- ritmo de edição no site inteiro: cortes, títulos, ícones e cartões ----------
+(() => {
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const seen = (els, cls, opts = {}) => {
+    if (!('IntersectionObserver' in window)) return els.forEach((e) => e.classList.add(cls));
+    const io = new IntersectionObserver((list) => {
+      for (const e of list) if (e.isIntersecting) {
+        e.target.classList.add(cls);
+        io.unobserve(e.target);
+      }
+    }, { threshold: opts.threshold || 0.25 });
+    els.forEach((e) => io.observe(e));
+  };
+
+  // régua de corte no topo de cada faixa escura
+  const bands = [...document.querySelectorAll('section.dark, .feature.dark')];
+  for (const b of bands) {
+    const cut = document.createElement('div');
+    cut.className = 'cut';
+    cut.setAttribute('aria-hidden', 'true');
+    cut.innerHTML = '<i></i>';
+    b.prepend(cut);
+  }
+  seen(bands.filter((b) => b.tagName === 'SECTION'), 'in', { threshold: 0.15 });
+
+  // claquete na chamada final
+  document.querySelectorAll('.cta').forEach((c) => {
+    const clap = document.createElement('span');
+    clap.className = 'clap';
+    clap.setAttribute('aria-hidden', 'true');
+    c.prepend(clap);
+  });
+
+  // títulos palavra por palavra (só os que são texto puro)
+  const heads = [...document.querySelectorAll('main h2')].filter((h) => !h.closest('.cam') && !h.children.length && h.textContent.trim());
+  for (const h of heads) {
+    const words = h.textContent.trim().split(/\s+/);
+    h.textContent = '';
+    words.forEach((w, i) => {
+      const outer = document.createElement('span');
+      outer.className = 'w';
+      const inner = document.createElement('span');
+      inner.textContent = w;
+      inner.style.setProperty('--i', i);
+      outer.append(inner);
+      h.append(outer, i < words.length - 1 ? ' ' : '');
+    });
+    h.classList.add('kin');
+  }
+  seen(heads, 'in', { threshold: 0.4 });
+
+  // ícones que se desenham
+  const icons = [...document.querySelectorAll('.label .ic, .flow .ic, .ex-tabs .ic, .sup-card .ic, .g-install .ic')];
+  for (const svg of icons) {
+    for (const el of svg.children) el.setAttribute('pathLength', '1');
+    svg.classList.add('ic-draw');
+  }
+  seen(icons, 'drawn', { threshold: 0.6 });
+
+  // inclinação com o mouse (só com mouse de verdade e com movimento liberado)
+  if (still || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  for (const el of document.querySelectorAll('.shot, .plan, .flow li, .sup-card')) {
+    if (el.closest('.cam')) continue;
+    el.classList.add('tilt');
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+      const k = r.width > 500 ? 3 : 6; // capturas grandes inclinam menos
+      el.style.setProperty('--ry', ((x - 0.5) * k).toFixed(2) + 'deg');
+      el.style.setProperty('--rx', ((0.5 - y) * k).toFixed(2) + 'deg');
+      el.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+      el.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+      el.classList.add('moving');
+    });
+    el.addEventListener('pointerleave', () => {
+      el.classList.remove('moving');
+      el.style.setProperty('--rx', '0deg');
+      el.style.setProperty('--ry', '0deg');
+    });
+  }
+})();
+
+// ---------- cabeçalho escuro quando uma faixa escura passa por baixo dele ----------
+(() => {
+  if (!('IntersectionObserver' in window)) return;
+  const under = new Set();
+  const io = new IntersectionObserver((list) => {
+    for (const e of list) e.isIntersecting ? under.add(e.target) : under.delete(e.target);
+    document.body.classList.toggle('cam-dark', under.size > 0);
+  }, { rootMargin: '-60px 0px -92% 0px' });
+  document.querySelectorAll('[data-cam], section.dark, .feature.dark, footer').forEach((el) => io.observe(el));
+})();

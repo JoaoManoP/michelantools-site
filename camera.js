@@ -180,8 +180,6 @@
   let visible = true;
   new IntersectionObserver((l) => {
     visible = l[0].isIntersecting;
-    // cabeçalho escuro enquanto a cena está na tela
-    document.body.classList.toggle('cam-dark', visible);
     if (visible) kick();
   }).observe(root);
   addEventListener('scroll', kick, { passive: true });

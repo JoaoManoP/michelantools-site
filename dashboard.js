@@ -20,14 +20,16 @@ async function login() {
 
 async function load() {
   const s = await sb();
-  const [{ data: rows, error }, { data: logs }, { data: notes }] = await Promise.all([
+  const [{ data: rows, error }, { data: logs }, { data: notes }, { data: tickets }] = await Promise.all([
     s.from('profiles').select('*').order('created_at', { ascending: false }),
     s.from('download_log').select('*').gte('at', new Date(Date.now() - 30 * 864e5).toISOString()).order('at', { ascending: false }).limit(500),
-    s.from('admin_notes').select('user_id, notes')
+    s.from('admin_notes').select('user_id, notes'),
+    s.from('support_tickets').select('*').neq('status', 'fechado').order('created_at', { ascending: true }).limit(200)
   ]);
   if (error) throw error;
   state.notes = Object.fromEntries((notes || []).map((n) => [n.user_id, n.notes]));
   state.rows = rows || [];
+  state.tickets = tickets || [];
   state.logs = logs || [];
 }
 
@@ -37,6 +39,20 @@ function spark(logs) {
   const n = days.map((d) => logs.filter((l) => l.at.slice(0, 10) === d).length);
   const max = Math.max(1, ...n);
   return '<div class="spark" role="img" aria-label="Downloads por dia, últimos 14 dias">' + n.map((v, i) => '<i style="height:' + Math.max(4, (v / max) * 100) + '%" title="' + days[i].split('-').reverse().slice(0, 2).join('/') + ': ' + v + '"></i>').join('') + '</div>';
+}
+
+const TOPIC = { instalacao: 'Instalação', uso: 'Uso do programa', exportacao: 'Exportação', sugestao: 'Sugestão', outro: 'Outro' };
+function tickets() {
+  const t = state.tickets || [];
+  if (!t.length) return '<div class="tickets empty-state">Nenhum chamado aberto.</div>';
+  const who = (id) => state.rows.find((x) => x.id === id) || {};
+  return '<div class="tickets"><h2>Chamados (' + t.length + ')</h2>' + t.map((k) => `
+    <article class="ticket ${k.status}" data-tid="${k.id}">
+      <header><b>${esc(TOPIC[k.topic] || k.topic)}</b><span>${esc(who(k.user_id).email || '')}</span><span class="muted">${new Date(k.created_at).toLocaleString('pt-BR')}${k.app_version ? ' · v' + esc(k.app_version) : ''}</span><span class="chip-st${k.status === 'respondido' ? ' on' : ''}">${k.status === 'respondido' ? 'Respondido' : 'Aberto'}</span></header>
+      <p>${esc(k.message)}</p>
+      <textarea rows="2" maxlength="4000" placeholder="Sua resposta (a pessoa vê na página Suporte)">${esc(k.reply || '')}</textarea>
+      <div class="acts"><button class="btn small primary" data-act="reply">Responder</button><button class="btn small" data-act="close">Fechar chamado</button></div>
+    </article>`).join('') + '</div>';
 }
 
 function render() {
@@ -54,6 +70,7 @@ function render() {
       <div class="ok"><span>Aprovados</span><b>${count('aprovado')}</b></div>
       <div><span>Downloads em 7 dias</span><b>${week}</b>${spark(state.logs)}</div>
     </div>
+    ${tickets()}
     <div class="dash-tools">
       <div class="seg-tabs">${['pendente', 'aprovado', 'recusado', 'todos'].map((f) => `<button data-f="${f}" aria-selected="${state.filter === f}">${{ pendente: 'Aguardando', aprovado: 'Aprovados', recusado: 'Recusados', todos: 'Todos' }[f]}</button>`).join('')}</div>
       <input type="search" id="q" placeholder="Buscar por nome, e-mail ou uso" value="${esc(state.q)}">
@@ -74,6 +91,23 @@ function render() {
       </article>`).join('') : '<div class="empty-state">Nada por aqui neste filtro.</div>'}
     </div>`;
   app.querySelector('#reload').onclick = () => boot();
+  app.querySelectorAll('.ticket').forEach((card) => {
+    const id = Number(card.dataset.tid);
+    const upd = async (patch) => {
+      const { error } = await (await sb()).from('support_tickets').update(patch).eq('id', id);
+      if (error) return alert(explain(error));
+      const k = state.tickets.find((x) => x.id === id);
+      Object.assign(k, patch);
+      if (patch.status === 'fechado') state.tickets = state.tickets.filter((x) => x.id !== id);
+      render();
+    };
+    card.querySelector('[data-act=reply]').onclick = () => {
+      const reply = card.querySelector('textarea').value.trim().slice(0, 4000);
+      if (!reply) return;
+      upd({ reply, status: 'respondido', replied_at: new Date().toISOString() });
+    };
+    card.querySelector('[data-act=close]').onclick = () => upd({ status: 'fechado' });
+  });
   app.querySelectorAll('[data-f]').forEach((b) => (b.onclick = () => { state.filter = b.dataset.f; render(); }));
   const qi = app.querySelector('#q');
   qi.oninput = () => { state.q = qi.value; const pos = qi.selectionStart; render(); const n = app.querySelector('#q'); n.focus(); n.setSelectionRange(pos, pos); };
