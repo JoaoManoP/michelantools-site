@@ -280,6 +280,8 @@
 
 // ---------- a página como timeline: agulha no alto da janela acompanha a rolagem ----------
 (() => {
+  // a página inicial já tem a timeline da câmera
+  if (document.querySelector('[data-cam]')) return;
   const bar = document.createElement('div');
   bar.className = 'scrub';
   bar.setAttribute('aria-hidden', 'true');

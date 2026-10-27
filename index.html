@@ -18,7 +18,7 @@
     <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">MichelanTools</a>
     <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
     <ul class="doors" id="doors">
-      <li><a href="#tour" style="--c: var(--video)">Conhecer</a></li>
+      <li><a href="#camera" style="--c: var(--video)">Conhecer</a></li>
       <li><a href="#recursos" style="--c: var(--imagem)">Recursos</a></li>
       <li><a href="#planos" style="--c: var(--audio)">Planos</a></li>
       <li><a href="guia.html" style="--c: var(--ink-3)">Guia</a></li>
@@ -28,36 +28,72 @@
 </header>
 
 <main>
-  <div class="hero hero-test">
-    <div class="wrap">
-      <div class="beta-pill"><span class="pulse"></span>Teste fechado · versão 0.6 · Windows</div>
-      <h1>Um editor de vídeo e motion graphics que roda inteiro no seu computador.</h1>
-      <p class="lead">O MichelanTools está em teste. Faça o tour pela interface abaixo e, se quiser experimentar, peça acesso: a primeira rodada recebe a versão Lite.</p>
-      <div class="hero-cta">
-        <a class="btn primary" href="conta.html"><svg data-lucide="user-plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><line x1="19" x2="19" y1="8" y2="14" /><line x1="22" x2="16" y1="11" y2="11" /></svg>Pedir acesso antecipado</a>
-        <a class="btn" href="#tour"><svg data-lucide="mouse-pointer-click" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4.1 12 6" /><path d="m5.1 8-2.9-.8" /><path d="m6 12-1.9 2" /><path d="M7.2 2.2 8 5.1" /><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" /></svg>Fazer o tour</a>
-      </div>
-    </div>
-  </div>
-
-  <section id="tour" class="tour-sec">
-    <div class="wrap">
-      <div class="tour" data-tour>
-        <div class="tour-stage">
-          <img src="assets/guia-midia.jpg" alt="Janela de edição do MichelanTools com a biblioteca, o monitor, o inspetor e a timeline" width="1366" height="768">
-          <div class="spot" aria-hidden="true"></div>
+  <section class="cam" id="camera" data-cam aria-label="Apresentação do programa em movimento de câmera">
+    <div class="cam-sticky">
+      <div class="cam-monitor">
+        <div class="cam-stage" aria-hidden="true">
+          <div class="cam-view">
+            <div class="cam-world">
+              <figure class="plane" data-p="interface" data-x="0" data-y="0" data-z="0"><img src="assets/cam/interface.webp" alt="" width="1366" height="766"></figure>
+              <figure class="plane" data-p="composicao" data-x="1750" data-y="-260" data-z="-760" data-ry="-30"><img src="assets/cam/composicao.webp" alt="" width="1366" height="766"></figure>
+              <figure class="plane" data-p="cor" data-x="-1780" data-y="220" data-z="-860" data-ry="30"><img src="assets/cam/cor.webp" alt="" width="1366" height="766"></figure>
+              <figure class="plane" data-p="audio" data-x="900" data-y="1160" data-z="-1650" data-ry="-12" data-rx="8"><img src="assets/cam/audio.webp" alt="" width="1366" height="766"></figure>
+              <figure class="plane" data-p="entrega" data-x="-1050" data-y="-1180" data-z="-1550" data-ry="14" data-rx="-8"><img src="assets/cam/entrega.webp" alt="" width="1366" height="766"></figure>
+              <figure class="plane" data-p="plugins" data-x="2350" data-y="1050" data-z="-2700" data-ry="-24"><img src="assets/cam/plugins.webp" alt="" width="1366" height="766"></figure>
+              <figure class="plane" data-p="animar" data-x="-2350" data-y="-950" data-z="-2700" data-ry="24"><img src="assets/cam/animar.webp" alt="" width="1366" height="766"></figure>
+              <div class="pin" data-x="-436" data-y="-133" data-z="120" style="--c: var(--video)"><b>Biblioteca</b></div>
+              <div class="pin" data-x="44" data-y="-300" data-z="170" style="--c: var(--dot)"><b>Monitor</b></div>
+              <div class="pin" data-x="470" data-y="40" data-z="120" style="--c: var(--audio)"><b>Inspetor</b></div>
+              <div class="pin" data-x="40" data-y="230" data-z="90" style="--c: var(--imagem)"><b>Timeline</b></div>
+            </div>
+          </div>
         </div>
-        <div class="tour-side">
-          <p class="label">Tour pela interface</p>
-          <ol class="tour-list">
-            <li data-x="0" data-y="0" data-w="5.6" data-h="100"><button><svg data-lucide="panel-left" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /></svg><span><b>Trilho de navegação</b><em>Páginas para cada etapa (Mídia, Edição, Composição, Cor, Áudio, Entrega) e os programas que abrem em janela própria.</em></span></button></li>
-            <li data-x="6.1" data-y="7.6" data-w="24" data-h="50"><button><svg data-lucide="library-big" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="18" x="3" y="3" rx="1" /><path d="M7 3v18" /><path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z" /></svg><span><b>Biblioteca</b><em>Suas mídias e, nas outras abas, efeitos, transições e animações, cada um com prévia do resultado.</em></span></button></li>
-            <li data-x="31" data-y="7.6" data-w="44.4" data-h="50"><button><svg data-lucide="monitor-play" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z" /><path d="M12 17v4" /><path d="M8 21h8" /><rect x="2" y="3" width="20" height="14" rx="2" /></svg><span><b>Monitor</b><em>Mostra exatamente o quadro que vai para o arquivo final, com alças para mover, girar e escalar.</em></span></button></li>
-            <li data-x="76.2" data-y="7.6" data-w="23.4" data-h="50"><button><svg data-lucide="sliders-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="21" x2="14" y1="4" y2="4" /><line x1="10" x2="3" y1="4" y2="4" /><line x1="21" x2="12" y1="12" y2="12" /><line x1="8" x2="3" y1="12" y2="12" /><line x1="21" x2="16" y1="20" y2="20" /><line x1="12" x2="3" y1="20" y2="20" /><line x1="14" x2="14" y1="2" y2="6" /><line x1="8" x2="8" y1="10" y2="14" /><line x1="16" x2="16" y1="18" y2="22" /></svg><span><b>Inspetor</b><em>Tudo sobre o que está selecionado, em três abas: Propriedades, Efeitos e Animação.</em></span></button></li>
-            <li data-x="6.1" data-y="58.3" data-w="93.5" data-h="38"><button><svg data-lucide="gallery-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3v18" /><rect width="12" height="18" x="6" y="3" rx="2" /><path d="M22 3v18" /></svg><span><b>Timeline</b><em>Trilhas de vídeo e áudio, ferramentas de corte com atalhos e encaixe magnético.</em></span></button></li>
-            <li data-x="5.6" data-y="0" data-w="94.4" data-h="6.8"><button><svg data-lucide="search" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg><span><b>Barra superior</b><em>Desfazer, histórico, busca de qualquer comando (Ctrl+K) e exportação.</em></span></button></li>
-          </ol>
-          <div class="tour-progress" aria-hidden="true"><i></i></div>
+
+        <div class="cam-hud" aria-hidden="true">
+          <div class="hud-top">
+            <span class="rec"><i></i>Câmera 1</span>
+            <span class="hud-shot" data-hud="shot">Abertura</span>
+            <span class="hud-tc" data-hud="tc">00:00:00:00</span>
+          </div>
+          <dl class="hud-params">
+            <div><dt>Zoom</dt><dd data-hud="zoom">42%</dd></div>
+            <div><dt>Inclinação X</dt><dd data-hud="tilt">0,0°</dd></div>
+            <div><dt>Inclinação Y</dt><dd data-hud="orbit">0,0°</dd></div>
+            <div><dt>Rolagem</dt><dd data-hud="roll">0,0°</dd></div>
+            <div><dt>Lente</dt><dd data-hud="fov">50°</dd></div>
+            <div><dt>Desfoque</dt><dd data-hud="focus">0%</dd></div>
+            <div><dt>Tremido</dt><dd data-hud="shake">0</dd></div>
+          </dl>
+          <span class="safe" aria-hidden="true"></span>
+        </div>
+
+        <div class="cam-caps">
+          <article class="cap cap-title" data-shot="0">
+            <p class="cap-eyebrow"><span class="pulse"></span>Teste fechado · versão 0.6 · Windows</p>
+            <h1>Um editor de vídeo e motion graphics que roda inteiro no seu computador.</h1>
+            <div class="hero-cta">
+              <a class="btn primary" href="conta.html">Pedir acesso antecipado</a>
+              <a class="btn ghost" href="#camera" data-cam-next>Role para rodar a câmera ↓</a>
+            </div>
+          </article>
+          <article class="cap" data-shot="1"><h2>Tudo numa janela</h2><p>Mídia, Edição, Composição, Cor, Áudio e Entrega são páginas do mesmo projeto. Nada de exportar e reimportar entre programas.</p></article>
+          <article class="cap" data-shot="2"><h2>O que você vê é o que sai</h2><p>O monitor usa o mesmo compositor da exportação: o quadro da prévia é o quadro do arquivo final.</p></article>
+          <article class="cap" data-shot="3"><h2>Corte no teclado</h2><p>Trilhas de vídeo e áudio, encaixe magnético, ferramentas de corte com atalhos e keyframes em cada propriedade.</p></article>
+          <article class="cap" data-shot="4"><h2>Uma câmera de verdade</h2><p>Esta página foi montada assim: camadas com profundidade Z e uma câmera com dolly, órbita, rolagem, lente e tremido.</p></article>
+          <article class="cap" data-shot="5"><h2>Cor com controle</h2><p>Rodas de cor, curvas, LUTs .cube e scopes, calculados na placa de vídeo.</p></article>
+          <article class="cap" data-shot="6"><h2>Som no mesmo lugar</h2><p>Mixer por trilha, equalizador, compressor e medição de loudness para entregar no padrão das plataformas.</p></article>
+          <article class="cap" data-shot="7"><h2>Exporte sem susto</h2><p>Predefinições para YouTube, vertical e quadrado, com fila de renderização.</p></article>
+          <article class="cap" data-shot="8"><h2>Efeitos de outros criadores <span class="chip-st">Completo</span></h2><p>Pacotes de efeitos instalados com um clique, com parâmetros que aparecem no inspetor.</p></article>
+          <article class="cap cap-end" data-shot="9"><h2>Quer testar?</h2><p>A primeira rodada recebe a versão Lite. Peça acesso e conte como vai usar.</p><a class="btn primary" href="conta.html">Pedir acesso antecipado</a></article>
+        </div>
+      </div>
+
+      <div class="cam-tl">
+        <div class="tl-head"><span>Câmera 1</span></div>
+        <div class="tl-track">
+          <div class="tl-ruler" aria-hidden="true"></div>
+          <div class="tl-clips" data-tl-clips></div>
+          <div class="tl-play" data-tl-play aria-hidden="true"><b></b></div>
         </div>
       </div>
     </div>
@@ -189,9 +225,10 @@
 <footer>
   <div class="wrap">
     <span>MichelanTools · teste fechado</span>
-    <nav><a href="#tour">Conhecer</a><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="guia.html">Guia</a><a href="conta.html">Minha conta</a></nav>
+    <nav><a href="#camera">Conhecer</a><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="guia.html">Guia</a><a href="conta.html">Minha conta</a></nav>
   </div>
 </footer>
 <script src="site.js"></script>
+<script src="camera.js"></script>
 </body>
 </html>
