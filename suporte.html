@@ -2,37 +2,39 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta name="robots" content="noai, noimageai">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Suporte · Milens</title>
 <meta name="description" content="Suporte do Milens: soluções para os problemas mais comuns na instalação, prévia, mídia e exportação, e um canal de chamados ligado à sua conta.">
 <link rel="icon" href="assets/icon-256.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body style="--track: var(--dot)">
+<body>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">Milens</a>
     <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
     <ul class="doors" id="doors">
-      <li><a href="index.html#camera" style="--c: var(--video)">Conhecer</a></li>
-      <li><a href="index.html#recursos" style="--c: var(--imagem)">Recursos</a></li>
-      <li><a href="index.html#planos" style="--c: var(--audio)">Planos</a></li>
+      <li><a href="video.html" style="--c: var(--r)">Vídeo</a></li>
+      <li><a href="imagem.html" style="--c: var(--g)">Imagem</a></li>
+      <li><a href="audio.html" style="--c: var(--b)">Áudio</a></li>
+      <li><a href="3d.html" style="--c: var(--ink-3)">3D</a></li>
+      <li><a href="plugins.html" style="--c: var(--ink-3)">Plugins</a></li>
       <li><a href="guia.html" style="--c: var(--ink-3)">Guia</a></li>
-      <li><a href="suporte.html" style="--c: var(--dot)" aria-current="page">Suporte</a></li>
+      <li><a href="suporte.html" style="--c: var(--rec)" aria-current="page">Suporte</a></li>
     </ul>
-    <a class="get" href="conta.html">Minha conta</a>
+    <a class="get" href="conta.html">Baixar grátis</a>
   </div>
 </header>
 
+
 <main>
+
   <div class="p-hero">
     <div class="wrap">
-      <p class="label"><svg data-lucide="life-buoy" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="m4.93 4.93 4.24 4.24" /><path d="m14.83 9.17 4.24-4.24" /><path d="m14.83 14.83 4.24 4.24" /><path d="m9.17 14.83-4.24 4.24" /><circle cx="12" cy="12" r="4" /></svg>Suporte</p>
+      <span class="tag rec">Suporte</span>
       <h1>Travou em alguma coisa?</h1>
       <p class="lead">As dúvidas mais comuns estão aqui embaixo, com o passo a passo. Se não resolver, abra um chamado: a resposta aparece nesta mesma página.</p>
       <div class="hero-cta">
@@ -45,7 +47,7 @@
   <section>
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="label"><svg data-lucide="circle-help" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>Problemas comuns</p>
+        <span class="tag rec">Problemas comuns</span>
         <h2>Resolva em poucos passos</h2>
       </div>
       <div class="sup-grid reveal">
@@ -80,23 +82,25 @@
   <section id="chamado" class="dark">
     <div class="wrap sup-ticket">
       <div class="sec-head reveal">
-        <p class="label"><svg data-lucide="messages-square" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z" /><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" /></svg>Fale com a gente</p>
+        <span class="tag rec">Fale com a gente</span>
         <h2>Abra um chamado</h2>
         <p class="lead">Conte o que aconteceu e o que você esperava. Se puder, diga a versão do programa: ela aparece ao parar o mouse sobre o logo, no canto de cima à esquerda.</p>
       </div>
       <div class="acct-card" id="sup-app" aria-live="polite"><p class="muted">Carregando…</p></div>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Milens</span>
-    <nav><a href="index.html">Início</a><a href="guia.html">Guia</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
+    <span>Milens · editor de vídeo e motion graphics · Windows</span>
+    <nav><a href="index.html#planos">Planos</a><a href="guia.html">Guia</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
   </div>
 </footer>
 <script src="config.js"></script>
-<script src="site.js"></script>
 <script type="module" src="suporte.js"></script>
+<script src="site.js"></script>
+
 </body>
 </html>

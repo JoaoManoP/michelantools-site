@@ -5,34 +5,36 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta name="robots" content="noai, noimageai">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Primeiros passos · Milens</title>
+<title>Guia de primeiros passos · Milens</title>
 <meta name="description" content="Guia de primeiros passos do Milens: instalar, criar o projeto, importar, montar e cortar, efeitos e animação, câmera e exportação.">
 <link rel="icon" href="assets/icon-256.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body style="--track: var(--video)">
+<body>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">Milens</a>
     <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
     <ul class="doors" id="doors">
-      <li><a href="index.html#camera" style="--c: var(--video)">Conhecer</a></li>
-      <li><a href="index.html#recursos" style="--c: var(--imagem)">Recursos</a></li>
-      <li><a href="index.html#planos" style="--c: var(--audio)">Planos</a></li>
+      <li><a href="video.html" style="--c: var(--r)">Vídeo</a></li>
+      <li><a href="imagem.html" style="--c: var(--g)">Imagem</a></li>
+      <li><a href="audio.html" style="--c: var(--b)">Áudio</a></li>
+      <li><a href="3d.html" style="--c: var(--ink-3)">3D</a></li>
+      <li><a href="plugins.html" style="--c: var(--ink-3)">Plugins</a></li>
       <li><a href="guia.html" style="--c: var(--ink-3)" aria-current="page">Guia</a></li>
-      <li><a href="suporte.html" style="--c: var(--dot)">Suporte</a></li>
+      <li><a href="suporte.html" style="--c: var(--rec)">Suporte</a></li>
     </ul>
     <a class="get" href="conta.html">Baixar grátis</a>
   </div>
 </header>
 
+
 <main>
+
   <div class="p-hero">
     <div class="wrap">
-      <span class="tag">Guia</span>
+      <span class="tag rec">Guia</span>
       <h1>Seu primeiro vídeo, sem pressa.</h1>
       <p class="lead">Este guia percorre um projeto do começo ao fim: criar, importar, montar, dar vida e exportar. Leva uns quinze minutos, e você pode seguir com seus próprios arquivos.</p>
       <div class="facts">
@@ -186,18 +188,21 @@
       <div class="cta reveal">
         <h2>Agora é com você</h2>
         <p>Cada programa tem a sua página, com mais detalhes. E se travar em algum ponto, passe o mouse sobre o botão: a dica explica o que ele faz.</p>
-        <a class="btn primary" href="conta.html"><span class="dot"></span>Baixar grátis</a>
+        <a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>Baixar o Lite grátis</a>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Milens</span>
-    <nav><a href="index.html#camera">Conhecer</a><a href="index.html#recursos">Recursos</a><a href="index.html#planos">Planos</a><a href="guia.html">Guia</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
+    <span>Milens · editor de vídeo e motion graphics · Windows</span>
+    <nav><a href="index.html#planos">Planos</a><a href="guia.html">Guia</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
   </div>
 </footer>
+
 <script src="site.js"></script>
+
 </body>
 </html>

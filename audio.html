@@ -8,39 +8,36 @@
 <title>Áudio · Milens</title>
 <meta name="description" content="Editor de áudio do Milens: forma de onda e espectrograma, corte por amostra, EQ, compressor, limitador, redução de ruído e loudness no padrão das plataformas.">
 <link rel="icon" href="assets/icon-256.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body style="--track: var(--audio)">
+<body style="--track: var(--b)">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">Milens</a>
     <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
     <ul class="doors" id="doors">
-      <li><a href="index.html#camera" style="--c: var(--video)">Conhecer</a></li>
-      <li><a href="index.html#recursos" style="--c: var(--imagem)">Recursos</a></li>
-      <li><a href="index.html#planos" style="--c: var(--audio)">Planos</a></li>
+      <li><a href="video.html" style="--c: var(--r)">Vídeo</a></li>
+      <li><a href="imagem.html" style="--c: var(--g)">Imagem</a></li>
+      <li><a href="audio.html" style="--c: var(--b)" aria-current="page">Áudio</a></li>
+      <li><a href="3d.html" style="--c: var(--ink-3)">3D</a></li>
+      <li><a href="plugins.html" style="--c: var(--ink-3)">Plugins</a></li>
       <li><a href="guia.html" style="--c: var(--ink-3)">Guia</a></li>
-      <li><a href="suporte.html" style="--c: var(--dot)">Suporte</a></li>
+      <li><a href="suporte.html" style="--c: var(--rec)">Suporte</a></li>
     </ul>
     <a class="get" href="conta.html">Baixar grátis</a>
   </div>
 </header>
 
+
 <main>
-  <div class="p-hero">
-    <div class="wrap">
-      <span class="tag">A · Áudio</span>
+
+  <div class="p-hero"><div class="wrap">
+      <span class="tag b">Editor de Áudio</span>
       <h1>Ouça, corte e trate com precisão de amostra.</h1>
       <p class="lead">Veja o som, corte por amostra e limpe ruído no espectrograma. Equalizador, compressor, limitador e medição de loudness deixam a voz no volume certo para internet e TV, dentro do mesmo projeto.</p>
-      <figure class="screen">
-        <video src="assets/rec-audio.mp4" poster="assets/shot-audio.jpg" autoplay muted loop playsinline data-auto></video>
-        <figcaption>Gravação real: seleção por arraste, reverb na seleção, fade de saída, espectrograma e loudness.</figcaption>
-      </figure>
-    </div>
-  </div>
+      <div class="hero-cta"><a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>Baixar o Lite grátis</a><a class="btn" href="guia.html"><svg data-lucide="book-open" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14" /><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" /></svg>Ler o guia</a></div>
+    </div></div>
 
   <section>
     <div class="wrap">
@@ -90,17 +87,20 @@
         </ul>
       </div>
 
-      <nav class="next"><a href="imagem.html" style="--c: var(--imagem)"><span></span>Imagem</a><a href="3d.html" style="--c: var(--tres)">Próxima porta: 3D <span></span></a></nav>
+      <nav class="next"><a href="imagem.html" style="--c: var(--g)"><span></span>Imagem</a><a href="3d.html" style="--c: var(--rec)">Próxima porta: 3D <span></span></a></nav>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Milens</span>
-    <nav><a href="index.html#camera">Conhecer</a><a href="index.html#recursos">Recursos</a><a href="index.html#planos">Planos</a><a href="guia.html">Guia</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
+    <span>Milens · editor de vídeo e motion graphics · Windows</span>
+    <nav><a href="index.html#planos">Planos</a><a href="guia.html">Guia</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
   </div>
 </footer>
+
 <script src="site.js"></script>
+
 </body>
 </html>
