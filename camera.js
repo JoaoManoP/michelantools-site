@@ -39,6 +39,9 @@
     el.style.width = PW + 'px';
     el.style.height = PH + 'px';
     el.style.transform = `translate3d(${p.x - PW / 2}px, ${p.y - PH / 2}px, ${p.z}px) rotateY(${d('ry')}deg) rotateX(${d('rx')}deg)`;
+    p.dim = document.createElement('i');
+    p.dim.className = 'dim';
+    el.append(p.dim);
     return p;
   });
   const pins = [...world.querySelectorAll('.pin')].map((el) => {
@@ -113,6 +116,16 @@
     return '00:00:' + String(s).padStart(2, '0') + ':' + String(fr % 30).padStart(2, '0');
   };
 
+  // só toca no DOM quando o valor muda (texto e opacidade)
+  const setText = (el, v) => {
+    if (el.textContent !== v) el.textContent = v;
+  };
+  const setOpacity = (el, v) => {
+    const o = v.toFixed(2);
+    if (el.style.opacity !== o) el.style.opacity = o;
+  };
+  let lastShot = -1;
+
   const render = (now) => {
     const goal = target(progress());
     if (!cur || still) cur = { ...goal };
@@ -123,8 +136,6 @@
       for (const key of KEYS) cur[key] += (goal[key] - cur[key]) * k;
       cur.pos += (goal.pos - cur.pos) * k;
     }
-    // velocidade da câmera → desfoque de movimento
-    const vel = Math.abs(goal.pos - cur.pos);
     last = now;
 
     const P = (SW / 2) / Math.tan((cur.fov * Math.PI) / 360);
@@ -136,16 +147,22 @@
     const jr = sh * Math.sin(t * 1.3) * 0.6;
     view.style.perspective = P + 'px';
     world.style.transform = `translate3d(${jx}px, ${jy}px, ${-d}px) rotateZ(${cur.roll + jr}deg) rotateX(${cur.tilt}deg) rotateY(${cur.orbit}deg) translate3d(${-cur.tx}px, ${-cur.ty}px, ${-cur.tz}px)`;
-    stage.style.filter = still || vel < 0.02 ? 'none' : `blur(${Math.min(3.5, vel * 9).toFixed(2)}px)`;
-
-    // profundidade de campo: o que está longe do alvo desfoca e escurece
+    // profundidade de campo: o que está longe do alvo escurece a cada quadro (só opacidade, que a GPU faz de graça);
+    // o desfoque é aplicado uma vez por plano, com transição curta, em vez de recalculado em toda rolagem
+    const shotNow = Math.round(goal.pos);
     for (const p of planes) {
       const dist = Math.hypot(p.x - cur.tx, p.y - cur.ty, p.z - cur.tz);
       const k = Math.max(0, Math.min(1, (dist - 300) / 1400)) * cur.focus;
-      p.el.style.filter = k > 0.02 ? `blur(${(k * 7).toFixed(1)}px) brightness(${(1 - k * 0.45).toFixed(2)})` : 'none';
+      setOpacity(p.dim, k * 0.6);
+      if (shotNow !== lastShot) {
+        const g = SHOTS[shotNow];
+        const kd = Math.max(0, Math.min(1, (Math.hypot(p.x - g.tx, p.y - g.ty, p.z - g.tz) - 300) / 1400)) * g.focus;
+        p.el.style.filter = still || kd < 0.15 ? 'none' : `blur(${(kd * 5).toFixed(1)}px)`;
+      }
     }
+    lastShot = shotNow;
     const pinsOn = Math.max(0, 1 - Math.abs(cur.pos - 1) * 1.6);
-    for (const el of pins) el.style.opacity = pinsOn.toFixed(2);
+    for (const el of pins) setOpacity(el, pinsOn);
 
     // legendas, painel de câmera e timeline
     const active = Math.round(goal.pos);
@@ -154,18 +171,18 @@
       c.classList.toggle('on', on);
       c.setAttribute('aria-hidden', String(!on));
     });
-    hud.shot.textContent = SHOTS[active].name;
-    hud.tc.textContent = tc(cur.pos);
-    hud.zoom.textContent = Math.round(cur.s * 100) + '%';
-    hud.tilt.textContent = fmt(cur.tilt) + '°';
-    hud.orbit.textContent = fmt(cur.orbit) + '°';
-    hud.roll.textContent = fmt(cur.roll) + '°';
-    hud.fov.textContent = Math.round(cur.fov) + '°';
-    hud.focus.textContent = Math.round(cur.focus * 100) + '%';
-    hud.shake.textContent = fmt(cur.shake);
+    setText(hud.shot, SHOTS[active].name);
+    setText(hud.tc, tc(cur.pos));
+    setText(hud.zoom, Math.round(cur.s * 100) + '%');
+    setText(hud.tilt, fmt(cur.tilt) + '°');
+    setText(hud.orbit, fmt(cur.orbit) + '°');
+    setText(hud.roll, fmt(cur.roll) + '°');
+    setText(hud.fov, Math.round(cur.fov) + '°');
+    setText(hud.focus, Math.round(cur.focus * 100) + '%');
+    setText(hud.shake, fmt(cur.shake));
     const x = ((cur.pos + 0.5) / N) * 100;
     play.style.left = x + '%';
-    playTc.textContent = tc(cur.pos);
+    setText(playTc, tc(cur.pos));
     // o timecode da agulha não sai da trilha nas pontas
     playTc.style.transform = x < 7 ? 'translateX(-2px)' : x > 93 ? 'translateX(calc(-100% + 2px))' : '';
     clipEls.forEach((c, i) => c.classList.toggle('on', i === active));

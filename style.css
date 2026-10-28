@@ -733,3 +733,64 @@ footer .ic { width: 16px; height: 16px; }
 .scrub b { display: none; }
 .rel-box { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; padding: 14px 16px; margin-bottom: 18px; border-radius: 14px; border: 1px solid var(--line); background: var(--paper-2); }
 .rel-box .btn { margin-left: auto; cursor: pointer; }
+
+/* ---------- v0.7.2 · desempenho: só transformação e opacidade se mexem; nada de desfoque ao vivo ---------- */
+/* vidro fosco sobre conteúdo em movimento custa caro em placa integrada: fundo sólido no lugar */
+.top { backdrop-filter: none; -webkit-backdrop-filter: none; background: color-mix(in srgb, var(--paper) 96%, transparent); }
+.cap, .hud-params { backdrop-filter: none; -webkit-backdrop-filter: none; }
+.cap { background: rgba(10, 13, 18, 0.92); }
+.hud-params { background: rgba(10, 13, 18, 0.88); }
+.cam-stage { will-change: auto; }
+/* escurecimento da profundidade de campo: uma camada preta por tela, só a opacidade muda */
+.plane { transition: filter 0.6s ease; }
+.plane .dim { position: absolute; inset: 0; background: #05070a; opacity: 0; pointer-events: none; z-index: 1; }
+/* grão da página inteira com modo de mistura repintava tudo a cada rolagem */
+body::after { display: none; }
+/* luz do topo: sem desfoque por filtro (os gradientes já são suaves) */
+.hero::before, .p-hero::before { filter: none; }
+/* grade de pontos da faixa escura: anda por transformação, sem repintar a seção */
+section.dark::after { inset: -28px; animation: none; }
+@media (prefers-reduced-motion: no-preference) {
+  section.dark::after { animation: grid-slide 6s linear infinite; }
+  @keyframes grid-slide { to { transform: translate3d(28px, 28px, 0); } }
+}
+.tilt { will-change: auto; }
+.cam { height: calc(100svh + 9 * 56svh); }
+
+/* ---------- mais movimento, todo barato ---------- */
+/* fita de palavras correndo entre seções, como a fita de um rolo de filme */
+.tape { overflow: hidden; background: var(--dot); color: #10151c; border-block: 2px solid #10151c; transform: rotate(-1.2deg); margin: -10px -2vw; position: relative; z-index: 2; }
+.tape.alt { background: #10151c; color: #f2f5f8; transform: rotate(1deg); border-color: var(--dot); }
+.tape-track { display: flex; width: max-content; gap: 0; }
+.tape-track span { display: inline-flex; align-items: center; gap: 18px; padding: 14px 18px; font: 800 clamp(18px, 2.4vw, 28px)/1 var(--display); font-stretch: 118%; letter-spacing: -0.01em; text-transform: uppercase; white-space: nowrap; }
+.tape-track span::after { content: ''; width: 12px; height: 12px; transform: rotate(45deg); border: 2.5px solid currentColor; }
+@media (prefers-reduced-motion: no-preference) {
+  .tape-track { animation: tape 28s linear infinite; }
+  .tape.alt .tape-track { animation-direction: reverse; animation-duration: 34s; }
+  @keyframes tape { to { transform: translate3d(-50%, 0, 0); } }
+}
+/* holofote que segue o mouse nas faixas escuras (um círculo movido por transformação) */
+.spot-follow { position: absolute; left: 0; top: 0; width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 50%; pointer-events: none; z-index: -1; opacity: 0; transition: opacity 0.4s;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--dot) 22%, transparent), transparent); }
+.dark:hover > .spot-follow { opacity: 1; }
+/* capturas com paralaxe dentro da moldura */
+.shot img, .shot video, .walk-media img, .ex-media img, .ex-media video { transform: translate3d(0, var(--py, 0px), 0) scale(1.06); }
+/* filhos de listas entram em sequência */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal .flow li, .reveal .sup-card, .reveal .plan, .reveal .ticks li, .reveal .faq details { opacity: 0; transform: translate3d(0, 22px, 0) scale(0.98); transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 1.3, 0.4, 1); }
+  .reveal.in .flow li, .reveal.in .sup-card, .reveal.in .plan, .reveal.in .ticks li, .reveal.in .faq details { opacity: 1; transform: none; }
+  .reveal.in :is(.flow li, .sup-card, .plan, .ticks li, .faq details):nth-child(2) { transition-delay: 0.08s; }
+  .reveal.in :is(.flow li, .sup-card, .plan, .ticks li, .faq details):nth-child(3) { transition-delay: 0.16s; }
+  .reveal.in :is(.flow li, .sup-card, .plan, .ticks li, .faq details):nth-child(4) { transition-delay: 0.24s; }
+  .reveal.in :is(.flow li, .sup-card, .plan, .ticks li, .faq details):nth-child(5) { transition-delay: 0.32s; }
+  .reveal.in :is(.flow li, .sup-card, .plan, .ticks li, .faq details):nth-child(n + 6) { transition-delay: 0.4s; }
+}
+/* botões principais com ímã: chegam um pouco perto do mouse */
+.btn.primary { transition: transform 0.25s cubic-bezier(0.2, 1.4, 0.4, 1), background 0.2s; transform: translate3d(var(--mx, 0px), var(--my, 0px), 0); }
+/* sublinhado do menu como uma agulha que corre */
+.doors a { position: relative; }
+.doors a::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 3px; height: 2px; background: var(--c); transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.doors a:hover::after { transform: scaleX(1); }
+/* câmera: as telas viram texturas fixas na GPU (sem redesenho a cada zoom) e sem sombras gigantes */
+.plane { will-change: transform; box-shadow: none; outline: 1px solid rgba(255, 255, 255, 0.08); }
+.hero-fx { height: min(100%, 640px); }

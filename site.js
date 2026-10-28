@@ -165,9 +165,9 @@
     let paths = [];
     const build = () => {
       const r = hero.getBoundingClientRect();
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const dpr = 1;
       W = r.width;
-      H = r.height;
+      H = Math.min(r.height, 640);
       cv.width = Math.round(W * dpr);
       cv.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -254,8 +254,12 @@
     };
     let raf = 0;
     let visible = true;
+    let lastDraw = 0;
     const loop = (now) => {
-      frame(now);
+      if (now - lastDraw > 32) {
+        lastDraw = now;
+        frame(now);
+      }
       raf = visible && !document.hidden ? requestAnimationFrame(loop) : 0;
     };
     const start = () => {
@@ -401,4 +405,77 @@
     document.body.classList.toggle('cam-dark', under.size > 0);
   }, { rootMargin: '-60px 0px -92% 0px' });
   document.querySelectorAll('[data-cam], section.dark, .feature.dark, footer').forEach((el) => io.observe(el));
+})();
+
+// ---------- mais movimento, todo por transformação: fita de palavras, holofote, paralaxe e botões com ímã ----------
+(() => {
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // fita de palavras entre a abertura e o resto, e antes da chamada final
+  const WORDS = ['Corte', 'Anime', 'Componha', 'Câmera', 'Keyframes', 'Cor', 'Áudio', 'Entrega'];
+  const tape = (alt) => {
+    const t = document.createElement('div');
+    t.className = 'tape' + (alt ? ' alt' : '');
+    t.setAttribute('aria-hidden', 'true');
+    const words = [...WORDS, ...WORDS].map((w) => '<span>' + w + '</span>').join('');
+    t.innerHTML = '<div class="tape-track">' + words + words + '</div>';
+    return t;
+  };
+  const after = document.querySelector('.cam, .p-hero');
+  if (after) after.after(tape(false));
+  const cta = document.querySelector('.cta-sec');
+  if (cta) cta.before(tape(true));
+
+  if (still) return;
+
+  // uma única passada por quadro para tudo que depende de rolagem ou mouse
+  const shots = [...document.querySelectorAll('.shot, .walk-media, .ex-media')].map((el) => ({ el, img: el.querySelector('img, video') })).filter((s) => s.img);
+  const darks = [...document.querySelectorAll('section.dark')];
+  for (const d of darks) {
+    const s = document.createElement('i');
+    s.className = 'spot-follow';
+    s.setAttribute('aria-hidden', 'true');
+    d.prepend(s);
+  }
+  const mags = fine ? [...document.querySelectorAll('.btn.primary')].filter((b) => !b.closest('.cam')) : [];
+  let mouse = null;
+  let queued = false;
+  const frame = () => {
+    queued = false;
+    // primeiro todas as leituras de posição, depois todas as escritas: misturar as duas obriga o navegador
+    // a recalcular o layout da página a cada elemento (era o que travava a rolagem)
+    const vh = innerHeight;
+    const shotRects = shots.map((s) => s.el.getBoundingClientRect());
+    const darkRects = mouse ? darks.map((d) => d.getBoundingClientRect()) : [];
+    const magRects = mouse ? mags.map((b) => b.getBoundingClientRect()) : [];
+    shots.forEach((s, i) => {
+      const r = shotRects[i];
+      if (!r.height || r.bottom < 0 || r.top > vh) return;
+      const v = (((r.top + r.height / 2 - vh / 2) / vh) * -18).toFixed(1) + 'px'; // -1 … 1 ao atravessar a tela
+      if (s.py !== v) s.img.style.setProperty('--py', (s.py = v));
+    });
+    if (!mouse) return;
+    darks.forEach((d, i) => {
+      const r = darkRects[i];
+      if (mouse.y >= r.top && mouse.y <= r.bottom) d.firstElementChild.style.transform = `translate3d(${mouse.x - r.left}px, ${mouse.y - r.top}px, 0)`;
+    });
+    mags.forEach((b, i) => {
+      const r = magRects[i];
+      const dx = mouse.x - (r.left + r.width / 2);
+      const dy = mouse.y - (r.top + r.height / 2);
+      const near = Math.hypot(dx, dy) < Math.max(r.width, 120);
+      b.style.setProperty('--mx', near ? (dx * 0.18).toFixed(1) + 'px' : '0px');
+      b.style.setProperty('--my', near ? (dy * 0.25).toFixed(1) + 'px' : '0px');
+    });
+  };
+  const queue = () => {
+    if (!queued) {
+      queued = true;
+      requestAnimationFrame(frame);
+    }
+  };
+  addEventListener('scroll', queue, { passive: true });
+  if (fine) addEventListener('pointermove', (e) => { mouse = { x: e.clientX, y: e.clientY }; queue(); }, { passive: true });
+  queue();
 })();
