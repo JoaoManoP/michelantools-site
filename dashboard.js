@@ -120,6 +120,7 @@ function render() {
           ${x.status !== 'recusado' ? '<button class="btn small" data-st="recusado">Recusar</button>' : ''}
           ${x.status !== 'pendente' ? '<button class="btn small" data-st="pendente">Voltar para análise</button>' : ''}
         </div>
+        <input data-k="key" class="mono" placeholder="Chave premium (gere com scripts/licenca.js e cole aqui)" value="${esc(x.license_key || '')}">
         <textarea data-k="notes" rows="1" placeholder="Anotação (só você vê)">${esc((state.notes || {})[x.id] || '')}</textarea>
       </article>`).join('') : '<div class="empty-state">Nada por aqui neste filtro.</div>'}
     </div>`;
@@ -155,6 +156,7 @@ function render() {
     };
     card.querySelectorAll('[data-st]').forEach((b) => (b.onclick = () => save({ status: b.dataset.st })));
     card.querySelector('[data-k=plan]').onchange = (e) => save({ plan: e.target.value });
+    card.querySelector('[data-k=key]').onchange = (e) => save({ license_key: e.target.value.trim().slice(0, 4000) });
     card.querySelector('[data-k=notes]').onchange = async (e) => {
       const notes = e.target.value.slice(0, 1000);
       const { error } = await (await sb()).from('admin_notes').upsert({ user_id: id, notes, updated_at: new Date().toISOString() });

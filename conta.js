@@ -86,7 +86,10 @@ async function renderArea(p) {
       <div><dt>E-mail</dt><dd>${esc(p.email)}</dd></div>
       <div><dt>Pedido em</dt><dd>${new Date(p.created_at).toLocaleDateString('pt-BR')}</dd></div>
     </dl>
-    ${p.status === 'aprovado' ? `<button class="btn primary" id="dl">Baixar a versão Lite</button><p class="fine">O download é pessoal, usa links que expiram em 5 minutos e é conferido pela impressão digital (SHA-256) antes de salvar. Se o Windows avisar "Editor desconhecido", clique em "Mais informações" e em "Executar assim mesmo".</p>` : ''}`;
+    ${p.status === 'aprovado' ? `<button class="btn primary" id="dl">Baixar a versão Lite</button><p class="fine">O download é pessoal, usa links que expiram em 5 minutos e é conferido pela impressão digital (SHA-256) antes de salvar. Se o Windows avisar "Editor desconhecido", clique em "Mais informações" e em "Executar assim mesmo".</p>` : ''}
+    ${p.license_key ? `<div class="lic"><b>Sua chave premium</b><textarea id="lk" class="mono" readonly rows="3">${esc(p.license_key)}</textarea><button class="btn small" id="cpk">Copiar chave</button><p class="fine">No programa: Preferências (Ctrl+,) → Licença premium → cole a chave → Ativar. Ela libera Imagem, 3D, plugins, os efeitos premium e todos os formatos de exportação.</p></div>` : ''}`;
+  const cpk = root.querySelector('#cpk');
+  if (cpk) cpk.addEventListener('click', async () => { try { await navigator.clipboard.writeText(p.license_key); cpk.textContent = 'Copiada'; } catch { root.querySelector('#lk').select(); } });
   root.querySelector('#out').addEventListener('click', async () => { (await sb()).auth.signOut(); tab = 'login'; renderForms(); });
   const dl = root.querySelector('#dl');
   if (dl) dl.addEventListener('click', async () => {

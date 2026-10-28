@@ -794,3 +794,6 @@ section.dark::after { inset: -28px; animation: none; }
 /* câmera: as telas viram texturas fixas na GPU (sem redesenho a cada zoom) e sem sombras gigantes */
 .plane { will-change: transform; box-shadow: none; outline: 1px solid rgba(255, 255, 255, 0.08); }
 .hero-fx { height: min(100%, 640px); }
+
+.lic { margin-top: 18px; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line); border-left: 3px solid var(--dot); background: var(--paper); display: grid; gap: 10px; }
+.lic textarea, .row-card input[data-k=key] { width: 100%; box-sizing: border-box; font: 500 12px/1.4 var(--mono); word-break: break-all; }
