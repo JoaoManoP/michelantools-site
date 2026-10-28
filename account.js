@@ -5,13 +5,12 @@ const LIB = './vendor/supabase.js';
 export const cfg = window.MT_CONFIG || {};
 export const configured = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
 
-let client = null;
-export async function sb() {
-  if (!configured) return null;
-  if (client) return client;
-  const { createClient } = await import(LIB);
-  client = createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true } });
-  return client;
+// uma única instância, mesmo quando cabeçalho e página pedem ao mesmo tempo
+let clientP = null;
+export function sb() {
+  if (!configured) return Promise.resolve(null);
+  if (!clientP) clientP = import(LIB).then(({ createClient }) => createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true } }));
+  return clientP;
 }
 
 export async function session() {

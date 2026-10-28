@@ -2,252 +2,222 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'">
 <meta name="robots" content="noai, noimageai">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Milens · editor de vídeo e motion graphics</title>
-<meta name="description" content="Milens é um editor de vídeo e motion graphics para Windows: câmera virtual, keyframes com curvas, efeitos na placa de vídeo, cor, áudio e exportação sem surpresas. Lite grátis; PRO com Imagem, 3D, plugins e 4K.">
-<link rel="icon" href="assets/icon-256.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<title>Milens — editor de vídeo e motion graphics para Windows</title>
+<meta name="description" content="Edite, anime e entregue no mesmo programa: vídeo, imagem, áudio e 3D. Formatos prontos para Reels, TikTok e YouTube, clipes de vídeos longos, exportação em 4K. Lite grátis, PRO por chave.">
+<meta property="og:title" content="Milens — editor de vídeo e motion graphics para Windows"><meta property="og:description" content="Edite, anime e entregue no mesmo programa: vídeo, imagem, áudio e 3D. Formatos prontos para Reels, TikTok e YouTube, clipes de vídeos longos, exportação em 4K. Lite grátis, PRO por chave."><meta property="og:image" content="assets/og.png"><meta property="og:type" content="website">
+<link rel="icon" href="assets/icon-256.png"><link rel="apple-touch-icon" href="assets/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<header class="top">
+<body data-page="index">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="hdr">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="">Milens</a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="doors">Menu</button>
-    <ul class="doors" id="doors">
-      <li><a href="video.html" style="--c: var(--r)">Vídeo</a></li>
-      <li><a href="imagem.html" style="--c: var(--g)">Imagem</a></li>
-      <li><a href="audio.html" style="--c: var(--b)">Áudio</a></li>
-      <li><a href="3d.html" style="--c: var(--ink-3)">3D</a></li>
-      <li><a href="plugins.html" style="--c: var(--ink-3)">Plugins</a></li>
-      <li><a href="guia.html" style="--c: var(--ink-3)">Guia</a></li>
-      <li><a href="suporte.html" style="--c: var(--rec)">Suporte</a></li>
-    </ul>
-    <a class="get" href="conta.html">Baixar grátis</a>
+    <a class="brand" href=""><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="g-mark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B6BFF"/><stop offset=".5" stop-color="#8A4DFF"/><stop offset="1" stop-color="#FF8A2A"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="#15171A"/><path d="M32 16.1A17 17 0 0 1 32 47.9A17 17 0 0 1 32 16.1Z" fill="url(#g-mark)"/><circle cx="26" cy="32" r="17" fill="none" stroke="#F4F4F2" stroke-width="3"/><circle cx="38" cy="32" r="17" fill="none" stroke="#F4F4F2" stroke-width="3"/></svg><span>Milens</span></a>
+    <nav class="hnav" id="hnav" aria-label="Principal"><ul><li><a href="video/">Vídeo</a></li><li><a href="imagem/">Imagem</a></li><li><a href="audio/">Áudio</a></li><li><a href="3d/">3D</a></li><li><a href="plugins/">Plugins</a></li><li><a href="planos/">Planos</a></li><li><a href="guia/">Guia</a></li><li><a href="suporte/">Suporte</a></li></ul></nav>
+    <div class="hact">
+      <a class="btn ghost" id="hdr-login" href="conta/#entrar"><svg class="ic" aria-hidden="true" data-glyph="log-in" class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 4h5a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-5"/><path d="M3 12h11"/><path d="m10 8 4 4-4 4"/></svg>Entrar</a>
+      <a class="btn primary" id="hdr-get" href="conta/">Baixar grátis</a>
+      <button class="menu" aria-expanded="false" aria-controls="hnav" aria-label="Menu"><svg class="ic" aria-hidden="true" data-glyph="panel-left" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h11l3 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 4v16"/></svg></button>
+    </div>
   </div>
 </header>
+<main id="conteudo">
 
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter></svg>
-<main>
-  <section class="hero">
-    <div class="wrap">
-      <div>
-        <span class="tag rec">Versão 0.6 · Windows · Lite grátis</span>
-        <h1 style="margin-top:18px"><span class="w r">Edite.</span> <span class="w g">Anime.</span> <span class="w b">Entregue.</span></h1>
-        <p class="lead">Um editor de vídeo e motion graphics que roda inteiro no seu computador: timeline por quadros, câmera virtual com profundidade, efeitos na placa de vídeo e um monitor que mostra exatamente o que vai para o arquivo.</p>
-        <div class="hero-cta"><a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>Baixar o Lite grátis</a><a class="btn" href="#dentro"><svg data-lucide="aperture" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v6"/><path d="m4.2 7.5 5.2 3"/><path d="m4.2 16.5 5.2-3"/><path d="M12 21v-6"/><path d="m19.8 16.5-5.2-3"/><path d="m19.8 7.5-5.2 3"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>Ver por dentro</a></div>
-        <div class="hero-trust"><span>Sem nuvem, sem telemetria</span><span>139 verificações automáticas</span><span>PRO por chave, sem assinatura obrigatória</span></div>
-        <dl class="plate metal screws">
-          <div><dt>Modelo</dt><dd>Milens 0.6</dd></div>
-          <div><dt>Sistema</dt><dd>Windows 10 / 11 · 64 bits</dd></div>
-          <div><dt>Motor</dt><dd>WebGL2 · FFmpeg 6.1</dd></div>
-          <div><dt>Saída</dt><dd>H.264 · HEVC · ProRes · VP9</dd></div>
-          <div><dt>Quadros</dt><dd>16:9 · 9:16 · 1:1 · até 4K</dd></div>
-          <div><dt>Projeto</dt><dd>.mtproj · EDL · FCPXML · OTIO</dd></div>
-          <div class="serial"><span>N.º de série 0006·2026·BR</span><span>Feito em Porto Alegre, com teclado</span></div>
-        </dl>
-      </div>
-      <div class="lens"><svg viewBox="0 0 100 100" aria-hidden="true">
-  <defs><radialGradient id="l-body" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#2c3a4a"/><stop offset="1" stop-color="#0b1016"/></radialGradient><radialGradient id="l-glass" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#8fb6e8"/><stop offset="0.55" stop-color="#1b3a66"/><stop offset="1" stop-color="#060a10"/></radialGradient></defs>
-  <circle class="glow" cx="50" cy="50" r="48" fill="none" stroke="url(#l-glass)" stroke-width="1.5" opacity="0.35"/>
-  <circle cx="50" cy="50" r="42" fill="url(#l-body)" stroke="#3a4552" stroke-width="1"/>
-  <g class="cyl"><circle cx="50.00" cy="24.00" r="8.5" fill="var(--r)" class="ch" data-ch="r"/><circle cx="72.52" cy="37.00" r="8.5" fill="#2e3946"/><circle cx="72.52" cy="63.00" r="8.5" fill="var(--g)" class="ch" data-ch="g"/><circle cx="50.00" cy="76.00" r="8.5" fill="#2e3946"/><circle cx="27.48" cy="63.00" r="8.5" fill="var(--b)" class="ch" data-ch="b"/><circle cx="27.48" cy="37.00" r="8.5" fill="#2e3946"/></g>
-  <circle cx="50" cy="50" r="12" fill="url(#l-glass)" stroke="#55657a" stroke-width="0.8"/>
-  <circle cx="46" cy="45.5" r="2.6" fill="#dcebff" opacity="0.9"/>
-</svg></div>
-    </div>
-  </section>
-  <div class="film" aria-hidden="true"><div class="strip"><div class="frames"><b>00:00:04:12</b><img src="assets/cam/interface.webp" alt=""><img src="assets/cam/composicao.webp" alt=""><img src="assets/cam/cor.webp" alt=""><img src="assets/cam/entrega.webp" alt=""><img src="assets/cam/timeline.webp" alt=""><img src="assets/cam/audio.webp" alt=""><b>00:00:09:00</b></div></div></div>
-
-  <section class="chambers" id="edite">
-    <div class="wrap">
-      <aside class="cyl-rail" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#171d26" stroke="#273140" stroke-width="1.5"/><g class="rot"><circle cx="50.00" cy="21.00" r="9" fill="var(--r)" class="ch" data-ch="r"/><circle cx="75.11" cy="35.50" r="9" fill="#2e3946"/><circle cx="75.11" cy="64.50" r="9" fill="var(--g)" class="ch" data-ch="g"/><circle cx="50.00" cy="79.00" r="9" fill="#2e3946"/><circle cx="24.89" cy="64.50" r="9" fill="var(--b)" class="ch" data-ch="b"/><circle cx="24.89" cy="35.50" r="9" fill="#2e3946"/></g><circle cx="50" cy="50" r="11" fill="#0b0f14" stroke="#344050"/><path d="M50 2v8" stroke="var(--rec)" stroke-width="2.5" stroke-linecap="round"/></svg><b>Edite</b></aside>
-      <div>
-        <article class="chamber reveal" data-ch="r" data-name="Edite">
-          <div class="f-text">
-            <span class="tag r">Câmara R · Edição</span>
-            <h2><em>Edite</em> por quadros, com o teclado nas mãos</h2>
-            <p class="lead">Lâmina, slip, slide e roll a uma tecla, encaixe magnético, monitor de origem com entrada e saída, velocidade de 5% a 1600% com o quadro exato.</p>
-            <div class="keys-row"><span class="keycap r"><kbd>B</kbd>lâmina</span><span class="keycap r"><kbd>Y</kbd>slip</span><span class="keycap r"><kbd>U</kbd>slide</span><span class="keycap r"><kbd>R</kbd>roll</span><span class="keycap"><kbd>S</kbd>dividir</span><span class="keycap"><kbd>Espaço</kbd>tocar</span><span class="keycap"><kbd>Ctrl K</kbd>buscar</span></div>
-            <ul class="ticks r"><li>Mídia, Edição, Composição, Cor, Áudio e Entrega na mesma janela</li><li>Importa projetos de outros editores (EDL, FCPXML, OTIO, MLT) e tem monitor externo</li></ul>
-            <a class="open" href="video.html">Ver a página de vídeo <svg data-lucide="arrow-right" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
-          </div>
-          <figure class="shot"><img src="assets/cam/timeline.webp" alt="Timeline do Milens com clipes, keyframes e a agulha" width="1366" height="766"><span class="tag r">Timeline</span><svg class="anno" viewBox="0 0 1366 766" preserveAspectRatio="none" aria-hidden="true"><path d="M980 120 C 920 170, 880 230, 840 330"/><path d="m826 318 14 14 16-8"/><text x="990" y="112">agulha com encaixe magnético</text><path d="M300 700 C 360 690, 420 660, 470 620"/><path d="m456 622 16 0 -2-16"/><text x="130" y="730">keyframes no próprio clipe</text><circle class="dot" cx="470" cy="620" r="6"/></svg></figure>
-        </article>
-        <article class="chamber reveal" data-ch="g" data-name="Anime" id="anime">
-          <div class="f-text">
-            <span class="tag g">Câmara G · Motion</span>
-            <h2><em>Anime</em> com câmera, curvas e profundidade</h2>
-            <p class="lead">Uma câmera virtual de verdade: dolly, órbita, rolagem, lente e tremido, com treze movimentos prontos que viram keyframes. Camadas com profundidade Z, parentesco e nulos.</p>
-            <svg class="curve" viewBox="0 0 520 150" aria-hidden="true"><g stroke="#1f2733"><path d="M40 20v110M40 130h460"/><path d="M160 125v10M280 125v10M400 125v10"/></g><text x="34" y="146">0s</text><text x="154" y="146">1s</text><text x="274" y="146">2s</text><text x="394" y="146">3s</text><text x="8" y="28">100</text><text x="14" y="132">0</text><path d="M40 128 C 110 128, 120 36, 160 36 S 230 52, 280 52 C 330 52, 330 116, 400 116 S 470 60, 500 40" fill="none" stroke="var(--g)" stroke-width="2.4"/><path d="M160 36 L 128 36" stroke="var(--g)" stroke-dasharray="3 4"/><path d="M160 36 L 200 36" stroke="var(--g)" stroke-dasharray="3 4"/><rect class="k" x="34" y="122" width="12" height="12" transform="rotate(45 40 128)"/><rect class="k on" x="154" y="30" width="12" height="12" transform="rotate(45 160 36)"/><rect class="k" x="274" y="46" width="12" height="12" transform="rotate(45 280 52)"/><rect class="k" x="394" y="110" width="12" height="12" transform="rotate(45 400 116)"/><text x="170" y="26" fill="var(--rec)">ultrapassar · escala 118%</text></svg>
-            <ul class="ticks g"><li>39 animações prontas, 8 interpolações, folha de keyframes e editor de curvas</li><li>Máscara de trilha, camada de ajuste e desfoque de movimento por obturador</li></ul>
-            <a class="open" href="video.html">Ver composição e animação <svg data-lucide="arrow-right" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
-          </div>
-          <figure class="shot"><img src="assets/cam/composicao.webp" alt="Página Composição com a folha de keyframes e as animações prontas" width="1366" height="766"><span class="tag g">Composição</span><svg class="anno" viewBox="0 0 1366 766" preserveAspectRatio="none" aria-hidden="true"><path d="M1180 120 C 1140 160, 1090 180, 1040 230"/><path d="m1052 214 -12 16 18 6"/><text x="1030" y="100">13 movimentos de câmera</text><path d="M240 640 C 300 620, 340 600, 380 560"/><path d="m366 566 14-6 2 16"/><text x="60" y="672">curva de cada propriedade</text></svg></figure>
-        </article>
-        <article class="chamber reveal" data-ch="b" data-name="Entregue" id="entregue">
-          <div class="f-text">
-            <span class="tag b">Câmara B · Cor, áudio e entrega</span>
-            <h2><em>Entregue</em> no padrão das plataformas</h2>
-            <p class="lead">Rodas de cor, curvas, LUT e scopes na placa de vídeo; mixer com loudness; predefinições para YouTube, vertical e quadrado, fila de renderização e arquivo verificado pelo FFprobe.</p>
-            <pre class="report"><span class="h">relatório · conferido pelo FFprobe</span>
-<b>reels_final.mp4</b>              12,4 MB   00:00:34:00
-vídeo   h264 High · 1080×1920 · 30 fps · yuv420p
-áudio   aac · 48 kHz · estéreo · −14,0 LUFS   <span class="ok">✔ padrão web</span>
-quadros 1020 de 1020 · tempo 41 s (0,83× real)   <span class="ok">✔ arquivo íntegro</span></pre>
-            <ul class="ticks b"><li>O monitor usa o mesmo compositor da exportação: sem surpresa no arquivo</li><li>Fila de renderização, normalização de loudness e estimativa que aprende com a sua máquina</li></ul>
-            <a class="open" href="audio.html">Ver áudio e entrega <svg data-lucide="arrow-right" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
-          </div>
-          <figure class="shot"><img src="assets/cam/cor.webp" alt="Página Cor com rodas, curvas e scopes" width="1366" height="766"><span class="tag b">Cor</span></figure>
-        </article>
-      </div>
-    </div>
-  </section>
-
-<section class="cam" id="dentro" data-cam aria-label="Apresentação do programa em movimento de câmera">
-    <div class="cam-sticky">
-      <div class="cam-monitor">
-        <div class="cam-stage" aria-hidden="true">
-          <div class="cam-view">
-            <div class="cam-world">
-              <figure class="plane" data-p="interface" data-x="0" data-y="0" data-z="0"><img src="assets/cam/interface.webp" alt="" width="1366" height="766"></figure>
-              <figure class="plane" data-p="composicao" data-x="1750" data-y="-260" data-z="-760" data-ry="-30"><img src="assets/cam/composicao.webp" alt="" width="1366" height="766"></figure>
-              <figure class="plane" data-p="cor" data-x="-1780" data-y="220" data-z="-860" data-ry="30"><img src="assets/cam/cor.webp" alt="" width="1366" height="766"></figure>
-              <figure class="plane" data-p="audio" data-x="900" data-y="1160" data-z="-1650" data-ry="-12" data-rx="8"><img src="assets/cam/audio.webp" alt="" width="1366" height="766"></figure>
-              <figure class="plane" data-p="entrega" data-x="-1050" data-y="-1180" data-z="-1550" data-ry="14" data-rx="-8"><img src="assets/cam/entrega.webp" alt="" width="1366" height="766"></figure>
-              <figure class="plane" data-p="plugins" data-x="2350" data-y="1050" data-z="-2700" data-ry="-24"><img src="assets/cam/plugins.webp" alt="" width="1366" height="766"></figure>
-              <figure class="plane" data-p="animar" data-x="-2350" data-y="-950" data-z="-2700" data-ry="24"><img src="assets/cam/animar.webp" alt="" width="1366" height="766"></figure>
-              <div class="pin" data-x="-436" data-y="-133" data-z="120" style="--c: var(--video)"><b>Biblioteca</b></div>
-              <div class="pin" data-x="44" data-y="-300" data-z="170" style="--c: var(--dot)"><b>Monitor</b></div>
-              <div class="pin" data-x="470" data-y="40" data-z="120" style="--c: var(--audio)"><b>Inspetor</b></div>
-              <div class="pin" data-x="40" data-y="230" data-z="90" style="--c: var(--imagem)"><b>Timeline</b></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cam-hud" aria-hidden="true">
-          <div class="hud-top">
-            <span class="rec"><i></i>Câmera 1</span>
-            <span class="hud-shot" data-hud="shot">Abertura</span>
-            <span class="hud-tc" data-hud="tc">00:00:00:00</span>
-          </div>
-          <dl class="hud-params">
-            <div><dt>Zoom</dt><dd data-hud="zoom">42%</dd></div>
-            <div><dt>Inclinação X</dt><dd data-hud="tilt">0,0°</dd></div>
-            <div><dt>Inclinação Y</dt><dd data-hud="orbit">0,0°</dd></div>
-            <div><dt>Rolagem</dt><dd data-hud="roll">0,0°</dd></div>
-            <div><dt>Lente</dt><dd data-hud="fov">50°</dd></div>
-            <div><dt>Desfoque</dt><dd data-hud="focus">0%</dd></div>
-            <div><dt>Tremido</dt><dd data-hud="shake">0</dd></div>
-          </dl>
-          <span class="safe" aria-hidden="true"></span>
-        </div>
-
-        <div class="cam-caps">
-          <article class="cap cap-title" data-shot="0">
-            <span class="tag rec">Veja por dentro</span>
-            <h2>Nove planos de câmera sobre a interface real.</h2>
-            <div class="hero-cta"><a class="btn ghost" href="#dentro" data-cam-next>Role para rodar a câmera ↓</a></div>
-          </article>
-          <article class="cap" data-shot="1"><h2>Tudo numa janela</h2><p>Mídia, Edição, Composição, Cor, Áudio e Entrega são páginas do mesmo projeto. Você muda de etapa, não de programa.</p></article>
-          <article class="cap" data-shot="2"><h2>O que você vê é o que sai</h2><p>O monitor e a exportação usam o mesmo compositor. O quadro que você aprova na tela é o quadro do arquivo final, pixel por pixel.</p></article>
-          <article class="cap" data-shot="3"><h2>Corte no teclado</h2><p>Trilhas de vídeo e áudio, encaixe magnético, ferramentas de corte com atalhos e keyframes em cada propriedade.</p></article>
-          <article class="cap" data-shot="4"><h2>Uma câmera de verdade</h2><p>Camadas com profundidade Z e uma câmera com dolly, órbita, rolagem, lente e tremido. Treze movimentos prontos viram keyframes que você ajusta.</p></article>
-          <article class="cap" data-shot="5"><h2>Cor com controle</h2><p>Rodas de cor, curvas, LUTs .cube e scopes, calculados na placa de vídeo.</p></article>
-          <article class="cap" data-shot="6"><h2>Som no mesmo lugar</h2><p>Mixer por trilha, equalizador, compressor e medição de loudness para entregar no padrão das plataformas.</p></article>
-          <article class="cap" data-shot="7"><h2>Exporte sem susto</h2><p>Predefinições para YouTube, vertical e quadrado, com fila de renderização.</p></article>
-          <article class="cap" data-shot="8"><h2>Efeitos de outros criadores <span class="chip-st">Completo</span></h2><p>Pacotes de efeitos instalados com um clique, com parâmetros que aparecem no inspetor.</p></article>
-          <article class="cap cap-end" data-shot="9"><h2>Comece pelo Lite</h2><p>Grátis, com edição, câmera, animações, cor e áudio. O PRO libera o resto com uma chave de ativação.</p><a class="btn primary" href="conta.html">Baixar o Lite grátis</a></article>
-        </div>
-      </div>
-
-      <div class="cam-tl">
-        <div class="tl-head"><span>Câmera 1</span></div>
-        <div class="tl-track">
-          <div class="tl-ruler" aria-hidden="true"></div>
-          <div class="tl-clips" data-tl-clips></div>
-          <div class="tl-play" data-tl-play aria-hidden="true"><b></b></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="paper" id="planos">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="tape-label">Tabela 2026</span>
-        <span class="tag">Planos</span>
-        <h2>Lite grátis. PRO por chave de ativação.</h2>
-        <p class="lead">O Lite é para editar e animar de verdade, sem custo. O PRO libera os programas de Imagem e 3D, plugins, efeitos premium e os formatos profissionais, com uma chave que você cola no programa.</p>
-      </div>
-      <div class="plans reveal">
-        <article class="plan lite">
-          <header><span class="tag g">Grátis</span><h3>Lite</h3><div class="price">R$ 0<small>para sempre</small></div></header>
-          <ul class="ticks g"><li>Edição na timeline, cortes e velocidade</li><li>Câmera virtual, keyframes e animações</li><li>Correção de cor e editor de áudio</li><li>Efeitos nativos e transições</li><li>Exporta MP4 até 1080p, com marca d'água</li></ul>
-          <a class="btn primary" href="conta.html">Baixar grátis</a>
-        </article>
-        <article class="plan pro">
-          <span class="serial">CHAVE MT1 · 2 COMPUTADORES</span><header><span class="tag pro">Plano + chave de ativação</span><h3>PRO</h3><div class="price">R$ 29,90<small>por mês</small></div><div class="alts">ou R$ 249/ano · R$ 499 vitalício</div></header>
-          <ul class="ticks"><li>Tudo do Lite, sem marca d'água</li><li>Editor de Imagem e programa 3D</li><li>Plugins de efeito externos</li><li>Efeitos premium: LUT, chroma key e brilho</li><li>4K, HEVC e ProRes</li></ul>
-          <a class="btn primary" href="planos.html"><svg data-lucide="key-round" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4.2"/><circle cx="8" cy="15" r="1.3" fill="currentColor" stroke="none"/><path d="m11 12 8.5-8.5"/><path d="m16 7 3 3"/><path d="m18.5 4.5 2 2"/></svg>Assinar o PRO</a>
-          <p class="plan-note">Pagamento por cartão ou Pix. A chave aparece na sua conta em segundos e vale em 2 computadores, sem internet obrigatória depois de ativar.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="como">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="tag rec">Como funciona</span>
-        <h2>Do download à chave PRO, em três passos</h2>
-      </div>
-      <ol class="steps reveal stagger">
-        <li><svg data-lucide="user-plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.5" cy="8" r="3.5"/><path d="M3 20a6.5 6.5 0 0 1 13 0"/><path d="M19 8v6"/><path d="M16 11h6"/></svg><b>Crie sua conta</b><span>Nome, e-mail e senha, com confirmação por e-mail. É o que guarda sua chave e os seus downloads.</span></li>
-        <li><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg><b>Baixe o Lite</b><span>Grátis, direto na sua conta, conferido pela impressão digital SHA-256 antes de salvar.</span></li>
-        <li><svg data-lucide="key-round" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4.2"/><circle cx="8" cy="15" r="1.3" fill="currentColor" stroke="none"/><path d="m11 12 8.5-8.5"/><path d="m16 7 3 3"/><path d="m18.5 4.5 2 2"/></svg><b>Ative o PRO</b><span>Com o plano, a chave de ativação e o instalador PRO aparecem na sua conta. Cole a chave em Preferências e pronto.</span></li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="tag">Perguntas frequentes</span><h2>Dúvidas comuns</h2></div>
-      <div class="reveal"><div class="faq">
-        <details><summary>Como funciona o PRO?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><div class="ans"><p>Com o plano ativo, sua conta mostra o instalador PRO e uma chave de ativação. Você cola a chave em Preferências → Licença premium, sem precisar de internet depois disso.</p></div></details>
-        <details><summary>O Lite é grátis mesmo?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><div class="ans"><p>Sim. Basta criar uma conta para baixar. O Lite exporta MP4 até 1080p com marca d'água e não traz Imagem, 3D, plugins nem os efeitos premium.</p></div></details>
-        <details><summary>Funciona no Mac?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><div class="ans"><p>Ainda não. Por enquanto o teste é só para Windows 10 e 11. Se você usa Mac, crie a conta e marque "Mac": você recebe aviso quando houver versão.</p></div></details>
-        <details><summary>Meus vídeos vão para alguma nuvem?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><div class="ans"><p>Não. O programa trabalha no seu computador. A conta serve só para o download e para guardar a sua chave.</p></div></details>
-        <details><summary>Meu computador aguenta?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><div class="ans"><p>O programa foi testado num notebook Intel de 8ª geração com gráficos integrados. Para 1080p, 8 GB de memória bastam.</p></div></details>
-        <details><summary>O Windows mostrou um aviso ao instalar. É normal?<svg data-lucide="plus" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><div class="ans"><p>Sim. A versão de teste ainda não tem assinatura digital, por isso o SmartScreen avisa "Editor desconhecido". Os arquivos são verificados com o Microsoft Defender antes de cada liberação.</p></div></details>
-      </div></div>
-    </div>
-  </section>
-
-  <section style="padding-top:0">
-    <div class="wrap">
-      <div class="cta reveal">
-        <span class="tag rec">Comece agora</span>
-        <h2 style="margin-top:14px">Comece pelo Lite</h2>
-        <p>Crie a conta e baixe em um minuto. Quando quiser mais, o PRO está a uma chave de distância.</p>
-        <a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>Baixar o Lite grátis</a>
-        <span class="small">Windows 10 e 11 · Lite grátis · PRO por plano</span>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
+<section class="hero">
   <div class="wrap">
-    <span class="plate-foot">Milens · v0.6 · editor de vídeo e motion graphics · Windows · suporte@milens.app</span>
-    <nav><a href="planos.html">Planos</a><a href="guia.html">Guia</a><a href="atalhos.html">Atalhos</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
+    <div class="hero-copy">
+      <span class="eyebrow"><i class="lens"></i>Editor de vídeo e motion graphics · Windows</span>
+      <h1>Edite, anime e entregue no mesmo programa.</h1>
+      <p class="lead">Timeline, câmera virtual, cor, áudio, imagem e 3D num só projeto. Formatos prontos para Reels, TikTok e YouTube, e uma ferramenta que corta vídeos longos em clipes.</p>
+      <div class="row">
+        <a class="btn primary lg" href="conta/"><svg class="ic" aria-hidden="true" data-glyph="download" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>Baixar grátis</a>
+        <a class="btn ghost lg" href="planos/">Ver planos<svg class="ic" aria-hidden="true" data-glyph="arrow-right" class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></a>
+      </div>
+      <ul class="facts">
+        <li><b>4K</b><span>H.264, HEVC, ProRes, VP9</span></li>
+        <li><b>9:16</b><span>presets por plataforma</span></li>
+        <li><b>0</b><span>cartão para começar</span></li>
+      </ul>
+    </div>
+    <figure class="hero-shot">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="frame"><img src="assets/shot-video.jpg" alt="Milens com um projeto aberto: biblioteca de mídia, monitor, inspetor e timeline" width="1366" height="768" fetchpriority="high"></div>
+      <figcaption class="mono">Sequência 01 · 1920×1080 · 30 fps</figcaption>
+    </figure>
   </div>
-</footer>
+</section>
 
+<section class="strip">
+  <div class="wrap">
+    <span><svg class="ic" aria-hidden="true" data-glyph="clapperboard" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h18v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m3 10 1.5-4L20 4.5 19 10"/><path d="m8 9.5 3-4"/><path d="m13 9 3-4"/></svg>Timeline com 64 trilhas</span>
+    <span><svg class="ic" aria-hidden="true" data-glyph="camera" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/><circle cx="12" cy="13" r="1.2" fill="currentColor" stroke="none"/></svg>Câmera virtual com keyframes</span>
+    <span><svg class="ic" aria-hidden="true" data-glyph="scissors" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8 20 19"/><path d="M8.5 16 20 5"/></svg>Clipes de vídeos longos</span>
+    <span><svg class="ic" aria-hidden="true" data-glyph="monitor-play" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h11l3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 17v4"/><path d="M8 21h8"/><path d="m10 8 5 3-5 3z" fill="currentColor"/></svg>Monitor externo em tela cheia</span>
+    <span><svg class="ic" aria-hidden="true" data-glyph="file-video" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v4h4"/><path d="m10.5 11 4 2.5-4 2.5z" fill="currentColor"/></svg>Importa EDL, FCPXML, OTIO</span>
+    <span><svg class="ic" aria-hidden="true" data-glyph="keyboard" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h11l3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M7 9h0"/><path d="M11 9h0"/><path d="M15 9h0"/><path d="M7 13h0"/><path d="M11 13h0"/><path d="M15 13h0"/><path d="M8 16h8"/></svg>75 comandos com atalho</span>
+  </div>
+</section>
+
+<section class="modules">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><i class="lens"></i>Quatro mesas, um projeto</span>
+      <h2>Pare de exportar de um programa para importar em outro.</h2>
+      <p>Cada módulo abre em uma janela própria, mas tudo é o mesmo arquivo de projeto. O que você pinta no Imagem aparece na timeline; o que mixa no Áudio toca no monitor.</p>
+    </div>
+    <div class="mod-grid">
+      <a class="mod" href="video/"><img src="assets/shot-composicao.jpg" alt="" loading="lazy" width="1366" height="768"><div><span class="pill">Lite</span><h3>Vídeo</h3><p>Corte, composição, câmera, animação e cor. Exporta até 4K.</p></div></a>
+      <a class="mod" href="imagem/"><img src="assets/shot-imagem-looks.jpg" alt="" loading="lazy" width="1366" height="768"><div><span class="pill pro">PRO</span><h3>Imagem</h3><p>Camadas, pincéis, looks e máscaras para thumbnails e artes.</p></div></a>
+      <a class="mod" href="audio/"><img src="assets/shot-mixer.jpg" alt="" loading="lazy" width="1366" height="768"><div><span class="pill">Lite</span><h3>Áudio</h3><p>Mixer, espectro, loudness em LUFS e limpeza de voz.</p></div></a>
+      <a class="mod" href="3d/"><img src="assets/shot-3d.jpg" alt="" loading="lazy" width="1366" height="768"><div><span class="pill pro">PRO</span><h3>3D</h3><p>Cena, luz e câmera renderizadas direto na timeline.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="feature theater">
+  <div class="wrap two">
+    <div class="copy">
+      <span class="eyebrow"><i class="lens"></i>Formatos por plataforma</span>
+      <h2>Um projeto, todos os tamanhos.</h2>
+      <p>Escolha Reels, TikTok, Shorts, YouTube, feed ou story ao criar o projeto. O monitor mostra as zonas seguras de cada rede, e a exportação já sai no tamanho, fps e volume certos.</p>
+      <ul class="ticks">
+        <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>9:16, 1:1, 4:5 e 16:9 com guias de interface</li>
+        <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Aviso quando o vídeo passa do limite da plataforma</li>
+        <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Reenquadra 16:9 para vertical sem refazer o projeto</li>
+      </ul>
+    </div>
+    <figure class="frame"><img src="assets/shot-entrega.jpg" alt="Painel de exportação com predefinições por plataforma" loading="lazy" width="1366" height="768"></figure>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="wrap two flip">
+    <div class="copy">
+      <span class="eyebrow"><i class="lens"></i>Clipes</span>
+      <h2>De uma live de duas horas a dez clipes.</h2>
+      <p>Marque os trechos (ou divida a cada 60 segundos), dê nome, escolha a plataforma e exporte todos de uma vez. Cada clipe vira um arquivo na fila de exportação.</p>
+      <ul class="ticks">
+        <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Trechos salvos no projeto, com desfazer</li>
+        <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Nomes automáticos: <span class="mono">podcast-01.mp4</span>, <span class="mono">podcast-02.mp4</span>…</li>
+        <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Fila de exportação com previsão de tempo</li>
+      </ul>
+    </div>
+    <figure class="frame"><img src="assets/shot-video.jpg" alt="Timeline com trechos marcados para virar clipes" loading="lazy" width="1366" height="768"></figure>
+  </div>
+</section>
+
+<section class="feature theater">
+  <div class="wrap two">
+    <div class="copy">
+      <span class="eyebrow"><i class="lens"></i>Câmera e animação</span>
+      <h2>Movimento de câmera sem plugin.</h2>
+      <p>A câmera virtual tem posição, zoom, inclinação e rolagem com keyframes e curvas de aceleração. Profundidade de campo e desfoque de movimento são efeitos nativos, calculados na GPU.</p>
+      <ul class="ticks">
+        <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Editor de curvas com presets de easing</li>
+        <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Parentesco entre camadas (pai e filho)</li>
+        <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Scopes de cor: forma de onda, vetorscópio, histograma</li>
+      </ul>
+    </div>
+    <figure class="frame"><img src="assets/shot-cor.jpg" alt="Correção de cor com scopes" loading="lazy" width="1366" height="768"></figure>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow"><i class="lens"></i>Como funciona</span><h2>Três passos até o primeiro vídeo.</h2></div>
+    <ol class="steps">
+      <li><span class="n mono">1</span><h3>Crie a conta e baixe</h3><p>O Lite é grátis para sempre. O instalador tem 118 MB e não pede cartão.</p></li>
+      <li><span class="n mono">2</span><h3>Escolha a plataforma</h3><p>Novo projeto → Reels, YouTube, feed… O tamanho e as guias já vêm prontos.</p></li>
+      <li><span class="n mono">3</span><h3>Edite e exporte</h3><p>Arraste a mídia, corte, anime e mande para a fila. Ative o PRO quando precisar de 4K, Imagem ou 3D.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="pricing" id="planos">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow"><i class="lens"></i>Planos</span><h2>Grátis para começar. PRO quando o trabalho pedir.</h2><p>Sem anúncios, sem limite de projetos. A chave PRO vale em dois computadores e funciona sem internet.</p></div>
+    
+<div class="plans">
+  <article class="plan">
+    <header><span class="pill">Grátis</span><h3>Lite</h3><p class="price"><b>R$ 0</b><span>para sempre</span></p></header>
+    <ul>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Edição, câmera virtual, keyframes e animações</li>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Correção de cor, scopes e editor de áudio</li>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Formatos por plataforma e ferramenta de clipes</li>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Exporta MP4 até 1080p, com marca d'água</li>
+      <li class="no"><svg class="ic" aria-hidden="true" data-glyph="circle-slash" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m6 18 12-12"/></svg>Imagem, 3D, plugins e efeitos premium</li>
+    </ul>
+    <a class="btn secondary" href="conta/">Baixar grátis</a>
+  </article>
+  <article class="plan pro featured">
+    <header><span class="pill spec">Mais escolhido</span><h3>PRO anual</h3><p class="price"><b>R$ 249</b><span>por ano · R$ 20,75/mês</span></p></header>
+    <ul>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Tudo liberado, sem marca d'água, até 4K</li>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Editor de Imagem e programa 3D</li>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>HEVC, ProRes, VP9, plugins e efeitos premium</li>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Chave para 2 computadores</li>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Prioridade no suporte</li>
+    </ul>
+    <a class="btn primary" href="planos/">Assinar anual</a>
+  </article>
+  <article class="plan pro">
+    <header><span class="pill">Flexível</span><h3>PRO mensal</h3><p class="price"><b>R$ 29,90</b><span>por mês · cancele quando quiser</span></p></header>
+    <ul>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Tudo do PRO</li>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Chave renovada a cada cobrança</li>
+      <li><svg class="ic" aria-hidden="true" data-glyph="check" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>Sem fidelidade</li>
+    </ul>
+    <a class="btn secondary" href="planos/">Assinar mensal</a>
+    <p class="fine">Ou <a href="planos/">PRO vitalício por R$ 499</a>, uma vez só.</p>
+  </article>
+</div>
+    <p class="fine center">Valores em reais, impostos incluídos. Pagamento pelo Stripe (cartão e Pix). Reembolso em até 7 dias.</p>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap narrow">
+    <div class="sec-head"><span class="eyebrow"><i class="lens"></i>Perguntas frequentes</span><h2>O que as pessoas perguntam antes de baixar.</h2></div>
+    <details open><summary>Funciona no meu computador?</summary><p>Windows 10 ou 11, 64 bits, 8 GB de RAM e uma placa de vídeo com suporte a WebGL 2 (qualquer uma dos últimos 8 anos). 4K e 3D ficam mais confortáveis com 16 GB.</p></details>
+    <details><summary>O Lite tem limite de tempo ou de projetos?</summary><p>Não. O Lite exporta até 1080p com uma marca d'água discreta e não abre o Imagem, o 3D, os plugins nem os efeitos premium. Todo o resto é igual ao PRO.</p></details>
+    <details><summary>Como a chave PRO funciona?</summary><p>Ao assinar, a chave aparece na sua conta e por e-mail. No programa: Preferências → Licença → colar → Ativar. Vale em 2 computadores, sem internet depois de ativada. Cancelando, a chave deixa de valer na próxima renovação.</p></details>
+    <details><summary>Posso trazer projetos de outro editor?</summary><p>Sim: Arquivo → Importar projeto aceita EDL (CMX 3600), FCPXML, XML do Final Cut 7, OTIO e MLT/Kdenlive. Arquivos suspeitos (entidades externas, mídia fora do seu computador) são recusados.</p></details>
+    <details><summary>E Mac ou Linux?</summary><p>Ainda não. Ao criar a conta você pode marcar seu sistema; avisamos quando houver versão.</p></details>
+    <details><summary>Meus dados ficam onde?</summary><p>Seus projetos e mídias nunca saem do seu computador. A conta guarda só nome, e-mail, plano e chave. Pagamento é processado pelo Stripe; o Milens não vê dados de cartão. Detalhes na <a href="privacidade/">página de privacidade</a>.</p></details>
+  </div>
+</section>
+
+<section class="cta-end">
+  <div class="wrap">
+    <div class="beam" aria-hidden="true"></div>
+    <h2>Comece hoje, sem cartão.</h2>
+    <p>Crie uma conta, baixe o Lite e edite o primeiro projeto em minutos. O PRO fica a uma chave de distância.</p>
+    <div class="row"><a class="btn primary lg" href="conta/"><svg class="ic" aria-hidden="true" data-glyph="download" class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>Baixar o Milens Lite</a><a class="btn ghost lg" href="planos/">Comparar planos</a></div>
+    <p class="fine">Windows 10 ou 11 · 64 bits · instalador de 118 MB</p>
+  </div>
+</section>
+
+</main>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="fcol brandcol">
+      <a class="brand" href=""><svg class="mark2" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="g-mark2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B6BFF"/><stop offset=".5" stop-color="#8A4DFF"/><stop offset="1" stop-color="#FF8A2A"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="#15171A"/><path d="M32 16.1A17 17 0 0 1 32 47.9A17 17 0 0 1 32 16.1Z" fill="url(#g-mark2)"/><circle cx="26" cy="32" r="17" fill="none" stroke="#F4F4F2" stroke-width="3"/><circle cx="38" cy="32" r="17" fill="none" stroke="#F4F4F2" stroke-width="3"/></svg><span>Milens</span></a>
+      <p>Editor de vídeo e motion graphics para Windows. Vídeo, imagem, áudio e 3D no mesmo projeto.</p>
+      <p class="mono">v0.7 · Windows 10 e 11 · 64 bits</p>
+    </div>
+    <div class="fcol"><b>Produto</b><a href="video/">Vídeo</a><a href="imagem/">Imagem</a><a href="audio/">Áudio</a><a href="3d/">3D</a><a href="plugins/">Plugins</a><a href="planos/">Planos e preços</a></div>
+    <div class="fcol"><b>Aprender</b><a href="guia/">Guia de início</a><a href="atalhos/">Atalhos do teclado</a><a href="guia/#importar">Importar de outros editores</a><a href="guia/#ativar">Ativar o PRO</a></div>
+    <div class="fcol"><b>Conta</b><a href="conta/">Criar conta</a><a href="conta/#entrar">Entrar</a><a href="suporte/">Suporte</a><a href="privacidade/">Privacidade</a><a href="mailto:joaom.noelp@gmail.com">joaom.noelp@gmail.com</a></div>
+  </div>
+  <div class="wrap fbar"><span>© 2026 Milens. Feito no Brasil.</span><span class="mono">Lite grátis para sempre · PRO por chave de ativação</span></div>
+</footer>
+<script src="config.js"></script>
+<script type="module" src="header.js"></script>
 <script src="site.js"></script>
-<script src="camera.js"></script>
+
 </body>
 </html>

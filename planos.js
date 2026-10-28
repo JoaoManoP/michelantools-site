@@ -9,7 +9,7 @@ for (const b of document.querySelectorAll('[data-plan]')) b.addEventListener('cl
   if (!configured || !cfg.paymentsEnabled) return (note.innerHTML = '<div class="note">A assinatura abre em breve. Crie sua conta para ser avisado; o Lite já está liberado.</div>');
   const s = await sb();
   const ses = await session();
-  if (!ses) return (location.href = 'conta.html#entrar');
+  if (!ses) return (location.href = '../conta/#entrar');
   b.disabled = true;
   try {
     const r = await fetch(fn, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + ses.access_token, apikey: cfg.supabaseAnonKey }, body: JSON.stringify({ period: b.dataset.plan }) });

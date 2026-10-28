@@ -22,11 +22,11 @@ function list(items) {
 
 async function render(note = '') {
   if (!configured) {
-    root.innerHTML = '<h3>O formulário abre junto com o cadastro</h3><p class="muted">Enquanto isso, as respostas para os problemas mais comuns estão logo acima e no <a href="guia.html">guia</a>.</p>';
+    root.innerHTML = '<h3>O formulário abre junto com o cadastro</h3><p class="muted">Enquanto isso, as respostas para os problemas mais comuns estão logo acima e no <a href="../guia/">guia</a>.</p>';
     return;
   }
   if (!(await session())) {
-    root.innerHTML = '<h3>Entre para abrir um chamado</h3><p class="muted">Os chamados ficam ligados à sua conta, assim a resposta aparece só para você.</p><a class="btn primary" href="conta.html#entrar">Entrar na minha conta</a>';
+    root.innerHTML = '<h3>Entre para abrir um chamado</h3><p class="muted">Os chamados ficam ligados à sua conta, assim a resposta aparece só para você.</p><a class="btn primary" href="../conta/#entrar">Entrar na minha conta</a>';
     return;
   }
   let items = [];
