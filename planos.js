@@ -3,7 +3,8 @@ import { sb, session, configured, explain, esc, cfg } from './account.js';
 const note = document.getElementById('pay-note');
 const mode = document.getElementById('pay-mode');
 const fn = (cfg.supabaseUrl || '') + '/functions/v1/checkout';
-if (cfg.paymentsTest) mode.hidden = false;
+if (cfg.paymentsTest && cfg.paymentsEnabled) mode.hidden = false;
+if (!cfg.paymentsEnabled) for (const b of document.querySelectorAll('[data-plan]')) { b.classList.remove('primary'); b.classList.add('secondary'); b.textContent = 'Em breve'; }
 if (new URLSearchParams(location.search).get('cancelado')) note.innerHTML = '<div class="note">Pagamento cancelado. Nada foi cobrado.</div>';
 for (const b of document.querySelectorAll('[data-plan]')) b.addEventListener('click', async () => {
   if (!configured || !cfg.paymentsEnabled) return (note.innerHTML = '<div class="note">A assinatura abre em breve. Crie sua conta para ser avisado; o Lite já está liberado.</div>');
