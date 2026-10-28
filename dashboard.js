@@ -3,12 +3,12 @@
 import { sb, session, isAdmin, configured, explain, esc } from './account.js';
 import { releaseStatus, uploadRelease, CHANNELS } from './release.js';
 const app = document.getElementById('app');
-const state = { tab: location.hash.replace('#', '') || 'visao', q: '', ov: null, rows: [], notes: {}, licenses: [], payments: [], events: [], tickets: [], audit: [], logs: [] };
+const state = { tab: location.hash.replace('#', '') || 'visao', q: '', ov: null, rows: [], notes: {}, licenses: [], payments: [], events: [], tickets: [], audit: [], logs: [], comments: [] };
 const TOPIC = { instalacao: 'Instalação', uso: 'Uso do programa', exportacao: 'Exportação', sugestao: 'Sugestão', outro: 'Outro' };
 const brl = (c) => (Number(c || 0) / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const when = (t) => (t ? new Date(t).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' }) : '—');
 const day = (t) => (t ? new Date(t).toLocaleDateString('pt-BR') : '—');
-const TABS = [['visao', 'Visão geral'], ['contas', 'Contas'], ['chaves', 'Chaves'], ['pagamentos', 'Pagamentos'], ['acessos', 'Acessos'], ['chamados', 'Chamados'], ['instaladores', 'Instaladores'], ['auditoria', 'Auditoria']];
+const TABS = [['visao', 'Visão geral'], ['contas', 'Contas'], ['chaves', 'Chaves'], ['pagamentos', 'Pagamentos'], ['acessos', 'Acessos'], ['chamados', 'Chamados'], ['instaladores', 'Instaladores'], ['comentarios', 'Comentários'], ['auditoria', 'Auditoria']];
 
 function gate(html) { app.innerHTML = '<div class="acct-card" style="max-width:520px;margin:64px auto">' + html + '</div>'; }
 function login() {
@@ -25,7 +25,7 @@ function login() {
 async function load() {
   const s = await sb();
   const since30 = new Date(Date.now() - 30 * 864e5).toISOString();
-  const [ov, rows, notes, lic, pay, ev, tk, au, lg] = await Promise.all([
+  const [ov, rows, notes, lic, pay, ev, tk, au, lg, cm] = await Promise.all([
     s.rpc('admin_overview'),
     s.from('profiles').select('*').order('created_at', { ascending: false }).limit(1000),
     s.from('admin_notes').select('user_id, notes'),
@@ -34,7 +34,8 @@ async function load() {
     s.from('events').select('*').order('at', { ascending: false }).limit(500),
     s.from('support_tickets').select('*').order('created_at', { ascending: false }).limit(300),
     s.from('audit_log').select('*').order('at', { ascending: false }).limit(300),
-    s.from('download_log').select('*').gte('at', since30).order('at', { ascending: false }).limit(1000)
+    s.from('download_log').select('*').gte('at', since30).order('at', { ascending: false }).limit(1000),
+    s.from('comments').select('*').order('created_at', { ascending: false }).limit(300)
   ]);
   if (rows.error) throw rows.error;
   state.ov = ov.data || {};
@@ -46,6 +47,7 @@ async function load() {
   state.tickets = tk.data || [];
   state.audit = au.data || [];
   state.logs = lg.data || [];
+  state.comments = cm.data || [];
 }
 
 const who = (id) => state.rows.find((x) => x.id === id) || {};
@@ -66,6 +68,7 @@ const EXPORTS = {
   pagamentos: () => csv('pagamentos', ['Data', 'E-mail', 'Tipo', 'Período', 'Status', 'Valor', 'Líquido', 'Moeda', 'Modo', 'Provedor', 'Ref.'], state.payments.map((p) => [when(p.created_at), p.email, p.kind, p.period, p.status, (p.amount_cents / 100).toFixed(2), (p.net_cents / 100).toFixed(2), p.currency, p.live ? 'real' : 'teste', p.provider, p.provider_id])),
   acessos: () => csv('acessos', ['Data', 'E-mail', 'Evento', 'Detalhe', 'Navegador'], state.events.map((e) => [when(e.at), emailOf(e.user_id), e.kind, e.detail, e.ua])),
   downloads: () => csv('downloads', ['Data', 'E-mail', 'Arquivo'], state.logs.map((l) => [when(l.at), emailOf(l.user_id), l.file])),
+  comentarios: () => csv('comentarios', ['Data', 'E-mail', 'Página', 'Status', 'Texto'], state.comments.map((c) => [when(c.created_at), emailOf(c.user_id), c.page, c.status, c.body])),
   chamados: () => csv('chamados', ['Aberto em', 'E-mail', 'Assunto', 'Status', 'Mensagem', 'Resposta'], state.tickets.map((t) => [when(t.created_at), emailOf(t.user_id), TOPIC[t.topic] || t.topic, t.status, t.message, t.reply]))
 };
 
@@ -185,6 +188,17 @@ function instaladores() {
   return Object.entries(CHANNELS).map(([c, ch]) => `<div class="rel-box" data-rel="${c}"><b>Instalador ${ch.label || c}</b><span class="muted" data-rel-info>Verificando…</span><label class="btn small">Enviar novo instalador<input type="file" accept=".exe" data-rel-file hidden></label></div>`).join('') + '<p class="fine">Cada instalador vai em partes de 20 MB com SHA-256. O download na conta é conferido antes de salvar. Cotas: 3 por pessoa e 12 no total por dia.</p>';
 }
 
+function comentarios() {
+  return `
+    <div class="dash-tools"><span class="muted">${state.comments.length} comentário(s) · ${state.comments.filter((c) => c.status === 'oculto').length} oculto(s)</span></div>
+    <div class="rows">${state.comments.map((c) => `
+      <article class="row-card" data-cid="${c.id}">
+        <div class="who"><b>${esc(c.name || '(sem nome)')}</b><span>${esc(emailOf(c.user_id))}</span><span class="muted">${when(c.created_at)} · página ${esc(c.page)}</span><span class="chip-st${c.status === 'visivel' ? ' on' : ''}">${c.status}</span></div>
+        <p style="white-space:pre-wrap">${esc(c.body)}</p>
+        <div class="acts" style="display:flex"><button class="btn small" data-act="toggle">${c.status === 'visivel' ? 'Ocultar' : 'Mostrar'}</button><button class="btn small" data-act="delc">Excluir</button></div>
+      </article>`).join('') || '<div class="empty-state">Nenhum comentário ainda.</div>'}</div>`;
+}
+
 function auditoria() {
   return `<table class="tbl"><thead><tr><th>Quando</th><th>Ação</th><th>Alvo</th><th>Antes</th><th>Depois</th></tr></thead><tbody>
     ${state.audit.map((a) => `<tr><td>${when(a.at)}</td><td>${esc(a.action)}</td><td>${esc(a.target)}</td><td class="mono muted">${esc(a.before ? JSON.stringify(a.before) : '')}</td><td class="mono">${esc(a.after ? JSON.stringify(a.after) : '')}</td></tr>`).join('') || '<tr><td colspan="5" class="muted">Nenhuma ação registrada ainda.</td></tr>'}
@@ -192,7 +206,7 @@ function auditoria() {
 }
 
 function render() {
-  const body = { visao, contas, chaves, pagamentos, acessos, chamados, instaladores, auditoria }[state.tab] || visao;
+  const body = { visao, contas, chaves, pagamentos, acessos, chamados, instaladores, comentarios, auditoria }[state.tab] || visao;
   app.innerHTML = `
     <div class="dash-head"><div><span class="tag rec">Painel do dono</span><h1>Milens</h1></div><div class="acts"><button class="btn small" id="reload">Atualizar</button></div></div>
     <nav class="seg-tabs dash-nav">${TABS.map(([id, l]) => `<button data-tab="${id}" aria-selected="${state.tab === id}">${l}</button>`).join('')}</nav>
@@ -264,6 +278,12 @@ function render() {
     };
     card.querySelector('[data-act=reply]').onclick = () => { const reply = card.querySelector('textarea').value.trim().slice(0, 4000); if (reply) upd({ reply, status: 'respondido', replied_at: new Date().toISOString() }); };
     card.querySelector('[data-act=close]').onclick = () => upd({ status: 'fechado' });
+  });
+  app.querySelectorAll('.row-card[data-cid]').forEach((card) => {
+    const id = Number(card.dataset.cid);
+    const c = state.comments.find((x) => x.id === id);
+    card.querySelector('[data-act=toggle]').onclick = async () => { const r = await (await sb()).from('comments').update({ status: c.status === 'visivel' ? 'oculto' : 'visivel' }).eq('id', id); if (r.error) return alert(explain(r.error)); c.status = c.status === 'visivel' ? 'oculto' : 'visivel'; render(); };
+    card.querySelector('[data-act=delc]').onclick = async () => { if (!confirm('Excluir este comentário?')) return; const r = await (await sb()).from('comments').delete().eq('id', id); if (r.error) return alert(explain(r.error)); state.comments = state.comments.filter((x) => x.id !== id); render(); };
   });
   releaseBox();
 }
