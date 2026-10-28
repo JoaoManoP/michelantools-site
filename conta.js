@@ -97,17 +97,17 @@ async function renderArea(p) {
       <div><dt>E-mail</dt><dd>${esc(p.email)}</dd></div>
       <div><dt>Conta criada em</dt><dd>${new Date(p.created_at).toLocaleDateString('pt-BR')}</dd></div>
     </dl>
-    <div class="dl-block"><b>MichelanTools Lite</b><p class="muted">Edição, câmera, animações, cor e áudio. Exporta MP4 até 1080p com marca d'água. Grátis.</p><button class="btn primary" id="dl-lite">Baixar o Lite (Windows)</button></div>
+    <div class="dl-block"><b>Milens Lite</b><p class="muted">Edição, câmera, animações, cor e áudio. Exporta MP4 até 1080p com marca d'água. Grátis.</p><button class="btn primary" id="dl-lite">Baixar o Lite (Windows)</button></div>
     ${pro
-      ? `<div class="dl-block pro"><b>MichelanTools PRO</b><p class="muted">Tudo do Lite, mais Imagem, 3D, plugins, efeitos premium, 4K, HEVC e ProRes, sem marca d'água.</p><button class="btn primary" id="dl-pro">Baixar o PRO (Windows)</button></div>
+      ? `<div class="dl-block pro"><b>Milens PRO</b><p class="muted">Tudo do Lite, mais Imagem, 3D, plugins, efeitos premium, 4K, HEVC e ProRes, sem marca d'água.</p><button class="btn primary" id="dl-pro">Baixar o PRO (Windows)</button></div>
          ${p.license_key ? `<div class="lic"><b>Sua chave de ativação</b><textarea id="lk" class="mono" readonly rows="3">${esc(p.license_key)}</textarea><button class="btn small" id="cpk">Copiar chave</button><p class="fine">Instale o PRO e, no programa, vá em Preferências (Ctrl+,) → Licença premium → cole a chave → Ativar.</p></div>` : '<div class="note">Sua chave de ativação está sendo gerada. Volte em instantes.</div>'}`
-      : `<div class="dl-block pro off"><b>MichelanTools PRO</b><p class="muted">Imagem, 3D, plugins, efeitos premium (LUT, chroma key, brilho), 4K, HEVC e ProRes, sem marca d'água. Liberado por plano, com chave de ativação que aparece aqui.</p><p class="fine">A assinatura do PRO abre em breve. Quando o plano for ativado na sua conta, o download e a chave aparecem nesta página.</p></div>`}
+      : `<div class="dl-block pro off"><b>Milens PRO</b><p class="muted">Imagem, 3D, plugins, efeitos premium (LUT, chroma key, brilho), 4K, HEVC e ProRes, sem marca d'água. Liberado por plano, com chave de ativação que aparece aqui.</p><p class="fine">A assinatura do PRO abre em breve. Quando o plano for ativado na sua conta, o download e a chave aparecem nesta página.</p></div>`}
     <p class="fine">Os downloads são pessoais, usam links que expiram em 5 minutos e são conferidos pela impressão digital (SHA-256) antes de salvar. Se o Windows avisar "Editor desconhecido", clique em "Mais informações" e em "Executar assim mesmo".</p>`;
   const cpk = root.querySelector('#cpk');
   if (cpk) cpk.addEventListener('click', async () => { try { await navigator.clipboard.writeText(p.license_key); cpk.textContent = 'Copiada'; } catch { root.querySelector('#lk').select(); } });
   root.querySelector('#out').addEventListener('click', async () => { (await sb()).auth.signOut(); tab = 'login'; renderForms(); });
-  wireDownload(root.querySelector('#dl-lite'), 'lite', 'MichelanTools-Lite-Setup.exe');
-  wireDownload(root.querySelector('#dl-pro'), 'completo', 'MichelanTools-Setup.exe');
+  wireDownload(root.querySelector('#dl-lite'), 'lite', 'Milens-Lite-Setup.exe');
+  wireDownload(root.querySelector('#dl-pro'), 'completo', 'Milens-Setup.exe');
 }
 
 async function render() {

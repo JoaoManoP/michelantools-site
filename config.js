@@ -4,5 +4,5 @@ window.MT_CONFIG = {
   supabaseUrl: 'https://rihngufbfpllobmmzfgc.supabase.co',
   supabaseAnonKey: 'sb_publishable_D4hzW9_3gntO2cVeA-00yw_c_GzjJZR',
   // arquivo da versão Lite dentro do bucket privado "releases"
-  liteFile: 'lite/MichelanTools-Lite-Setup.exe'
+  liteFile: 'lite/Milens-Lite-Setup.exe'
 };

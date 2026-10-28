@@ -4,8 +4,8 @@
 // envia; a página da conta registra o download (cotas), baixa as partes por links temporários, junta, confere o
 // SHA-256 e só então salva. Se o resultado não bater, nada é salvo.
 export const CHANNELS = {
-  lite: { dir: 'lite', name: 'MichelanTools-Lite-Setup.exe', label: 'Lite' },
-  completo: { dir: 'completo', name: 'MichelanTools-Setup.exe', label: 'PRO' }
+  lite: { dir: 'lite', name: 'Milens-Lite-Setup.exe', label: 'Lite' },
+  completo: { dir: 'completo', name: 'Milens-Setup.exe', label: 'PRO' }
 };
 const PART = 20 * 1024 * 1024;
 const partNo = (n) => Number((/\.part(\d+)$/.exec(n) || [])[1] || 0);
