@@ -417,3 +417,6 @@ select { appearance: none; -webkit-appearance: none; background-image: url("data
 .check { display: flex !important; gap: 10px; align-items: flex-start; font-weight: 400 !important; font-size: 13.5px !important; color: var(--ink-2); }
 .check input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--red); }
 .danger { color: #FFB4B4 !important; }
+.reel { padding-top: 24px; }
+.reel-frame { max-width: 1100px; margin: 0 auto; }
+.reel-frame video { display: block; width: 100%; border-radius: 12px; background: #0B0D12; }
