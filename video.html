@@ -8,7 +8,7 @@
 <title>Vídeo · Milens</title>
 <meta name="description" content="Edição de vídeo e motion graphics no Milens: timeline por quadros, câmera virtual com profundidade, keyframes com curvas, máscaras de trilha, cor na GPU e exportação verificada.">
 <link rel="icon" href="assets/icon-256.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body style="--track: var(--r)">
@@ -30,20 +30,21 @@
 </header>
 
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter></svg>
 <main>
 
   <div class="p-hero"><div class="wrap">
       <span class="tag r">Vídeo e motion</span>
       <h1>Corte, anime e componha em camadas.</h1>
       <p class="lead">Corte por quadros, anime com curvas e componha em profundidade com uma câmera virtual. Mídia, Edição, Composição, Cor, Áudio e Entrega são páginas da mesma janela, e o monitor mostra exatamente o que vai para o arquivo.</p>
-      <div class="hero-cta"><a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>Baixar o Lite grátis</a><a class="btn" href="guia.html"><svg data-lucide="book-open" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14" /><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" /></svg>Ler o guia</a></div>
+      <div class="hero-cta"><a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>Baixar o Lite grátis</a><a class="btn" href="guia.html"><svg data-lucide="book-open" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5A2 2 0 0 1 5 4h4a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H5a2 2 0 0 1-2-2z"/><path d="M21 5.5A2 2 0 0 0 19 4h-4a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h4a2 2 0 0 0 2-2z"/></svg>Ler o guia</a></div>
     </div></div>
 
   <section>
     <div class="wrap">
       <div class="feature dark reveal">
         <div class="f-text">
-          <p class="label"><svg data-lucide="scissors" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3" /><path d="M8.12 8.12 12 12" /><path d="M20 4 8.12 15.88" /><circle cx="6" cy="18" r="3" /><path d="M14.8 14.8 20 20" /></svg>Edição</p>
+          <p class="label"><svg data-lucide="scissors" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8 20 19"/><path d="M8.5 16 20 5"/></svg>Edição</p>
           <h2>Corte preciso, quadro a quadro</h2>
           <p>A timeline trabalha em quadros inteiros, então nenhum corte cai entre dois quadros. As ferramentas clássicas de ajuste ficam a uma tecla.</p>
           <dl>
@@ -57,7 +58,7 @@
 
       <div class="feature flip reveal">
         <div class="f-text">
-          <p class="label"><svg data-lucide="spline" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="19" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><path d="M5 17A12 12 0 0 1 17 5" /></svg>Composição e animação</p>
+          <p class="label"><svg data-lucide="spline" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19c6 0 4-14 10-14h6"/><path d="m4 19 4-4"/><path d="m20 5-4 4"/><circle cx="4" cy="19" r="1.8" fill="currentColor" stroke="none"/><circle cx="20" cy="5" r="1.8" fill="currentColor" stroke="none"/></svg>Composição e animação</p>
           <h2>Movimento com curvas, não com sorte</h2>
           <p>Aplique uma animação pronta e ela vira keyframes que você ajusta. A folha de keyframes e o editor de curvas ficam no painel de baixo.</p>
           <dl>
@@ -72,7 +73,7 @@
 
       <div class="feature dark reveal">
         <div class="f-text">
-          <p class="label"><svg data-lucide="video" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5" /><rect x="2" y="6" width="14" height="12" rx="2" /></svg>Câmera e profundidade</p>
+          <p class="label"><svg data-lucide="video" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h8l2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m15 10 6-3v10l-6-3z"/></svg>Câmera e profundidade</p>
           <h2>Uma câmera de verdade sobre a composição</h2>
           <p>Arraste a Câmera para a timeline e ela enquadra tudo o que está abaixo. Dê profundidade Z às camadas e cada uma vira um plano no espaço: quando a câmera se move, o que está perto anda mais que o que está longe.</p>
           <dl>
@@ -87,7 +88,7 @@
 
       <div class="feature flip reveal">
         <div class="f-text">
-          <p class="label"><svg data-lucide="palette" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /><circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /><circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /><circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" /></svg>Cor</p>
+          <p class="label"><svg data-lucide="palette" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-2s-1-2 0-3 2 0 3 0a3 3 0 0 0 3-3c0-5-4-10-8-10z"/><circle cx="8" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="10" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="14.5" cy="7" r="1.3" fill="currentColor" stroke="none"/></svg>Cor</p>
           <h2>Gradação na placa de vídeo</h2>
           <p>Rodas de lift, gamma e gain, temperatura, curvas e LUT 3D. Os scopes mostram forma de onda, parade RGB e histograma em tempo real.</p>
           <dl>
@@ -100,7 +101,7 @@
 
       <div class="feature dark reveal">
         <div class="f-text">
-          <p class="label"><svg data-lucide="rocket" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" /><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /></svg>Entrega</p>
+          <p class="label"><svg data-lucide="rocket" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.2 2.2 5 6 5 10l-2 3H9l-2-3c0-4 1.8-7.8 5-10z"/><circle cx="12" cy="10" r="1.6" fill="currentColor" stroke="none"/><path d="m9 16-3 3"/><path d="m15 16 3 3"/><path d="M10 19h4l-2 3z"/></svg>Entrega</p>
           <h2>Exportar sem adivinhar</h2>
           <p>Escolha o destino em cartões e veja o tamanho e o tempo estimados. A estimativa aprende com as exportações feitas na sua máquina.</p>
           <dl>
@@ -130,8 +131,8 @@
 
 <footer>
   <div class="wrap">
-    <span>Milens · editor de vídeo e motion graphics · Windows</span>
-    <nav><a href="index.html#planos">Planos</a><a href="guia.html">Guia</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
+    <span class="plate-foot">Milens · v0.6 · editor de vídeo e motion graphics · Windows · suporte@milens.app</span>
+    <nav><a href="planos.html">Planos</a><a href="guia.html">Guia</a><a href="atalhos.html">Atalhos</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
   </div>
 </footer>
 

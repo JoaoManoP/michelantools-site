@@ -8,7 +8,7 @@
 <title>Áudio · Milens</title>
 <meta name="description" content="Editor de áudio do Milens: forma de onda e espectrograma, corte por amostra, EQ, compressor, limitador, redução de ruído e loudness no padrão das plataformas.">
 <link rel="icon" href="assets/icon-256.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body style="--track: var(--b)">
@@ -30,20 +30,21 @@
 </header>
 
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter></svg>
 <main>
 
   <div class="p-hero"><div class="wrap">
       <span class="tag b">Editor de Áudio</span>
       <h1>Ouça, corte e trate com precisão de amostra.</h1>
       <p class="lead">Veja o som, corte por amostra e limpe ruído no espectrograma. Equalizador, compressor, limitador e medição de loudness deixam a voz no volume certo para internet e TV, dentro do mesmo projeto.</p>
-      <div class="hero-cta"><a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>Baixar o Lite grátis</a><a class="btn" href="guia.html"><svg data-lucide="book-open" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14" /><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" /></svg>Ler o guia</a></div>
+      <div class="hero-cta"><a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>Baixar o Lite grátis</a><a class="btn" href="guia.html"><svg data-lucide="book-open" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5A2 2 0 0 1 5 4h4a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H5a2 2 0 0 1-2-2z"/><path d="M21 5.5A2 2 0 0 0 19 4h-4a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h4a2 2 0 0 0 2-2z"/></svg>Ler o guia</a></div>
     </div></div>
 
   <section>
     <div class="wrap">
       <div class="feature dark reveal">
         <div class="f-text">
-          <p class="label"><svg data-lucide="audio-waveform" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2" /></svg>Ver o som</p>
+          <p class="label"><svg data-lucide="audio-waveform" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h2"/><path d="M7 7v10"/><path d="M11 4v16"/><path d="M15 9v6"/><path d="M19 6v12"/></svg>Ver o som</p>
           <h2>Onda e espectro na mesma tela</h2>
           <p>O espectrograma usa escala de frequência logarítmica e intensidade em dBFS, de −96 dB a 0 dB. Ruídos, cliques e zumbidos ficam visíveis antes de serem audíveis.</p>
           <dl>
@@ -56,7 +57,7 @@
 
       <div class="feature flip reveal">
         <div class="f-text">
-          <p class="label"><svg data-lucide="wand-sparkles" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72" /><path d="m14 7 3 3" /><path d="M5 6v4" /><path d="M19 14v4" /><path d="M10 2v2" /><path d="M7 8H3" /><path d="M21 16h-4" /><path d="M11 3H9" /></svg>Tratamento</p>
+          <p class="label"><svg data-lucide="wand-sparkles" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 15 9"/><path d="m13 7 4 4"/><path d="M18 3v3"/><path d="M16.5 4.5h3"/><path d="M21 9h-2"/><circle cx="4.5" cy="19.5" r="1.3" fill="currentColor" stroke="none"/></svg>Tratamento</p>
           <h2>Efeitos que você ouve antes de aplicar</h2>
           <p>Pré-ouça até 10 segundos com o efeito e aplique na seleção ou no arquivo todo. O original no disco nunca é alterado: “Enviar para o vídeo” grava uma cópia nova.</p>
           <dl>
@@ -71,7 +72,7 @@
 
       <div class="feature dark reveal">
         <div class="f-text">
-          <p class="label"><svg data-lucide="gallery-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3v18" /><rect width="12" height="18" x="6" y="3" rx="2" /><path d="M22 3v18" /></svg>Na timeline</p>
+          <p class="label"><svg data-lucide="gallery-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M6 6h9l3 3v9H6z"/><path d="M22 4v16"/></svg>Na timeline</p>
           <h2>Mixer na página Áudio do vídeo</h2>
           <p>Cada trilha tem EQ, compressor e medidor de loudness. O assistente local remove silêncios e normaliza diálogos sem enviar nada para fora.</p>
         </div>
@@ -95,8 +96,8 @@
 
 <footer>
   <div class="wrap">
-    <span>Milens · editor de vídeo e motion graphics · Windows</span>
-    <nav><a href="index.html#planos">Planos</a><a href="guia.html">Guia</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
+    <span class="plate-foot">Milens · v0.6 · editor de vídeo e motion graphics · Windows · suporte@milens.app</span>
+    <nav><a href="planos.html">Planos</a><a href="guia.html">Guia</a><a href="atalhos.html">Atalhos</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
   </div>
 </footer>
 

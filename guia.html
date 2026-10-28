@@ -8,7 +8,7 @@
 <title>Guia de primeiros passos · Milens</title>
 <meta name="description" content="Guia de primeiros passos do Milens: instalar, criar o projeto, importar, montar e cortar, efeitos e animação, câmera e exportação.">
 <link rel="icon" href="assets/icon-256.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,6 +30,7 @@
 </header>
 
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter></svg>
 <main>
 
   <div class="p-hero">
@@ -38,9 +39,9 @@
       <h1>Seu primeiro vídeo, sem pressa.</h1>
       <p class="lead">Este guia percorre um projeto do começo ao fim: criar, importar, montar, dar vida e exportar. Leva uns quinze minutos, e você pode seguir com seus próprios arquivos.</p>
       <div class="facts">
-        <span><svg data-lucide="clock" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>15 minutos</span>
+        <span><svg data-lucide="clock" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>15 minutos</span>
         <span><svg data-lucide="mouse-pointer-2" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z" /></svg>Nenhuma experiência necessária</span>
-        <span><svg data-lucide="undo-2" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5" /><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" /></svg>Ctrl+Z desfaz qualquer passo</span>
+        <span><svg data-lucide="undo-2" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg>Ctrl+Z desfaz qualquer passo</span>
       </div>
     </div>
   </div>
@@ -65,12 +66,12 @@
             <span class="walk-num">0</span>
             <h3>Instale no Windows</h3>
             <ol class="g-steps">
-              <li><svg data-lucide="log-in" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><polyline points="10 17 15 12 10 7" /><line x1="15" x2="3" y1="12" y2="12" /></svg><span><b>Entre na sua conta</b> em <a href="conta.html">Minha conta</a> e clique em <b>Baixar o Lite</b> (ou <b>Baixar o PRO</b>, se tiver o plano). O download é conferido antes de salvar.</span></li>
-              <li><svg data-lucide="mouse-pointer-click" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4.1 12 6" /><path d="m5.1 8-2.9-.8" /><path d="m6 12-1.9 2" /><path d="M7.2 2.2 8 5.1" /><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" /></svg><span><b>Abra o instalador</b> <code>Milens-Lite-Setup.exe</code> na pasta Downloads.</span></li>
-              <li><svg data-lucide="shield-alert" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg><span>Se o Windows mostrar <b>"O Windows protegeu o computador"</b>, clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>. O aviso aparece porque a versão de teste ainda não tem assinatura digital.</span></li>
-              <li><svg data-lucide="folder-open" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" /></svg><span><b>Escolha a pasta</b> (a sugerida serve) e conclua. O atalho fica na área de trabalho e no menu Iniciar.</span></li>
+              <li><svg data-lucide="log-in" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 4h5a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-5"/><path d="M3 12h11"/><path d="m10 8 4 4-4 4"/></svg><span><b>Entre na sua conta</b> em <a href="conta.html">Minha conta</a> e clique em <b>Baixar o Lite</b> (ou <b>Baixar o PRO</b>, se tiver o plano). O download é conferido antes de salvar.</span></li>
+              <li><svg data-lucide="mouse-pointer-click" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8 10 4-4 1.5L12.5 18z" fill="currentColor"/><path d="m4 4 2 2"/><path d="M3 10h2.5"/><path d="M10 3v2.5"/></svg><span><b>Abra o instalador</b> <code>Milens-Lite-Setup.exe</code> na pasta Downloads.</span></li>
+              <li><svg data-lucide="shield-alert" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z"/><path d="M12 8v5"/><circle cx="12" cy="16" r="1.1" fill="currentColor" stroke="none"/></svg><span>Se o Windows mostrar <b>"O Windows protegeu o computador"</b>, clique em <b>Mais informações</b> e depois em <b>Executar assim mesmo</b>. O aviso aparece porque a versão de teste ainda não tem assinatura digital.</span></li>
+              <li><svg data-lucide="folder-open" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h7l2 2v2H3z"/><path d="M3 11h18l-2 8H5z"/></svg><span><b>Escolha a pasta</b> (a sugerida serve) e conclua. O atalho fica na área de trabalho e no menu Iniciar.</span></li>
             </ol>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Para desinstalar: Configurações → Aplicativos → Milens → Desinstalar. Os projetos que você salvou continuam onde estão.</div>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.5 15a6 6 0 1 1 7 0c-.8.6-1.2 1.4-1.5 3h-4c-.3-1.6-.7-2.4-1.5-3z"/></svg>Para desinstalar: Configurações → Aplicativos → Milens → Desinstalar. Os projetos que você salvou continuam onde estão.</div>
           </div>
           <figure class="walk-media smartscreen" aria-label="Ilustração do aviso do SmartScreen com os dois cliques necessários">
             <div class="ss-win">
@@ -90,12 +91,12 @@
           </div>
           <figure class="walk-media"><img src="assets/guia-timeline.jpg" alt="Janela de edição do Milens"></figure>
           <div class="grid3" style="margin-top:18px">
-            <div><svg data-lucide="panel-left" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /></svg><h3>Trilho, à esquerda</h3><p>As páginas (Início, Mídia, Edição, Composição, Cor, Áudio, Entrega) e os programas Imagem, 3D e Áudio, que abrem em janela própria.</p></div>
-            <div><svg data-lucide="library-big" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="18" x="3" y="3" rx="1" /><path d="M7 3v18" /><path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z" /></svg><h3>Biblioteca</h3><p>Suas mídias, e também os efeitos, transições, animações e títulos, cada um com prévia.</p></div>
-            <div><svg data-lucide="monitor-play" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z" /><path d="M12 17v4" /><path d="M8 21h8" /><rect x="2" y="3" width="20" height="14" rx="2" /></svg><h3>Monitor, no centro</h3><p>Mostra o quadro onde está a agulha. É exatamente o que vai sair no arquivo.</p></div>
-            <div><svg data-lucide="sliders-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="21" x2="14" y1="4" y2="4" /><line x1="10" x2="3" y1="4" y2="4" /><line x1="21" x2="12" y1="12" y2="12" /><line x1="8" x2="3" y1="12" y2="12" /><line x1="21" x2="16" y1="20" y2="20" /><line x1="12" x2="3" y1="20" y2="20" /><line x1="14" x2="14" y1="2" y2="6" /><line x1="8" x2="8" y1="10" y2="14" /><line x1="16" x2="16" y1="18" y2="22" /></svg><h3>Inspetor, à direita</h3><p>Tudo sobre o que está selecionado, em três abas: Propriedades, Efeitos e Animação.</p></div>
-            <div><svg data-lucide="gallery-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3v18" /><rect width="12" height="18" x="6" y="3" rx="2" /><path d="M22 3v18" /></svg><h3>Timeline, embaixo</h3><p>As trilhas de vídeo ficam em cima e as de áudio embaixo. A agulha laranja marca o tempo.</p></div>
-            <div><svg data-lucide="search" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg><h3>Busca, no topo</h3><p>Ctrl+K encontra qualquer comando, mídia ou efeito pelo nome.</p></div>
+            <div><svg data-lucide="panel-left" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h11l3 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 4v16"/></svg><h3>Trilho, à esquerda</h3><p>As páginas (Início, Mídia, Edição, Composição, Cor, Áudio, Entrega) e os programas Imagem, 3D e Áudio, que abrem em janela própria.</p></div>
+            <div><svg data-lucide="library-big" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4v16H4z"/><path d="M10 4h4v16h-4z"/><path d="m16 5 4-1 3 15-4 1z"/></svg><h3>Biblioteca</h3><p>Suas mídias, e também os efeitos, transições, animações e títulos, cada um com prévia.</p></div>
+            <div><svg data-lucide="monitor-play" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h11l3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 17v4"/><path d="M8 21h8"/><path d="m10 8 5 3-5 3z" fill="currentColor"/></svg><h3>Monitor, no centro</h3><p>Mostra o quadro onde está a agulha. É exatamente o que vai sair no arquivo.</p></div>
+            <div><svg data-lucide="sliders-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h7"/><path d="M17 7h3"/><circle cx="14" cy="7" r="2.2"/><path d="M4 17h3"/><path d="M13 17h7"/><circle cx="10" cy="17" r="2.2"/></svg><h3>Inspetor, à direita</h3><p>Tudo sobre o que está selecionado, em três abas: Propriedades, Efeitos e Animação.</p></div>
+            <div><svg data-lucide="gallery-horizontal" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M6 6h9l3 3v9H6z"/><path d="M22 4v16"/></svg><h3>Timeline, embaixo</h3><p>As trilhas de vídeo ficam em cima e as de áudio embaixo. A agulha laranja marca o tempo.</p></div>
+            <div><svg data-lucide="search" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/><circle cx="10.5" cy="10.5" r="1.5" fill="currentColor" stroke="none"/></svg><h3>Busca, no topo</h3><p>Ctrl+K encontra qualquer comando, mídia ou efeito pelo nome.</p></div>
           </div>
         </div>
 
@@ -104,7 +105,7 @@
             <span class="walk-num">1</span>
             <h3>Crie o projeto</h3>
             <p>Na página Início, dê um nome e escolha o formato: 16:9 para YouTube, 9:16 para Reels e Shorts, 1:1 para feed. A taxa de quadros padrão (30) serve para quase tudo.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Não sabe o formato? Comece em 16:9. Dá para mudar depois no inspetor da sequência.</div>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.5 15a6 6 0 1 1 7 0c-.8.6-1.2 1.4-1.5 3h-4c-.3-1.6-.7-2.4-1.5-3z"/></svg>Não sabe o formato? Comece em 16:9. Dá para mudar depois no inspetor da sequência.</div>
           </div>
           <figure class="walk-media"><img src="assets/guia-inicio.jpg" alt="Página Início com os formatos de projeto"></figure>
         </div>
@@ -114,7 +115,7 @@
             <span class="walk-num">2</span>
             <h3>Importe suas mídias</h3>
             <p>Arraste arquivos do Explorer para a janela, ou clique em Importar (Ctrl+I). As miniaturas e formas de onda aparecem em segundos. Formatos difíceis de editar ganham uma cópia otimizada, e o original continua sendo usado na exportação.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Na página Mídia, marque entrada (I) e saída (O) num vídeo longo para levar só o trecho bom.</div>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.5 15a6 6 0 1 1 7 0c-.8.6-1.2 1.4-1.5 3h-4c-.3-1.6-.7-2.4-1.5-3z"/></svg>Na página Mídia, marque entrada (I) e saída (O) num vídeo longo para levar só o trecho bom.</div>
           </div>
           <figure class="walk-media"><img src="assets/guia-midia.jpg" alt="Biblioteca com mídias importadas"></figure>
         </div>
@@ -125,7 +126,7 @@
             <h3>Monte e corte</h3>
             <p>Arraste as mídias para a timeline. Para cortar, use a lâmina (B) e clique no ponto do corte, ou pare a agulha e aperte S. Para encurtar, puxe as bordas do clipe com a seleção (V).</p>
             <p>Clipes em trilhas mais altas ficam por cima: é assim que títulos e logos aparecem sobre o vídeo.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Errou? Ctrl+Z. O histórico, no topo, volta vários passos de uma vez.</div>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.5 15a6 6 0 1 1 7 0c-.8.6-1.2 1.4-1.5 3h-4c-.3-1.6-.7-2.4-1.5-3z"/></svg>Errou? Ctrl+Z. O histórico, no topo, volta vários passos de uma vez.</div>
           </div>
           <figure class="walk-media"><img src="assets/guia-timeline.jpg" alt="Timeline montada com várias trilhas"></figure>
         </div>
@@ -136,7 +137,7 @@
             <h3>Efeitos, transições e animação</h3>
             <p>Selecione um clipe e abra a aba Efeitos da biblioteca. Cada miniatura mostra o antes e o depois. Passe o mouse para ver o efeito em ação e clique para aplicar. Ajuste a intensidade no inspetor, aba Efeitos.</p>
             <p>Na aba Animar, escolha uma entrada, saída ou animação contínua. Na aba Transição, arraste uma até o começo de um clipe.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Quer o mesmo look no vídeo todo? Crie uma Camada de ajuste (aba Títulos) e aplique o efeito nela.</div>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.5 15a6 6 0 1 1 7 0c-.8.6-1.2 1.4-1.5 3h-4c-.3-1.6-.7-2.4-1.5-3z"/></svg>Quer o mesmo look no vídeo todo? Crie uma Camada de ajuste (aba Títulos) e aplique o efeito nela.</div>
           </div>
           <figure class="walk-media"><img src="assets/shot-plugins.jpg" alt="Biblioteca de efeitos com miniaturas de antes e depois"></figure>
         </div>
@@ -147,7 +148,7 @@
             <h3>Mova a câmera</h3>
             <p>Na aba Animar, escolha Câmera e clique num movimento: aproximar, órbita, grua, câmera na mão. O programa cria uma camada de câmera no topo, que enquadra tudo o que está abaixo.</p>
             <p>Para dar profundidade, mude a Profundidade Z das camadas no inspetor: o que estiver mais perto anda mais que o fundo.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Na página Composição, os keyframes da câmera ficam no painel de baixo e podem ser ajustados um a um.</div>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.5 15a6 6 0 1 1 7 0c-.8.6-1.2 1.4-1.5 3h-4c-.3-1.6-.7-2.4-1.5-3z"/></svg>Na página Composição, os keyframes da câmera ficam no painel de baixo e podem ser ajustados um a um.</div>
           </div>
           <figure class="walk-media"><img src="assets/guia-animar.jpg" alt="Movimentos de câmera na biblioteca"></figure>
         </div>
@@ -157,7 +158,7 @@
             <span class="walk-num">6</span>
             <h3>Exporte</h3>
             <p>Clique em Exportar, no canto superior direito. Escolha um destino e o programa sugere formato, qualidade e volume, mostrando antes o tamanho e o tempo estimados. Exportações vão para uma fila, e você pode continuar editando.</p>
-            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></svg>Para internet, o volume já sai em −14 LUFS: nem baixo demais, nem estourado.</div>
+            <div class="tip"><svg data-lucide="lightbulb" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.5 15a6 6 0 1 1 7 0c-.8.6-1.2 1.4-1.5 3h-4c-.3-1.6-.7-2.4-1.5-3z"/></svg>Para internet, o volume já sai em −14 LUFS: nem baixo demais, nem estourado.</div>
           </div>
           <figure class="walk-media"><img src="assets/guia-exportar.jpg" alt="Janela de exportação"></figure>
         </div>
@@ -188,7 +189,7 @@
       <div class="cta reveal">
         <h2>Agora é com você</h2>
         <p>Cada programa tem a sua página, com mais detalhes. E se travar em algum ponto, passe o mouse sobre o botão: a dica explica o que ele faz.</p>
-        <a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>Baixar o Lite grátis</a>
+        <a class="btn primary" href="conta.html"><svg data-lucide="download" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>Baixar o Lite grátis</a>
       </div>
     </div>
   </section>
@@ -197,8 +198,8 @@
 
 <footer>
   <div class="wrap">
-    <span>Milens · editor de vídeo e motion graphics · Windows</span>
-    <nav><a href="index.html#planos">Planos</a><a href="guia.html">Guia</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
+    <span class="plate-foot">Milens · v0.6 · editor de vídeo e motion graphics · Windows · suporte@milens.app</span>
+    <nav><a href="planos.html">Planos</a><a href="guia.html">Guia</a><a href="atalhos.html">Atalhos</a><a href="suporte.html">Suporte</a><a href="conta.html">Minha conta</a></nav>
   </div>
 </footer>
 

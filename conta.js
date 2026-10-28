@@ -77,6 +77,7 @@ function wireDownload(btn, channel, fileLabel) {
     btn.disabled = true;
     try {
       await downloadRelease(await sb(), (p) => (btn.textContent = p === 'verificando' ? 'Conferindo o arquivo…' : 'Baixando… ' + p + '%'), channel);
+      (await sb()).rpc('log_event', { k: 'download', d: channel, u: navigator.userAgent.slice(0, 120) }).catch(() => {});
       btn.textContent = label;
       btn.insertAdjacentHTML('afterend', msg('ok', 'Download conferido e salvo. Abra o ' + fileLabel + ' na pasta Downloads.'));
     } catch (err) {
@@ -90,6 +91,10 @@ function wireDownload(btn, channel, fileLabel) {
 
 async function renderArea(p) {
   const pro = p.plan === 'completo';
+  // a chave válida mais recente vem da tabela de chaves; o perfil é só espelho
+  try { const { data: lic } = await (await sb()).rpc('my_license'); if (lic && lic.key) p.license_key = lic.key; } catch {}
+  try { const { data: pays } = await (await sb()).from('payments').select('created_at, period, status, amount_cents, live').order('created_at', { ascending: false }).limit(10); p.pays = pays || []; } catch { p.pays = []; }
+  (await sb()).rpc('log_event', { k: 'login', d: 'conta', u: navigator.userAgent.slice(0, 120) }).catch(() => {});
   root.innerHTML = `
     <div class="area-head"><div><span class="muted">Minha conta</span><h2>Olá, ${esc(p.name || p.email)}</h2></div><button class="btn small" id="out">Sair</button></div>
     <dl class="kv">
@@ -101,7 +106,8 @@ async function renderArea(p) {
     ${pro
       ? `<div class="dl-block pro"><b>Milens PRO</b><p class="muted">Tudo do Lite, mais Imagem, 3D, plugins, efeitos premium, 4K, HEVC e ProRes, sem marca d'água.</p><button class="btn primary" id="dl-pro">Baixar o PRO (Windows)</button></div>
          ${p.license_key ? `<div class="lic"><b>Sua chave de ativação</b><textarea id="lk" class="mono" readonly rows="3">${esc(p.license_key)}</textarea><button class="btn small" id="cpk">Copiar chave</button><p class="fine">Instale o PRO e, no programa, vá em Preferências (Ctrl+,) → Licença premium → cole a chave → Ativar.</p></div>` : '<div class="note">Sua chave de ativação está sendo gerada. Volte em instantes.</div>'}`
-      : `<div class="dl-block pro off"><b>Milens PRO</b><p class="muted">Imagem, 3D, plugins, efeitos premium (LUT, chroma key, brilho), 4K, HEVC e ProRes, sem marca d'água. Liberado por plano, com chave de ativação que aparece aqui.</p><p class="fine">A assinatura do PRO abre em breve. Quando o plano for ativado na sua conta, o download e a chave aparecem nesta página.</p></div>`}
+      : `<div class="dl-block pro off"><b>Milens PRO</b><p class="muted">Imagem, 3D, plugins, efeitos premium (LUT, chroma key, brilho), 4K, HEVC e ProRes, sem marca d'água. Liberado por plano, com chave de ativação que aparece aqui.</p><a class="btn primary" href="planos.html">Ver planos e assinar</a></div>`}
+    ${p.pays && p.pays.length ? `<div class="dl-block"><b>Seus pagamentos</b>${p.pays.map((y) => `<p class="muted">${new Date(y.created_at).toLocaleDateString('pt-BR')} · ${y.period} · ${y.status}${y.live ? '' : ' (teste)'} · ${(y.amount_cents / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>`).join('')}</div>` : ''}
     <p class="fine">Os downloads são pessoais, usam links que expiram em 5 minutos e são conferidos pela impressão digital (SHA-256) antes de salvar. Se o Windows avisar "Editor desconhecido", clique em "Mais informações" e em "Executar assim mesmo".</p>`;
   const cpk = root.querySelector('#cpk');
   if (cpk) cpk.addEventListener('click', async () => { try { await navigator.clipboard.writeText(p.license_key); cpk.textContent = 'Copiada'; } catch { root.querySelector('#lk').select(); } });
