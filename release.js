@@ -43,6 +43,9 @@ export async function uploadLite(s, file, onProgress = () => {}) {
 }
 
 export async function downloadLite(s, onProgress = () => {}) {
+  // primeiro o registro: ele confere a aprovação e as cotas e é o que libera o bucket pelos próximos minutos
+  const { error: logErr } = await s.rpc('log_download', { f: `${DIR}/${NAME}` });
+  if (logErr) throw new Error(/limite diário de downloads/.test(logErr.message) ? 'Você já baixou 3 vezes hoje. Tente amanhã.' : /limite diário do servidor/.test(logErr.message) ? 'O limite de downloads de hoje acabou. Tente amanhã.' : logErr.message);
   const st = await liteStatus(s);
   if (!st.parts.length || !st.hasSha) throw new Error('A versão Lite ainda está sendo preparada. Tente mais tarde.');
   const paths = [...st.parts.map((f) => `${DIR}/${f.name}`), `${DIR}/${NAME}.sha256`];
@@ -66,8 +69,6 @@ export async function downloadLite(s, onProgress = () => {}) {
   const blob = new Blob(chunks, { type: 'application/octet-stream' });
   onProgress('verificando');
   if ((await sha256(await blob.arrayBuffer())) !== expected) throw new Error('O arquivo baixado não confere com o original. Nada foi salvo; tente de novo.');
-  const { error: logErr } = await s.rpc('log_download', { f: `${DIR}/${NAME}` });
-  if (logErr) throw logErr;
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = NAME;
