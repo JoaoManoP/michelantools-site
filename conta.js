@@ -24,6 +24,7 @@ function renderForms(note = '') {
       <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
       <label>Senha<input name="password" type="password" autocomplete="new-password" minlength="8" required><small>Pelo menos 8 caracteres.</small></label>
       <label>Seu computador<select name="os"><option value="windows">Windows 10 ou 11</option><option value="mac">Mac</option><option value="linux">Linux</option></select><small>O programa é para Windows. Quem marca Mac ou Linux recebe aviso quando houver versão.</small></label>
+      <label class="check"><input type="checkbox" name="aceite" required> <span>Li e aceito os <a href="../termos/" target="_blank">Termos de uso</a> e a <a href="../privacidade/" target="_blank">Política de Privacidade</a>.</span></label>
       <button class="btn primary" type="submit">Criar conta e baixar o Lite</button>
       <p class="fine">A conta serve para baixar o Lite, guardar sua chave PRO e falar com o suporte. Usamos seu e-mail só para isso. Nada de propaganda.</p>
     </form>` : `
@@ -44,6 +45,7 @@ function renderForms(note = '') {
       const s = await sb();
       if (tab === 'signup') {
         if (!d.name.trim()) throw new Error('Preencha seu nome.');
+        if (!d.aceite) throw new Error('Para criar a conta é preciso aceitar os Termos de uso e a Política de Privacidade.');
         const { data, error } = await s.auth.signUp({ email: d.email.trim(), password: d.password, options: { data: { name: d.name.trim(), os: d.os }, emailRedirectTo: location.origin + location.pathname } });
         if (error) throw error;
         if (!data.session) return renderForms(msg('ok', 'Conta criada. Enviamos um link de confirmação para ' + d.email + '. Depois de confirmar, volte aqui e entre.'));
@@ -108,7 +110,19 @@ async function renderArea(p) {
          ${p.license_key ? `<div class="lic"><b>Sua chave de ativação</b><textarea id="lk" class="mono" readonly rows="3">${esc(p.license_key)}</textarea><button class="btn small" id="cpk">Copiar chave</button><p class="fine">Instale o PRO e, no programa, vá em Preferências (Ctrl+,) → Licença premium → cole a chave → Ativar.</p></div>` : '<div class="note">Sua chave de ativação está sendo gerada. Volte em instantes.</div>'}`
       : `<div class="dl-block pro off"><b>Milens PRO</b><p class="muted">Imagem, 3D, plugins, efeitos premium (LUT, chroma key, brilho), 4K, HEVC e ProRes, sem marca d'água. Liberado por plano, com chave de ativação que aparece aqui.</p><a class="btn primary" href="../planos/">Ver planos e assinar</a></div>`}
     ${p.pays && p.pays.length ? `<div class="dl-block"><b>Seus pagamentos</b>${p.pays.map((y) => `<p class="muted">${new Date(y.created_at).toLocaleDateString('pt-BR')} · ${y.period} · ${y.status}${y.live ? '' : ' (teste)'} · ${(y.amount_cents / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>`).join('')}</div>` : ''}
-    <p class="fine">Os downloads são pessoais, usam links que expiram em 5 minutos e são conferidos pela impressão digital (SHA-256) antes de salvar. Se o Windows avisar "Editor desconhecido", clique em "Mais informações" e em "Executar assim mesmo".</p>`;
+    <p class="fine">Os downloads são pessoais, usam links que expiram em 5 minutos e são conferidos pela impressão digital (SHA-256) antes de salvar. Se o Windows avisar "Editor desconhecido", clique em "Mais informações" e em "Executar assim mesmo".</p>
+    <div class="dl-block"><b>Seus dados</b><p class="muted">Guardamos nome, e-mail, plano, chave e seus chamados e comentários. Nada dos seus projetos. <a href="../privacidade/">Política de Privacidade</a> · <a href="../termos/">Termos</a> · <a href="../licenca/">Licença do PRO</a></p><div class="row"><button class="btn small" id="export-data">Baixar meus dados (JSON)</button><button class="btn small danger" id="del-acc">Pedir exclusão da conta</button></div></div>`;
+  root.querySelector('#export-data').addEventListener('click', async () => {
+    const s = await sb();
+    const [t, c] = await Promise.all([s.from('support_tickets').select('*'), s.from('comments').select('*')]);
+    const blob = new Blob([JSON.stringify({ perfil: p, chamados: t.data || [], comentarios: c.data || [] }, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'milens-meus-dados.json'; document.body.append(a); a.click(); a.remove();
+  });
+  root.querySelector('#del-acc').addEventListener('click', async () => {
+    if (!confirm('Pedir a exclusão da conta? Perfil, chaves, chamados e comentários são apagados em até 7 dias. Uma chave PRO ativa deixa de valer.')) return;
+    const { error } = await (await sb()).rpc('open_ticket', { t: 'outro', m: 'Solicito a exclusão da minha conta e dos meus dados (LGPD, art. 18).', v: '' });
+    alert(error ? explain(error) : 'Pedido registrado. Você recebe a confirmação por e-mail em até 7 dias.');
+  });
   const cpk = root.querySelector('#cpk');
   if (cpk) cpk.addEventListener('click', async () => { try { await navigator.clipboard.writeText(p.license_key); cpk.textContent = 'Copiada'; } catch { root.querySelector('#lk').select(); } });
   root.querySelector('#out').addEventListener('click', async () => { (await sb()).auth.signOut(); tab = 'login'; renderForms(); });

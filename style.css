@@ -413,3 +413,7 @@ select { appearance: none; -webkit-appearance: none; background-image: url("data
   .reveal { opacity: 0; transform: translateY(14px); transition: opacity 500ms var(--enter), transform 600ms var(--enter); }
   .reveal.in { opacity: 1; transform: none; }
 }
+
+.check { display: flex !important; gap: 10px; align-items: flex-start; font-weight: 400 !important; font-size: 13.5px !important; color: var(--ink-2); }
+.check input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--red); }
+.danger { color: #FFB4B4 !important; }
