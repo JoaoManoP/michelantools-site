@@ -1,7 +1,7 @@
 import { sb, session, isAdmin, configured, explain, esc } from './account.js';
-import { liteStatus, uploadLite } from './release.js';
+import { releaseStatus, uploadRelease, CHANNELS } from './release.js';
 const app = document.getElementById('app');
-const state = { rows: [], logs: [], filter: 'pendente', q: '' };
+const state = { rows: [], logs: [], filter: 'todos', q: '' };
 
 function gate(html) { app.innerHTML = '<div class="acct-card" style="max-width:520px;margin:64px auto">' + html + '</div>'; }
 
@@ -58,69 +58,66 @@ function tickets() {
 
 // instalador Lite no bucket: estado atual e envio de uma versão nova (dividida em partes)
 async function releaseBox() {
-  const info = app.querySelector('[data-rel-info]');
-  const input = app.querySelector('[data-rel-file]');
-  if (!info) return;
   const s = await sb();
-  const show = async () => {
-    try {
-      const st = await liteStatus(s);
-      info.textContent = st.parts.length ? `${st.parts.length} partes · ${(st.size / 1048576).toFixed(1)} MB · ${new Date(st.when).toLocaleString('pt-BR')}${st.hasSha ? ' · SHA-256 ok' : ' · falta o SHA-256'}` : 'Nenhum instalador enviado ainda.';
-    } catch (e) {
-      info.textContent = explain(e);
-    }
-  };
-  input.onchange = async () => {
-    const f = input.files[0];
-    if (!f) return;
-    input.disabled = true;
-    try {
-      await uploadLite(s, f, (m) => (info.textContent = m));
-      await show();
-    } catch (e) {
-      info.textContent = 'Erro: ' + explain(e);
-    } finally {
-      input.disabled = false;
-      input.value = '';
-    }
-  };
-  show();
+  for (const box of app.querySelectorAll('[data-rel]')) {
+    const c = box.dataset.rel;
+    const info = box.querySelector('[data-rel-info]');
+    const input = box.querySelector('[data-rel-file]');
+    const show = async () => {
+      try {
+        const st = await releaseStatus(s, c);
+        info.textContent = st.parts.length ? `${st.parts.length} partes · ${(st.size / 1048576).toFixed(1)} MB · ${new Date(st.when).toLocaleString('pt-BR')}${st.hasSha ? ' · SHA-256 ok' : ' · falta o SHA-256'}` : 'Nenhum instalador enviado ainda.';
+      } catch (e) {
+        info.textContent = explain(e);
+      }
+    };
+    input.onchange = async () => {
+      const f = input.files[0];
+      if (!f) return;
+      input.disabled = true;
+      try {
+        await uploadRelease(s, f, (m) => (info.textContent = m), c);
+        await show();
+      } catch (e) {
+        info.textContent = 'Erro: ' + explain(e);
+      } finally {
+        input.disabled = false;
+        input.value = '';
+      }
+    };
+    show();
+  }
 }
 
 function render() {
   const r = state.rows;
-  const count = (st) => r.filter((x) => x.status === st).length;
+  const count = (plan) => r.filter((x) => x.plan === plan).length;
   const week = state.logs.filter((l) => Date.now() - new Date(l.at) < 7 * 864e5).length;
   const q = state.q.toLowerCase();
-  const list = r.filter((x) => (state.filter === 'todos' || x.status === state.filter) && (!q || (x.name + ' ' + x.email + ' ' + x.use_case).toLowerCase().includes(q)));
+  const list = r.filter((x) => (state.filter === 'todos' || x.plan === state.filter) && (!q || (x.name + ' ' + x.email).toLowerCase().includes(q)));
   const dlBy = (id) => state.logs.filter((l) => l.user_id === id).length;
   app.innerHTML = `
-    <div class="dash-head"><div><span class="label">Acesso antecipado</span><h1>Painel</h1></div><button class="btn small" id="reload">Atualizar</button></div>
+    <div class="dash-head"><div><span class="label">Contas, planos e instaladores</span><h1>Painel</h1></div><button class="btn small" id="reload">Atualizar</button></div>
     <div class="stats">
-      <div><span>Pedidos</span><b>${r.length}</b></div>
-      <div class="warn"><span>Aguardando</span><b>${count('pendente')}</b></div>
-      <div class="ok"><span>Aprovados</span><b>${count('aprovado')}</b></div>
+      <div><span>Contas</span><b>${r.length}</b></div>
+      <div class="ok"><span>PRO</span><b>${count('completo')}</b></div>
+      <div><span>Lite</span><b>${count('lite')}</b></div>
       <div><span>Downloads em 7 dias</span><b>${week}</b>${spark(state.logs)}</div>
     </div>
-    <div class="rel-box" id="rel"><b>Instalador Lite</b><span class="muted" data-rel-info>Verificando…</span><label class="btn small">Enviar novo instalador<input type="file" accept=".exe" data-rel-file hidden></label></div>
+    ${Object.entries(CHANNELS).map(([c, ch]) => `<div class="rel-box" data-rel="${c}"><b>Instalador ${ch.label}</b><span class="muted" data-rel-info>Verificando…</span><label class="btn small">Enviar novo instalador<input type="file" accept=".exe" data-rel-file hidden></label></div>`).join('')}
     ${tickets()}
     <div class="dash-tools">
-      <div class="seg-tabs">${['pendente', 'aprovado', 'recusado', 'todos'].map((f) => `<button data-f="${f}" aria-selected="${state.filter === f}">${{ pendente: 'Aguardando', aprovado: 'Aprovados', recusado: 'Recusados', todos: 'Todos' }[f]}</button>`).join('')}</div>
-      <input type="search" id="q" placeholder="Buscar por nome, e-mail ou uso" value="${esc(state.q)}">
+      <div class="seg-tabs">${['todos', 'completo', 'lite'].map((f) => `<button data-f="${f}" aria-selected="${state.filter === f}">${{ todos: 'Todas', completo: 'PRO', lite: 'Lite' }[f]}</button>`).join('')}</div>
+      <input type="search" id="q" placeholder="Buscar por nome ou e-mail" value="${esc(state.q)}">
     </div>
     <div class="rows">
       ${list.length ? list.map((x) => `
       <article class="row-card" data-id="${x.id}">
         <div class="who"><b>${esc(x.name || '(sem nome)')}</b><span>${esc(x.email)}</span><span class="muted">${new Date(x.created_at).toLocaleString('pt-BR')} · ${esc(x.os)}${dlBy(x.id) ? ' · ' + dlBy(x.id) + ' download(s)' : ''}</span></div>
-        <p class="use">${x.use_case ? esc(x.use_case) : '<span class="muted">Não contou como vai usar.</span>'}</p>
         <div class="acts">
-          <span class="chip s-${x.status}">${{ pendente: 'Aguardando', aprovado: 'Aprovado', recusado: 'Recusado' }[x.status]}</span>
-          <select data-k="plan" aria-label="Plano"><option value="lite" ${x.plan === 'lite' ? 'selected' : ''}>Lite</option><option value="completo" ${x.plan === 'completo' ? 'selected' : ''}>Completo</option></select>
-          ${x.status !== 'aprovado' ? '<button class="btn small primary" data-st="aprovado">Aprovar</button>' : ''}
-          ${x.status !== 'recusado' ? '<button class="btn small" data-st="recusado">Recusar</button>' : ''}
-          ${x.status !== 'pendente' ? '<button class="btn small" data-st="pendente">Voltar para análise</button>' : ''}
+          <select data-k="plan" aria-label="Plano"><option value="lite" ${x.plan === 'lite' ? 'selected' : ''}>Lite</option><option value="completo" ${x.plan === 'completo' ? 'selected' : ''}>PRO</option></select>
         </div>
-        <input data-k="key" class="mono" placeholder="Chave premium (gere com scripts/licenca.js e cole aqui)" value="${esc(x.license_key || '')}">
+        <input data-k="key" class="mono" placeholder="Chave de ativação PRO (node scripts/licenca.js emitir e-mail) — cole aqui" value="${esc(x.license_key || '')}">
         <textarea data-k="notes" rows="1" placeholder="Anotação (só você vê)">${esc((state.notes || {})[x.id] || '')}</textarea>
       </article>`).join('') : '<div class="empty-state">Nada por aqui neste filtro.</div>'}
     </div>`;
@@ -154,7 +151,6 @@ function render() {
       Object.assign(state.rows.find((x) => x.id === id), patch);
       render();
     };
-    card.querySelectorAll('[data-st]').forEach((b) => (b.onclick = () => save({ status: b.dataset.st })));
     card.querySelector('[data-k=plan]').onchange = (e) => save({ plan: e.target.value });
     card.querySelector('[data-k=key]').onchange = (e) => save({ license_key: e.target.value.trim().slice(0, 4000) });
     card.querySelector('[data-k=notes]').onchange = async (e) => {

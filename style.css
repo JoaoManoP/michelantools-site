@@ -797,3 +797,8 @@ section.dark::after { inset: -28px; animation: none; }
 
 .lic { margin-top: 18px; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line); border-left: 3px solid var(--dot); background: var(--paper); display: grid; gap: 10px; }
 .lic textarea, .row-card input[data-k=key] { width: 100%; box-sizing: border-box; font: 500 12px/1.4 var(--mono); word-break: break-all; }
+
+.dl-block { margin-top: 16px; padding: 16px 18px; border-radius: 12px; border: 1px solid var(--line); background: var(--paper); display: grid; gap: 8px; }
+.dl-block.pro { border-left: 3px solid var(--dot); }
+.dl-block.off { opacity: 0.85; }
+.dl-block p { margin: 0; }
