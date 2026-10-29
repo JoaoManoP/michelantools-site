@@ -549,3 +549,29 @@ video { max-width: 100%; height: auto; }
 .plans4 .plan { --stub: 178px; }
 .plans4 .plan { --stub: 204px; }
 .plan.featured .btn.secondary { background: #0B0D12; border-color: #0B0D12; color: #fff; }
+/* pagamento simulado */
+.pay-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; align-items: start; }
+@media (max-width: 860px) { .pay-grid { grid-template-columns: 1fr; } }
+.pay-sum { padding: 26px; border-radius: var(--r-lg); background: var(--red); color: #fff; display: grid; gap: 14px; }
+.pay-sum h2 { font-family: var(--poster); font-weight: 400; text-transform: uppercase; font-size: 40px; letter-spacing: 0; }
+.pay-sum .price span, .pay-sum .muted, .pay-sum .ticks li { color: rgba(255,255,255,.88); }
+.pay-sum .ticks .ic { color: #fff; }
+.pay-sum .ticks li::before { content: "✓"; margin-right: 8px; }
+.pay-sum .seg-tabs { background: rgba(0,0,0,.22); }
+.pay-sum .seg-tabs button { color: #fff; }
+.pay-sum .seg-tabs button[aria-selected=true] { background: #0B0D12; color: #fff; border-color: #0B0D12; }
+.pay-sum .pill.spec { justify-self: start; background: #0B0D12; color: #fff; }
+.pay-form { display: grid; gap: 16px; }
+.pay-form .note { margin-top: 0; }
+.two-in { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pix { display: grid; grid-template-columns: 200px 1fr; gap: 18px; align-items: start; }
+.pix .qr { width: 200px; height: 200px; border-radius: 12px; }
+.pix > div { display: grid; gap: 10px; }
+@media (max-width: 560px) { .pix { grid-template-columns: 1fr; } }
+.processing { display: grid; justify-items: center; gap: 10px; padding: 40px 0; text-align: center; }
+.spinner { width: 46px; height: 46px; border-radius: 50%; border: 4px solid var(--line-2); border-top-color: var(--red); animation: spin .8s linear infinite; }
+.receipt { margin-top: 28px; padding: 22px; border-radius: var(--r-lg); background: #EFEBE3; color: #0B0D12; display: grid; gap: 12px; max-width: 560px; }
+.receipt .r-head { display: flex; justify-content: space-between; font-family: var(--poster); font-size: 24px; text-transform: uppercase; }
+.receipt .kv dt { color: #5A5F68; }
+.receipt .lic code { background: #0B0D12; color: #2EE57A; }
+.receipt .fine { color: #5A5F68; }

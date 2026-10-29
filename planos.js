@@ -4,7 +4,8 @@ const note = document.getElementById('pay-note');
 const mode = document.getElementById('pay-mode');
 const fn = (cfg.supabaseUrl || '') + '/functions/v1/checkout';
 if (cfg.paymentsTest && cfg.paymentsEnabled) mode.hidden = false;
-if (!cfg.paymentsEnabled) for (const b of document.querySelectorAll('[data-plan]')) { b.classList.remove('primary'); b.classList.add('secondary'); b.textContent = 'Em breve'; }
+// sem pagamento real ligado: os botões levam à simulação completa do checkout
+if (!cfg.paymentsEnabled) { for (const b of document.querySelectorAll('[data-plan]')) { b.addEventListener('click', (e) => { e.stopImmediatePropagation(); location.href = '../pagamento/?plano=' + b.dataset.plan; }, true); b.lastChild.textContent = b.lastChild.textContent.replace(/^(Assinar|Comprar)/, 'Simular'); } if (mode) { mode.hidden = false; mode.innerHTML = 'Pagamentos em <b>simulação</b>: o fluxo completo funciona e nada é cobrado. O pagamento real abre quando o PRO for liberado.'; } }
 if (new URLSearchParams(location.search).get('cancelado')) note.innerHTML = '<div class="note">Pagamento cancelado. Nada foi cobrado.</div>';
 for (const b of document.querySelectorAll('[data-plan]')) b.addEventListener('click', async () => {
   if (!configured || !cfg.paymentsEnabled) return (note.innerHTML = '<div class="note">A assinatura abre em breve. Crie sua conta para ser avisado; o Lite já está liberado.</div>');
