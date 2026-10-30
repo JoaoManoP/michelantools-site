@@ -20,5 +20,11 @@
     const io = new IntersectionObserver((list) => { for (const x of list) if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }, { threshold: 0.06, rootMargin: '0px 0px -5% 0px' });
     sections.forEach((s) => io.observe(s));
   }
+  // vídeos e exemplos: sempre tocam sozinhos, mudos e em loop (pedido do dono); fora da tela pausam só para poupar a máquina
+  const vids = [...document.querySelectorAll('video[data-autoplay]')];
+  if (vids.length && 'IntersectionObserver' in window) {
+    const vo = new IntersectionObserver((list) => { for (const x of list) { if (x.isIntersecting) x.target.play().catch(() => {}); else x.target.pause(); } }, { threshold: 0.35 });
+    vids.forEach((v) => vo.observe(v));
+  }
   document.querySelectorAll('.faq .wrap').forEach((box) => box.addEventListener('toggle', (e) => { if (e.target.open) box.querySelectorAll('details[open]').forEach((d) => { if (d !== e.target) d.open = false; }); }, true));
 })();

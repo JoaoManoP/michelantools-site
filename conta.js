@@ -91,11 +91,16 @@ function wireDownload(btn, channel, fileLabel) {
   });
 }
 
+const AI_LABEL = { imagem: 'Imagem', video: 'Imagem → vídeo', fundo: 'Remover fundo', ampliar: 'Ampliar', preencher: 'Preencher área', comando: 'Comando' };
+const AI_STATUS = { fila: 'na fila', processando: 'gerando', pronto: 'pronto', erro: 'erro', estornado: 'estornado (créditos devolvidos)' };
 async function renderArea(p) {
   const pro = p.plan === 'completo';
   // a chave válida mais recente vem da tabela de chaves; o perfil é só espelho
   try { const { data: lic } = await (await sb()).rpc('my_license'); if (lic && lic.key) p.license_key = lic.key; } catch {}
   try { const { data: pays } = await (await sb()).from('payments').select('created_at, period, status, amount_cents, live').order('created_at', { ascending: false }).limit(10); p.pays = pays || []; } catch { p.pays = []; }
+  // IA: saldo do mês e últimos pedidos (supabase/ia.sql); sem as tabelas, o bloco some
+  try { const { data: cr } = await (await sb()).rpc('my_credits'); p.ai = cr || null; } catch { p.ai = null; }
+  try { const { data: jobs } = await (await sb()).from('ai_jobs').select('created_at, kind, status, cost, prompt').order('created_at', { ascending: false }).limit(10); p.aiJobs = jobs || []; } catch { p.aiJobs = []; }
   (await sb()).rpc('log_event', { k: 'login', d: 'conta', u: navigator.userAgent.slice(0, 120) }).catch(() => {});
   root.innerHTML = `
     <div class="area-head"><div><span class="muted">Minha conta</span><h2>Olá, ${esc(p.name || p.email)}</h2></div><button class="btn small" id="out">Sair</button></div>
@@ -109,13 +114,14 @@ async function renderArea(p) {
       ? `<div class="dl-block pro"><b>Milens PRO</b><p class="muted">Tudo do Lite, mais Imagem, 3D, plugins, efeitos premium, 4K, HEVC e ProRes, sem marca d'água.</p><button class="btn primary" id="dl-pro">Baixar o PRO (Windows)</button></div>
          ${p.license_key ? `<div class="lic"><b>Sua chave de ativação</b><textarea id="lk" class="mono" readonly rows="3">${esc(p.license_key)}</textarea><button class="btn small" id="cpk">Copiar chave</button><p class="fine">Instale o PRO e, no programa, vá em Preferências (Ctrl+,) → Licença premium → cole a chave → Ativar.</p></div>` : '<div class="note">Sua chave de ativação está sendo gerada. Volte em instantes.</div>'}`
       : `<div class="dl-block pro off"><b>Milens PRO</b><p class="muted">Imagem, 3D, plugins, efeitos premium (LUT, chroma key, brilho), 4K, HEVC e ProRes, sem marca d'água. Liberado por plano, com chave de ativação que aparece aqui.</p><a class="btn primary" href="../planos/">Ver planos e assinar</a></div>`}
+    ${p.ai && p.ai.pro ? `<div class="dl-block"><b>Créditos de IA</b><p class="muted"><b>${p.ai.left_month} de ${p.ai.allowance}</b> deste mês · ${p.ai.extra} extras · renova em ${new Date(p.ai.reset_at).toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' })}</p>${p.aiJobs.length ? p.aiJobs.map((j) => `<p class="muted">${new Date(j.created_at).toLocaleDateString('pt-BR')} · ${esc(AI_LABEL[j.kind] || j.kind)} · ${j.cost} crédito(s) · ${esc(AI_STATUS[j.status] || j.status)}${j.prompt ? ' · “' + esc(j.prompt.slice(0, 60)) + '”' : ''}</p>`).join('') : '<p class="fine">Nenhum pedido ainda. No programa: Ctrl+Alt+I (gerar) ou Ctrl+Shift+Espaço (comando).</p>'}<a class="btn small" href="../ia/">Comprar créditos extras</a></div>` : ''}
     ${p.pays && p.pays.length ? `<div class="dl-block"><b>Seus pagamentos</b>${p.pays.map((y) => `<p class="muted">${new Date(y.created_at).toLocaleDateString('pt-BR')} · ${y.period} · ${y.status}${y.live ? '' : ' (teste)'} · ${(y.amount_cents / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>`).join('')}</div>` : ''}
     <p class="fine">Os downloads são pessoais, usam links que expiram em 5 minutos e são conferidos pela impressão digital (SHA-256) antes de salvar. Se o Windows avisar "Editor desconhecido", clique em "Mais informações" e em "Executar assim mesmo".</p>
     <div class="dl-block"><b>Seus dados</b><p class="muted">Guardamos nome, e-mail, plano, chave e seus chamados e comentários. Nada dos seus projetos. <a href="../privacidade/">Política de Privacidade</a> · <a href="../termos/">Termos</a> · <a href="../licenca/">Licença do PRO</a></p><div class="row"><button class="btn small" id="export-data">Baixar meus dados (JSON)</button><button class="btn small danger" id="del-acc">Pedir exclusão da conta</button></div></div>`;
   root.querySelector('#export-data').addEventListener('click', async () => {
     const s = await sb();
     const [t, c] = await Promise.all([s.from('support_tickets').select('*'), s.from('comments').select('*')]);
-    const blob = new Blob([JSON.stringify({ perfil: p, chamados: t.data || [], comentarios: c.data || [] }, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify({ perfil: p, chamados: t.data || [], comentarios: c.data || [], ia_pedidos: p.aiJobs || [] }, null, 2)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'milens-meus-dados.json'; document.body.append(a); a.click(); a.remove();
   });
   root.querySelector('#del-acc').addEventListener('click', async () => {
