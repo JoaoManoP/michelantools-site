@@ -14,6 +14,8 @@
     document.addEventListener('click', (e) => { if (!pm.contains(e.target)) set(false); if (nav && nav.classList.contains('open') && !nav.contains(e.target) && mb && !mb.contains(e.target)) { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); } });
   }
   const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // fundo que acompanha a rolagem (retícula e perfuração andam mais devagar que a página)
+  if (!still) { let raf = 0; const sy = () => { raf = 0; document.documentElement.style.setProperty('--sy', String(Math.round(window.scrollY))); }; window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(sy); }, { passive: true }); sy(); }
   const sections = [...document.querySelectorAll('main > section:not(.hero):not(.phero):not(.news-strip)')];
   if (!still && 'IntersectionObserver' in window) {
     sections.forEach((s) => s.classList.add('reveal'));

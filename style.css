@@ -40,3 +40,45 @@ h1{font-size:clamp(44px,6.6vw,96px)}
 .reel-frame{max-width:1100px;margin:0 auto}
 .mode-reel{padding:44px 0 12px}.mode-reel video{max-width:100%;height:auto}
 .reel-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:10px;background:#0B0D12}
+/* v6 (30/10): mais compacto, títulos sem colisão de acento, letreiro contínuo, fundo que acompanha a rolagem */
+:root{--wrap:min(1100px,calc(100% - 40px))}
+h1,h2{line-height:1.16}
+.giant{display:none}
+.hero.poster{min-height:0;padding:28px 0 0;background:radial-gradient(circle at 75% 25%,#57151b99,transparent 38%)}
+.hero.poster>.wrap{min-height:0;padding-block:48px 56px}
+.phero{padding:clamp(48px,6vw,84px) 0}
+.phero.band{padding:56px 0 72px}
+.programs,.feats,.who,.cases,.pricing,.faq,.guide,.keys-wrap,.prose,.compare,.support,.changelog,.comments{padding:clamp(44px,5.5vw,76px) 0}
+.zine-manifesto,.cta-end{padding:68px 0}
+.product-interlude{padding:48px 0}
+.feature.big{padding:clamp(48px,6vw,84px) 0}
+.news-strip{padding:36px 0}
+.acct{padding:60px 0}
+.ftr{padding:52px 0 24px}
+.sec-head{margin-bottom:26px}
+.sec-head p{margin-bottom:0}
+.gbody{gap:40px}.acct-grid{gap:44px}.guide-grid{gap:36px}.keys-sec{margin-bottom:36px}
+.prose h2{margin-top:34px}
+.perf-run{gap:0;animation-duration:40s}
+.perf-run span{padding-right:45px}
+/* fundo fixo: retícula, perfuração de filme nas bordas e dois brilhos que andam devagar com a rolagem */
+html::before{content:"";position:fixed;inset:-30vh 0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle at 82% 18%,#ff3b3b2e,transparent 30%),
+    radial-gradient(circle at 12% 70%,#3b82ff24,transparent 32%),
+    radial-gradient(circle,#ffffff12 1px,transparent 1.4px) 0 0/22px 22px;
+  transform:translate3d(0,calc(var(--sy,0) * -0.12px),0)}
+html::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(#0000 0 8px,#ffffff12 8px 22px,#0000 22px) 8px calc(var(--sy,0) * -0.35px)/12px 30px repeat-y,
+             linear-gradient(#0000 0 8px,#ffffff12 8px 22px,#0000 22px) calc(100% - 8px) calc(var(--sy,0) * -0.35px)/12px 30px repeat-y}
+html{background:var(--ink)}
+body{background:transparent}
+@media(max-width:800px){.hero.poster>.wrap{padding-block:36px 40px}html::after{display:none}}
+.hero.poster h1{font-size:clamp(40px,5.2vw,76px);max-width:13ch}
+.sec-head h2{margin-bottom:12px}
+h2{font-size:clamp(34px,4.6vw,62px)}
+.hero.poster .lead{font-size:clamp(16px,1.4vw,19px);max-width:52ch}
+.hero.poster .mascot-plate{width:100%;max-width:min(400px,38vw)}
+
+@media(max-width:1100px){.page-mascot{width:58px;height:74px;padding:5px 5px 16px;border-width:2px;box-shadow:3px 3px var(--red)}}
+.phero{padding-bottom:clamp(28px,3.5vw,44px)}
