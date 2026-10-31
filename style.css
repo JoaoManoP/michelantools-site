@@ -105,3 +105,15 @@ h2{font-size:clamp(34px,4.6vw,62px)}
 .cta-end h2{font-size:clamp(46px,6.4vw,100px);max-width:13ch;margin-bottom:18px}
 .cta-end{padding:60px 0}
 .cta-end .btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}.cta-end .btn.primary:hover{box-shadow:5px 5px 0 var(--paper)}.cta-end .fine{color:#ffffffc4}
+/* página de exemplos (receitas e prompts) */
+.ex-grid{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.ex-card{align-items:stretch;text-align:left;min-height:0;padding:30px 22px 40px}
+.ex-card h3{text-align:center}
+.ex-tag{text-align:center;font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#3c3f47}
+.ex-pal{display:flex;gap:4px;justify-content:center}.ex-pal i{width:20px;height:20px;border-radius:4px;border:1px solid #0003}
+.ex-card details{border-top:1px dashed #0004;padding-top:8px}.ex-card summary{font:400 16px var(--display);cursor:pointer}
+.ex-card ol{margin:8px 0 0;padding-left:18px;display:grid;gap:6px;font-size:13px;color:#2e3038}
+.ex-prompt{background:#fff;border:1px solid #0002;border-radius:8px;padding:10px 12px}.ex-prompt p{font-size:13px;color:#2e3038;margin:4px 0 8px}
+.ex-prompt.en{background:#f6f3ec}.ex-lbl{font:700 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.ex-card .fine{font-size:11px;color:#55585f;margin:0}
+.ex-copy{background:var(--ink)!important;color:var(--paper)!important;border:0!important;padding:7px 12px!important;font:700 11px var(--mono)!important;letter-spacing:.06em}.ex-copy:hover{background:var(--red)!important}.ex-card:nth-child(n){transform:none}
