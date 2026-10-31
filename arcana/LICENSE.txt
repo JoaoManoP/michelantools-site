@@ -1,0 +1,12 @@
+© 2026 GoPixel Technology. Todos os direitos reservados.
+
+Este site, seu código (HTML, CSS, JavaScript), textos, imagens, vídeos, ilustrações,
+a mascote Milens, o jogo Milens Arcana e demais materiais pertencem à GoPixel Technology
+(https://gopixeltech.com.br/) e são protegidos pela Lei de Direitos Autorais (Lei 9.610/1998)
+e pela Lei de Propriedade Industrial (Lei 9.279/1996).
+
+O código está visível apenas porque sites são entregues ao navegador. Isso NÃO concede
+licença de uso. É proibido copiar, modificar, redistribuir, hospedar em outro endereço ou
+reutilizar qualquer parte deste material, total ou parcialmente, sem autorização por escrito.
+
+Pedidos de autorização: gopixel.teck@gmail.com

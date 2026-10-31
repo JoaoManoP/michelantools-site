@@ -1,6 +1,8 @@
-# MichelanTools — site
+# Milens — site
 
-Apresentação do MichelanTools, editor de vídeo e motion graphics para Windows, em teste fechado.
+Site oficial do Milens, da GoPixel Technology: https://joaomanop.github.io/milens-site/
 
-- Site: https://joaomanop.github.io/michelantools-site/
-- Acesso antecipado: https://joaomanop.github.io/michelantools-site/conta.html
+© 2026 GoPixel Technology. Todos os direitos reservados.
+Este repositório NÃO é código aberto. O conteúdo está visível apenas porque o site é publicado
+a partir dele. Copiar, modificar, redistribuir ou reutilizar qualquer parte sem autorização
+por escrito é proibido. Veja LICENSE.txt. Contato: gopixel.teck@gmail.com
