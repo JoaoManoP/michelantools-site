@@ -5,7 +5,9 @@
 // SHA-256 e só então salva. Se o resultado não bater, nada é salvo.
 export const CHANNELS = {
   lite: { dir: 'lite', name: 'Milens-Lite-Setup.exe', label: 'Lite' },
-  completo: { dir: 'completo', name: 'Milens-Setup.exe', label: 'PRO' }
+  completo: { dir: 'completo', name: 'Milens-Setup.exe', label: 'PRO' },
+  // jogo escondido (Milens Arcana): qualquer conta logada baixa; não conta na cota de downloads
+  arcana: { dir: 'arcana', name: 'Milens-Arcana.exe', label: 'Arcana', free: true }
 };
 const PART = 20 * 1024 * 1024;
 const partNo = (n) => Number((/\.part(\d+)$/.exec(n) || [])[1] || 0);
@@ -49,7 +51,7 @@ export async function uploadRelease(s, file, onProgress = () => {}, channel = 'l
 export async function downloadRelease(s, onProgress = () => {}, channel = 'lite') {
   const { dir, name } = ch(channel);
   // primeiro o registro: confere o plano e as cotas e é o que libera o bucket pelos próximos minutos
-  const { error: logErr } = await s.rpc('log_download', { f: `${dir}/${name}` });
+  const { error: logErr } = CHANNELS[channel] && CHANNELS[channel].free ? { error: null } : await s.rpc('log_download', { f: `${dir}/${name}` });
   if (logErr) throw new Error(/limite diário de downloads/.test(logErr.message) ? 'Você já baixou 3 vezes hoje. Tente amanhã.' : /limite diário do servidor/.test(logErr.message) ? 'O limite de downloads de hoje acabou. Tente amanhã.' : /arquivo inválido/.test(logErr.message) ? 'O PRO só está disponível para quem tem o plano.' : logErr.message);
   const st = await releaseStatus(s, channel);
   if (!st.parts.length || !st.hasSha) throw new Error('Este instalador ainda está sendo preparado. Tente mais tarde.');

@@ -30,3 +30,36 @@
   }
   document.querySelectorAll('.faq .wrap').forEach((box) => box.addEventListener('toggle', (e) => { if (e.target.open) box.querySelectorAll('details[open]').forEach((d) => { if (d !== e.target) d.open = false; }); }, true));
 })();
+// (segredo) a câmera guarda um baralho: 5 cliques rápidos numa lente do mascote, ou digitar "arcana", abre o jogo
+(() => {
+  const base = (() => { const s = document.querySelector('script[src$="site.js"]'); return s ? new URL('.', s.src).href : location.origin + '/'; })();
+  const open = () => {
+    const f = document.createElement('div');
+    f.setAttribute('aria-hidden', 'true');
+    f.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#fff;opacity:1;transition:opacity .5s;pointer-events:none';
+    document.body.append(f);
+    try { const a = new (window.AudioContext || window.webkitAudioContext)(); const b = a.createBuffer(1, a.sampleRate * 0.12, a.sampleRate); const d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length); const n = a.createBufferSource(); n.buffer = b; n.connect(a.destination); n.start(); } catch {}
+    requestAnimationFrame(() => { f.style.opacity = '0.85'; });
+    setTimeout(() => { location.href = base + 'arcana/'; }, 420);
+  };
+  let hits = [];
+  document.addEventListener('click', (e) => {
+    const svg = e.target.closest && e.target.closest('svg.hero-mark, .page-mascot svg, svg.scene-mark');
+    if (!svg) return;
+    const t = e.target;
+    const lens = t.tagName === 'circle' && /#(3B82FF|FF3B3B|EFEBE3)/i.test(t.getAttribute('fill') || '');
+    if (!lens) return;
+    const now = Date.now();
+    hits = hits.filter((x) => now - x < 2200);
+    hits.push(now);
+    if (hits.length >= 5) { hits = []; open(); }
+  });
+  document.querySelectorAll('svg.hero-mark, .page-mascot').forEach((el) => { el.style.pointerEvents = 'auto'; });
+  let typed = '';
+  document.addEventListener('keydown', (e) => {
+    if (e.target.closest && e.target.closest('input, textarea, [contenteditable]')) return;
+    if (e.key.length !== 1) return;
+    typed = (typed + e.key.toLowerCase()).slice(-6);
+    if (typed === 'arcana') open();
+  });
+})();

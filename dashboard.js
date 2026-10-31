@@ -208,10 +208,12 @@ function auditoria() {
 function render() {
   const body = { visao, contas, chaves, pagamentos, acessos, chamados, instaladores, comentarios, auditoria }[state.tab] || visao;
   app.innerHTML = `
-    <div class="dash-head"><div><span class="tag rec">Painel do dono</span><h1>Milens</h1></div><div class="acts"><button class="btn small" id="reload">Atualizar</button></div></div>
+    <div class="dash-head"><div><span class="tag rec" id="rec-tag" title="">Painel do dono</span><h1>Milens</h1></div><div class="acts"><button class="btn small" id="reload">Atualizar</button></div></div>
     <nav class="seg-tabs dash-nav">${TABS.map(([id, l]) => `<button data-tab="${id}" aria-selected="${state.tab === id}">${l}</button>`).join('')}</nav>
     <section class="dash-body">${body()}</section>`;
   app.querySelector('#reload').onclick = () => boot();
+  // segredo: 3 cliques na etiqueta REC abrem o Milens Arcana (o instalador fica na aba Instaladores, pasta arcana/)
+  { let h = []; const tag = app.querySelector('#rec-tag'); if (tag) tag.onclick = () => { const n = Date.now(); h = h.filter((t) => n - t < 1500).concat(n); if (h.length >= 3) location.href = '../arcana/'; }; }
   app.querySelectorAll('[data-tab]').forEach((b) => (b.onclick = () => { state.tab = b.dataset.tab; location.hash = state.tab; render(); }));
   app.querySelectorAll('[data-csv]').forEach((b) => (b.onclick = () => EXPORTS[b.dataset.csv]()));
   const qi = app.querySelector('#q');

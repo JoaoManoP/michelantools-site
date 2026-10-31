@@ -103,7 +103,8 @@ async function renderArea(p) {
   try { const { data: jobs } = await (await sb()).from('ai_jobs').select('created_at, kind, status, cost, prompt').order('created_at', { ascending: false }).limit(10); p.aiJobs = jobs || []; } catch { p.aiJobs = []; }
   (await sb()).rpc('log_event', { k: 'login', d: 'conta', u: navigator.userAgent.slice(0, 120) }).catch(() => {});
   root.innerHTML = `
-    <div class="area-head"><div><span class="muted">Minha conta</span><h2>Olá, ${esc(p.name || p.email)}</h2></div><button class="btn small" id="out">Sair</button></div>
+    <div class="area-head"><div><span class="muted">Minha conta</span><h2>Olá, ${esc(p.name || p.email)}</h2></div><div style="display:flex;gap:10px;align-items:center"><svg id="cam-av" viewBox="0 0 256 256" width="38" height="38" aria-hidden="true" style="cursor:default"><path fill="#0B0D12" d="M44 58h160c19 0 34 15 34 34v100c0 19-15 34-34 34H52c-19 0-34-15-34-34V84c0-14 12-26 26-26Z"/><circle cx="84" cy="128" r="48" fill="#EFEBE3"/><circle cx="172" cy="128" r="48" fill="#EFEBE3"/><circle cx="84" cy="128" r="31" fill="#3B82FF"/><circle cx="172" cy="128" r="31" fill="#FF3B3B"/></svg><button class="btn small" id="out">Sair</button></div></div>
+    <div class="dl-block" id="arcana-dl" hidden><b>Milens Arcana</b><p class="muted">Você achou o baralho escondido da câmera. Jogo de cartas com tiragem solo, duelo online e cassino de fichas virtuais. Também dá para jogar no navegador.</p><button class="btn primary" id="dl-arcana">Baixar Milens Arcana (Windows)</button> <a class="btn" href="../arcana/">Jogar no navegador</a></div>
     <dl class="kv">
       <div><dt>Plano</dt><dd>${pro ? 'PRO' : 'Lite (grátis)'}</dd></div>
       <div><dt>E-mail</dt><dd>${esc(p.email)}</dd></div>
@@ -134,6 +135,16 @@ async function renderArea(p) {
   root.querySelector('#out').addEventListener('click', async () => { (await sb()).auth.signOut(); tab = 'login'; renderForms(); });
   wireDownload(root.querySelector('#dl-lite'), 'lite', 'Milens-Lite-Setup.exe');
   wireDownload(root.querySelector('#dl-pro'), 'completo', 'Milens-Setup.exe');
+  // segredo: 3 cliques numa lente da câmera ao lado do nome revelam o download do Arcana
+  let camHits = [];
+  const cam = root.querySelector('#cam-av');
+  if (cam) cam.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'circle') return;
+    const now = Date.now();
+    camHits = camHits.filter((t) => now - t < 1500).concat(now);
+    if (camHits.length >= 3) { camHits = []; const box = root.querySelector('#arcana-dl'); box.hidden = false; box.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+  });
+  wireDownload(root.querySelector('#dl-arcana'), 'arcana', 'Milens-Arcana.exe');
 }
 
 async function render() {
